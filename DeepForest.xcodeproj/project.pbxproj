@@ -137,10 +137,6 @@
 				7BF3FA72288EE1F50072218E /* Network */,
 				7BF3FA73288EE1FA0072218E /* Application */,
 				7BF3FA41288EE1560072218E /* ViewController.swift */,
-				7BF3FA43288EE1560072218E /* Main.storyboard */,
-				7BF3FA46288EE1580072218E /* Assets.xcassets */,
-				7BF3FA48288EE1580072218E /* LaunchScreen.storyboard */,
-				7BF3FA4B288EE1580072218E /* Info.plist */,
 			);
 			path = DeepForest;
 			sourceTree = "<group>";
@@ -172,6 +168,10 @@
 		7BF3FA6E288EE1DA0072218E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7BF3FA43288EE1560072218E /* Main.storyboard */,
+				7BF3FA46288EE1580072218E /* Assets.xcassets */,
+				7BF3FA48288EE1580072218E /* LaunchScreen.storyboard */,
+				7BF3FA4B288EE1580072218E /* Info.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
