@@ -8,7 +8,7 @@
 import Foundation
 
 enum CoordinatorType {
-    case app, signin, signup
+    case app, signChoice, signin, signup
     case home, compose, detail
     case mypage, setting, gallery
     case galleryList
