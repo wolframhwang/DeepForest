@@ -198,6 +198,8 @@
 		7BF3FA6F288EE1E40072218E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				7BF3FA9228901CAC0072218E /* Model */,
+				7BF3FA9328901CB30072218E /* UseCase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -326,6 +328,20 @@
 				7BF3FA90289018FB0072218E /* ViewModelType.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7BF3FA9228901CAC0072218E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BF3FA9328901CB30072218E /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 		DA07D8B9198BA4042408DC58 /* Frameworks */ = {
