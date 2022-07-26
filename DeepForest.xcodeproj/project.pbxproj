@@ -25,6 +25,7 @@
 		7BF3FA8A288EF5B30072218E /* SignChoiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA89288EF5B30072218E /* SignChoiceCoordinator.swift */; };
 		7BF3FA8C288EF60F0072218E /* DefaultSignChoiceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA8B288EF60F0072218E /* DefaultSignChoiceCoordinator.swift */; };
 		7BF3FA8E288EF6AE0072218E /* SignChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA8D288EF6AE0072218E /* SignChoiceViewController.swift */; };
+		7BF3FA91289018FB0072218E /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA90289018FB0072218E /* ViewModelType.swift */; };
 		810ED21167C35A72BF881096 /* Pods_DeepForest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF4C7BB57D97D25073F916E /* Pods_DeepForest.framework */; };
 		B66F7FBC1AE905AFC6C70373 /* Pods_DeepForestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33FD3E7ECC037B3CD331D59 /* Pods_DeepForestTests.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		7BF3FA89288EF5B30072218E /* SignChoiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignChoiceCoordinator.swift; sourceTree = "<group>"; };
 		7BF3FA8B288EF60F0072218E /* DefaultSignChoiceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignChoiceCoordinator.swift; sourceTree = "<group>"; };
 		7BF3FA8D288EF6AE0072218E /* SignChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignChoiceViewController.swift; sourceTree = "<group>"; };
+		7BF3FA90289018FB0072218E /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		8C3B43745C245CC6B4FBE927 /* Pods-DeepForestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepForestTests.debug.xcconfig"; path = "Target Support Files/Pods-DeepForestTests/Pods-DeepForestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9497D2946D01BE01A6C9B80A /* Pods-DeepForest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepForest.release.xcconfig"; path = "Target Support Files/Pods-DeepForest/Pods-DeepForest.release.xcconfig"; sourceTree = "<group>"; };
 		A3C7E2DFC5C3049B68E1D661 /* Pods-DeepForest-DeepForestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepForest-DeepForestUITests.release.xcconfig"; path = "Target Support Files/Pods-DeepForest-DeepForestUITests/Pods-DeepForest-DeepForestUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 		7BF3FA8F289018D50072218E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7BF3FA90289018FB0072218E /* ViewModelType.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				7BF3FA7E288EE3FB0072218E /* CoordinatorType.swift in Sources */,
 				7BF3FA42288EE1560072218E /* ViewController.swift in Sources */,
 				7BF3FA8C288EF60F0072218E /* DefaultSignChoiceCoordinator.swift in Sources */,
+				7BF3FA91289018FB0072218E /* ViewModelType.swift in Sources */,
 				7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */,
 				7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */,
 				7BF3FA80288EEDD30072218E /* AppCoordinator.swift in Sources */,
