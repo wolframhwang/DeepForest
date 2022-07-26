@@ -35,3 +35,22 @@ final class DefaultAppCoordinator: AppCoordinator {
     
     
 }
+
+extension DefaultAppCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        self.childCoordinators = self.childCoordinators.filter({ coord in
+            coord.type != childCoordinator.type
+        })
+        self.navigationController.view.backgroundColor = .systemBackground
+        self.navigationController.viewControllers.removeAll()
+        
+        switch childCoordinator.type {
+        case .signChoice:
+            self.showSignChoiceFlow()
+        case .home:
+            self.showMainSceneFlow()
+        default:
+            break
+        }
+    }
+}
