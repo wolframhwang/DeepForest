@@ -21,11 +21,15 @@ final class DefaultSignChoiceCoordinator: SignChoiceCoordinator {
     }
     
     func start() {
+        self.signChoiceViewController.viewModel = SignChoiceViewModel(coordinator: self)
         self.navigationController.viewControllers = [self.signChoiceViewController]
     }
     
     func showSignInFlow() {
-        
+        let signInCoordinator = DefaultSignInCoordinator(self.navigationController)
+        signInCoordinator.finishDelegate = self
+        self.childCoordinators.append(signInCoordinator)
+        signInCoordinator.pushSignInViewController()
     }
     
     func showSignUpFlow() {
@@ -34,5 +38,12 @@ final class DefaultSignChoiceCoordinator: SignChoiceCoordinator {
     
     func joinNoSignInFlow() {
         
+    }
+}
+
+extension DefaultSignChoiceCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        self.childCoordinators.removeAll()
+        self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
 }
