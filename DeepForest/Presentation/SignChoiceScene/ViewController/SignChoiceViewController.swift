@@ -16,43 +16,51 @@ class SignChoiceViewController: UIViewController {
     
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.spacing = 10
+        stackView.spacing = 20
+        stackView.axis = .vertical
+        stackView.alignment = .center
         
         return stackView
     }()
     
     private lazy var signInButton: UIButton = {
         let signInButton = UIButton()
-        signInButton.tintColor = .black
+        signInButton.setTitleColor(UIColor.black, for: .normal)
         signInButton.backgroundColor = .gray
         signInButton.setTitle("로그인", for: .normal)
+        signInButton.layer.cornerRadius = 5
         
         return signInButton
     }()
     
     private lazy var signUpButton: UIButton = {
         let signUpButton = UIButton()
-        signUpButton.tintColor = .white
+        signUpButton.setTitleColor(UIColor.white, for: .normal)
         signUpButton.backgroundColor = .green
         signUpButton.setTitle("회원가입", for: .normal)
-                
+        signUpButton.layer.cornerRadius = 5
+        
         return signUpButton
     }()
     
     private lazy var noSignJoinButton: UIButton = {
         let noSignJoinButton = UIButton()
-        noSignJoinButton.tintColor = .green
+        noSignJoinButton.setTitleColor(UIColor.green, for: .normal)
         noSignJoinButton.backgroundColor = .white
         noSignJoinButton.setTitle("비회원 로그인", for: .normal)
+        noSignJoinButton.layer.cornerRadius = 5
         
         return noSignJoinButton
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .red
         configureSubViews()
         configureUI()
         bindViewModel()
+        //view.backgroundColor = .red
+        
         // Do any additional setup after loading the view.
     }
     
@@ -60,18 +68,21 @@ class SignChoiceViewController: UIViewController {
 
 extension SignChoiceViewController {
     func configureSubViews() {
+        print("configureSub")
         view.addSubview(buttonStackView)
-        buttonStackView.addSubview(signInButton)
-        buttonStackView.addSubview(signUpButton)
-        buttonStackView.addSubview(noSignJoinButton)
+        buttonStackView.addArrangedSubview(signInButton)
+        buttonStackView.addArrangedSubview(signUpButton)
+        buttonStackView.addArrangedSubview(noSignJoinButton)
     }
     
     func configureUI() {
+        print("configureUI")
         view.backgroundColor = .systemBackground
         
         buttonStackView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.bottom.equalToSuperview().offset(20)
+            make.bottom.equalToSuperview().offset(-80)
+            
         }
         
         signInButton.snp.makeConstraints { make in
@@ -88,11 +99,12 @@ extension SignChoiceViewController {
     }
     
     func bindViewModel() {
+        print("bindViewModel")
         let input = SignChoiceViewModel.Input(signInButtonDidTapEvent: signInButton.rx.tap.asObservable(),
                                               signUpButtonDidTapEvent: signUpButton.rx.tap.asObservable(),
                                               noSignJoinButtonDidTapEvent: noSignJoinButton.rx.tap.asObservable())
         
-        let output = self.viewModel?.transform(from: input)
+        self.viewModel?.transform(from: input)
     }
     
 }
