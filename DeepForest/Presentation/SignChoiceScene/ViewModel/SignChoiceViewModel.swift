@@ -11,6 +11,7 @@ import RxCocoa
 
 final class SignChoiceViewModel: ViewModelType {
     var coordinator: SignChoiceCoordinator?
+    let disposeBag = DisposeBag()
     
     struct Input {
         let signInButtonDidTapEvent: Observable<Void>
@@ -21,14 +22,20 @@ final class SignChoiceViewModel: ViewModelType {
     struct Output {
         
     }
+    init(coordinator: SignChoiceCoordinator?) {
+        self.coordinator = coordinator
+    }
     
+    @discardableResult
     func transform(from input: Input) -> Output {
         let output =  Output()
-        
+        print("TRANSFORM")
         input.signInButtonDidTapEvent
             .subscribe(onNext: { [weak self] _ in
-                self?.coordinator.pu
+                print("Tapped")
+                self?.coordinator?.showSignInFlow()
             })
+            .disposed(by: disposeBag)
         
         return output
     }
