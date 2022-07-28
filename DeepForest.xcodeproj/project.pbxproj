@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6687E5C52856EB1AE62ACC29 /* Pods_DeepForest_DeepForestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0311E21F905FA355B04039F8 /* Pods_DeepForest_DeepForestUITests.framework */; };
+		7B1CCCDE28916A3C004389A8 /* SignChoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1CCCDD28916A3C004389A8 /* SignChoiceViewModel.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
 		7BF3FA42288EE1560072218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA41288EE1560072218E /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 		0311E21F905FA355B04039F8 /* Pods_DeepForest_DeepForestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepForest_DeepForestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF4C7BB57D97D25073F916E /* Pods_DeepForest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepForest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FC498921E52F4172D1E747 /* Pods-DeepForestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepForestTests.release.xcconfig"; path = "Target Support Files/Pods-DeepForestTests/Pods-DeepForestTests.release.xcconfig"; sourceTree = "<group>"; };
+		7B1CCCDD28916A3C004389A8 /* SignChoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignChoiceViewModel.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF3FA3F288EE1560072218E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 		7BF3FA87288EF5710072218E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7B1CCCDD28916A3C004389A8 /* SignChoiceViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BF3FA8A288EF5B30072218E /* SignChoiceCoordinator.swift in Sources */,
+				7B1CCCDE28916A3C004389A8 /* SignChoiceViewModel.swift in Sources */,
 				7BF3FA8E288EF6AE0072218E /* SignChoiceViewController.swift in Sources */,
 				7BF3FA82288EEEE10072218E /* DefaultAppCoordinator.swift in Sources */,
 				7BF3FA7B288EE37D0072218E /* CoordinatorFinishDelegate.swift in Sources */,
