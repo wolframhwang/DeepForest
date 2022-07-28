@@ -24,5 +24,15 @@ final class DefaultSignChoiceCoordinator: SignChoiceCoordinator {
         self.navigationController.viewControllers = [self.signChoiceViewController]
     }
     
+    func showSignInFlow() {
+        
+    }
     
+    func showSignUpFlow() {
+        
+    }
+    
+    func joinNoSignInFlow() {
+        
+    }
 }

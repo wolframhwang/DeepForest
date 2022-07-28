@@ -8,5 +8,7 @@
 import Foundation
 
 protocol SignChoiceCoordinator: Coordinator {
-
+    func showSignInFlow()
+    func showSignUpFlow()
+    func joinNoSignInFlow()
 }
