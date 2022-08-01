@@ -25,10 +25,4 @@ protocol URLSessionNetworkService {
         url urlString: String,
         header: [String: String]?
     ) -> Observable<Result<Data, URLSessionNetworkServiceError>>
-    
-    func update<T: Codable>(
-        _ data: T,
-        url urlString: String,
-        header: [String: String]?
-    ) -> Observable<Result<Data, URLSessionNetworkServiceError>>
 }
