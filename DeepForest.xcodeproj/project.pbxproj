@@ -13,7 +13,6 @@
 		7B1CCCE92892C3C5004389A8 /* DefaultSignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1CCCE82892C3C5004389A8 /* DefaultSignInCoordinator.swift */; };
 		7B1CCCEB2892C411004389A8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1CCCEA2892C411004389A8 /* SignInViewController.swift */; };
 		7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356E52898144000406022 /* DefaultURLSessionNetworkServiceError.swift */; };
-		7B9356E82898144B00406022 /* DefaultRealtimeDatabaseNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356E72898144B00406022 /* DefaultRealtimeDatabaseNetworkService.swift */; };
 		7B9356EA2898147800406022 /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356E92898147800406022 /* URLSessionNetworkService.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
@@ -64,7 +63,6 @@
 		7B1CCCE82892C3C5004389A8 /* DefaultSignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInCoordinator.swift; sourceTree = "<group>"; };
 		7B1CCCEA2892C411004389A8 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		7B9356E52898144000406022 /* DefaultURLSessionNetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultURLSessionNetworkServiceError.swift; sourceTree = "<group>"; };
-		7B9356E72898144B00406022 /* DefaultRealtimeDatabaseNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRealtimeDatabaseNetworkService.swift; sourceTree = "<group>"; };
 		7B9356E92898147800406022 /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -290,7 +288,6 @@
 			children = (
 				7B9356E42898142A00406022 /* Protocol */,
 				7B9356E52898144000406022 /* DefaultURLSessionNetworkServiceError.swift */,
-				7B9356E72898144B00406022 /* DefaultRealtimeDatabaseNetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -691,7 +688,6 @@
 				7BF3FA7E288EE3FB0072218E /* CoordinatorType.swift in Sources */,
 				7BF3FA42288EE1560072218E /* ViewController.swift in Sources */,
 				7BF3FA8C288EF60F0072218E /* DefaultSignChoiceCoordinator.swift in Sources */,
-				7B9356E82898144B00406022 /* DefaultRealtimeDatabaseNetworkService.swift in Sources */,
 				7BF3FA91289018FB0072218E /* ViewModelType.swift in Sources */,
 				7B1CCCEB2892C411004389A8 /* SignInViewController.swift in Sources */,
 				7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */,
