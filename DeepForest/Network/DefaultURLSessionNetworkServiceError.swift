@@ -93,8 +93,8 @@ final class DefaultURLSessionNetworkService: URLSessionNetworkService {
               }
         return Observable<Result<Data, URLSessionNetworkServiceError>>.create { emitter in
             let request = self.createHTTPRequest(of: url, with: headers, httpMethod: method, with: httpBody)
-            let task = URLSession.shared.dataTask(with: request) { data, reponse, error in
-                guard let httpResponse = reponse as? HTTPURLResponse else {
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let httpResponse = response as? HTTPURLResponse else {
                     emitter.onError(URLSessionNetworkServiceError.unknownError)
                     return
                 }
