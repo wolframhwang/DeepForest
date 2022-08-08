@@ -27,4 +27,8 @@ class DefaultSignInCoordinator: SignInCoordinator {
     func pushSignInViewController() {
         self.navigationController.pushViewController(self.signInViewController, animated: true)
     }
+    
+    func finish() {
+        self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
 }
