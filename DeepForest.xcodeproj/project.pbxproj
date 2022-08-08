@@ -14,6 +14,9 @@
 		7B1CCCEB2892C411004389A8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1CCCEA2892C411004389A8 /* SignInViewController.swift */; };
 		7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356E52898144000406022 /* DefaultURLSessionNetworkServiceError.swift */; };
 		7B9356EA2898147800406022 /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356E92898147800406022 /* URLSessionNetworkService.swift */; };
+		7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356EC2899661600406022 /* SignInViewModel.swift */; };
+		7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356EE28996AD600406022 /* SignInUseCase.swift */; };
+		7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356F028996AE200406022 /* DefaultSignInUseCase.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
 		7BF3FA42288EE1560072218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA41288EE1560072218E /* ViewController.swift */; };
@@ -64,6 +67,9 @@
 		7B1CCCEA2892C411004389A8 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		7B9356E52898144000406022 /* DefaultURLSessionNetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultURLSessionNetworkServiceError.swift; sourceTree = "<group>"; };
 		7B9356E92898147800406022 /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
+		7B9356EC2899661600406022 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		7B9356EE28996AD600406022 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
+		7B9356F028996AE200406022 /* DefaultSignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInUseCase.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF3FA3F288EE1560072218E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +170,7 @@
 		7B1CCCE42892C374004389A8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7B9356EC2899661600406022 /* SignInViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -182,6 +189,13 @@
 				7B9356E92898147800406022 /* URLSessionNetworkService.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7B9356EB2898212700406022 /* NetworkTest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkTest;
 			sourceTree = "<group>";
 		};
 		7BF3FA31288EE1560072218E = {
@@ -224,6 +238,7 @@
 		7BF3FA53288EE1580072218E /* DeepForestTests */ = {
 			isa = PBXGroup;
 			children = (
+				7B9356EB2898212700406022 /* NetworkTest */,
 				7BF3FA54288EE1580072218E /* DeepForestTests.swift */,
 			);
 			path = DeepForestTests;
@@ -415,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				7BF3FA9528901FC60072218E /* Protocol */,
+				7B9356F028996AE200406022 /* DefaultSignInUseCase.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -422,6 +438,7 @@
 		7BF3FA9528901FC60072218E /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				7B9356EE28996AD600406022 /* SignInUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -678,6 +695,9 @@
 				7BF3FA8A288EF5B30072218E /* SignChoiceCoordinator.swift in Sources */,
 				7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */,
 				7B1CCCE92892C3C5004389A8 /* DefaultSignInCoordinator.swift in Sources */,
+				7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */,
+				7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */,
+				7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */,
 				7B1CCCDE28916A3C004389A8 /* SignChoiceViewModel.swift in Sources */,
 				7B9356EA2898147800406022 /* URLSessionNetworkService.swift in Sources */,
 				7BF3FA8E288EF6AE0072218E /* SignChoiceViewController.swift in Sources */,

@@ -6,24 +6,74 @@
 //
 
 import UIKit
+import RxSwift
+import SnapKit
 
 class SignInViewController: UIViewController {
-
+    private var disposeBag = DisposeBag()
+    var viewModel: SignInViewModel?
+    private lazy var idTextField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        
+        return textField
+    }()
+    
+    private lazy var pwTextField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true
+        
+        return textField
+    }()
+    
+    private lazy var submitButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Submit", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.backgroundColor = .green
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
-        // Do any additional setup after loading the view.
+        configureSubviews()
+        configureUI()
+        bindViewModel()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func configureSubviews() {
+        [idTextField, pwTextField, submitButton].forEach { subview in
+            view.addSubview(subview)
+        }
     }
-    */
-
+    
+    private func configureUI() {
+        idTextField.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(30)
+            make.leading.trailing.equalToSuperview().inset(15)
+        }
+        
+        pwTextField.snp.makeConstraints { make in
+            make.top.equalTo(idTextField).offset(15)
+            make.leading.trailing.equalToSuperview().inset(15)
+        }
+        
+        submitButton.snp.makeConstraints { make in
+            make.top.equalTo(pwTextField).offset(30)
+            make.leading.trailing.equalToSuperview().inset(15)
+        }
+    }
+    
+    private func bindViewModel() {
+        let input = SignInViewModel.Input(idObserverable: self.idTextField.rx.text.orEmpty.asObservable(),
+                                          pwObservable: self.pwTextField.rx.text.orEmpty.asObservable(),
+                                          buttonTapObservable: self.submitButton.rx.tap.asObservable())
+        
+        let output = viewModel?.transform(from: input)
+        
+        
+        
+    }
 }
