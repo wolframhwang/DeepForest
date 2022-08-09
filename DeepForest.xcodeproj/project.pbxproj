@@ -17,6 +17,7 @@
 		7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356EC2899661600406022 /* SignInViewModel.swift */; };
 		7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356EE28996AD600406022 /* SignInUseCase.swift */; };
 		7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356F028996AE200406022 /* DefaultSignInUseCase.swift */; };
+		7BD5BEC528A280AD00330F96 /* AccountForSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
 		7BF3FA42288EE1560072218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA41288EE1560072218E /* ViewController.swift */; };
@@ -70,6 +71,7 @@
 		7B9356EC2899661600406022 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		7B9356EE28996AD600406022 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		7B9356F028996AE200406022 /* DefaultSignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInUseCase.swift; sourceTree = "<group>"; };
+		7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountForSignIn.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF3FA3F288EE1560072218E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 		7BF3FA9228901CAC0072218E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -695,6 +698,7 @@
 				7BF3FA8A288EF5B30072218E /* SignChoiceCoordinator.swift in Sources */,
 				7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */,
 				7B1CCCE92892C3C5004389A8 /* DefaultSignInCoordinator.swift in Sources */,
+				7BD5BEC528A280AD00330F96 /* AccountForSignIn.swift in Sources */,
 				7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */,
 				7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */,
 				7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */,
