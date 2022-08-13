@@ -10,4 +10,13 @@ import RxSwift
 
 
 protocol SignUpUseCase {
+    var userIdState: BehaviorSubject<String> { get }
+    var nickNameState: BehaviorSubject<String> { get }
+    var passwordState: BehaviorSubject<String> { get }
+    var emailState: BehaviorSubject<String> { get }
+    
+    func validateUserId(userId: String)
+    func validateNickName(nickName: String)
+    func validatePassword(password: String, rePassword: String)
+    func validateEmail(email: String)
 }
