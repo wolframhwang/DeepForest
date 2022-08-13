@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol NetworkRepository {
-    func post(accountInfo: AccountForSignIn) -> Observable<Bool>
+    func post(accountInfo: AccountForSignIn) -> Observable<Result<Data, URLSessionNetworkServiceError>>
 }
