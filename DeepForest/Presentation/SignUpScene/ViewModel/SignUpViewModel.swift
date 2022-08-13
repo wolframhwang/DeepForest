@@ -25,7 +25,10 @@ final class SignUpViewModel: ViewModelType {
     }
     
     struct Output {
-        
+        var userIdConstraintLabel = BehaviorRelay<String>(value: idInit)
+        var nickNameConstraintLabel = BehaviorRelay<String>(value: nickInit)
+        var passwordConstraintLabel = BehaviorRelay<String>(value: pwInit)
+        var emailConstraintLabel = BehaviorRelay<String>(value: emailInit)
     }
     
     init(coordinator: SignUpCoordinator?,
@@ -35,7 +38,30 @@ final class SignUpViewModel: ViewModelType {
     }
     
     func transform(from input: Input) -> Output {
+        configureInput(input)
         return Output()
+    }
+    
+    private func configureOutput(from input: Input) -> Output {
+        let output = Output()
+        
+        signUpUseCase.userIdState
+            .bind(to: output.userIdConstraintLabel)
+            .disposed(by: disposeBag)
+        
+        signUpUseCase.nickNameState
+            .bind(to: output.nickNameConstraintLabel)
+            .disposed(by: disposeBag)
+        
+        signUpUseCase.passwordState
+            .bind(to: output.passwordConstraintLabel)
+            .disposed(by: disposeBag)
+        
+        signUpUseCase.emailState
+            .bind(to: output.emailConstraintLabel)
+            .disposed(by: disposeBag)
+        
+        return output
     }
     
     private func configureInput(_ input: Input) {

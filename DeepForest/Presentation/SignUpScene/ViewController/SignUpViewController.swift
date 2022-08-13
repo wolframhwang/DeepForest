@@ -161,6 +161,17 @@ extension SignUpViewController {
         )
         
         let output = viewModel?.transform(from: input)
+        output?.userIdConstraintLabel.bind(to: idConstraint.rx.text)
+            .disposed(by: disposeBag)
+        
+        output?.nickNameConstraintLabel.bind(to: nickNameConstraint.rx.text)
+            .disposed(by: disposeBag)
+        
+        output?.passwordConstraintLabel.bind(to: passwordConstraint.rx.text)
+            .disposed(by: disposeBag)
+        
+        output?.emailConstraintLabel.bind(to: emailConstraint.rx.text)
+            .disposed(by: disposeBag)
         
     }
     
