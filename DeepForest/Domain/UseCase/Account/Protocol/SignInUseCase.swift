@@ -10,10 +10,8 @@ import Foundation
 import RxSwift
 
 protocol SignInUseCase {
-    var userId: BehaviorSubject<String> { get }
-    var userPw: BehaviorSubject<String> { get }
+    var signInInfo: BehaviorSubject<AccountForSignIn> { get }
+    var tappedSignInButton: PublishSubject<Void> { get }
     
-    func validateId(text: String)
-    func validatePw(text: String)
-    func signIn() -> Observable<Bool>
+    func singIn() -> Observable<Bool>
 }
