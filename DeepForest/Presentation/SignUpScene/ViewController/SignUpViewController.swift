@@ -151,6 +151,14 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController {
     private func bindViewModel() {
+        let input = SignUpViewModel.Input(idTextFieldDidEditEvent: idTextField.rx.text.orEmpty.asObservable(),
+                                          nickNameTextFieldDidEditEvent: nickNameTextField.rx.text.orEmpty.asObservable(),
+                                          pwTextFieldDidEditEvent: passwordTextField.rx.text.orEmpty.asObservable(),
+                                          repwTextFieldDidEditEvent: rePasswordTextField.rx.text.orEmpty.asObservable(),
+                                          emailTextFieldDidEditEvent: emailTextField.rx.text.orEmpty.asObservable(),
+                                          submitButtnTapped: submitButton.rx.tap.asObservable()
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.asyncInstance)
+        )
         
     }
     
