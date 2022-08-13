@@ -18,12 +18,15 @@ final class DefaultSignUpUseCase: SignUpUseCase {
     var nickNameState = BehaviorSubject<String>(value: nickInit)
     var passwordState = BehaviorSubject<String>(value: pwInit)
     var emailState = BehaviorSubject<String>(value: emailInit)
+    var signUpInfo = BehaviorSubject<AccountForSignUp>(value: AccountForSignUp(userId: "",
+                                                                               password: "",
+                                                                               email: "",
+                                                                               nickName: ""))
     
     init(networkRepository: NetworkRepository) {
         self.networkRepository = networkRepository
     }
-    
-    
+        
     func validateUserId(userId: String) {
         switch userId.count {
         case 0...0:
