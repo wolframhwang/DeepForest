@@ -31,4 +31,12 @@ class DefaultSignInCoordinator: SignInCoordinator {
     func finish() {
         self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
+    
+    func showAlert(_ errorMessage: Error) {
+        let alert = UIAlertController(title: "SignInError",
+                                      message: errorMessage.localizedDescription,
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        self.signInViewController.show(alert, sender: nil)
+    }
 }
