@@ -21,4 +21,6 @@ protocol SignUpUseCase {
     func validateNickName(nickName: String)
     func validatePassword(password: String, rePassword: String)
     func validateEmail(email: String)
+    
+    func signUp() -> Observable<Bool>
 }

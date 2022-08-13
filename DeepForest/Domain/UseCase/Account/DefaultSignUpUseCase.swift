@@ -26,6 +26,10 @@ final class DefaultSignUpUseCase: SignUpUseCase {
     init(networkRepository: NetworkRepository) {
         self.networkRepository = networkRepository
     }
+    
+    func signUp() -> Observable<Bool> {
+        
+    }
         
     func validateUserId(userId: String) {
         switch userId.count {

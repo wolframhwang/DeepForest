@@ -39,10 +39,10 @@ final class SignUpViewModel: ViewModelType {
     
     func transform(from input: Input) -> Output {
         configureInput(input)
-        return configureOutput(from: input)
+        return configureOutput(from: input, disposeBag: disposeBag)
     }
     
-    private func configureOutput(from input: Input) -> Output {
+    private func configureOutput(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         
         signUpUseCase.userIdState
@@ -61,6 +61,16 @@ final class SignUpViewModel: ViewModelType {
             .bind(to: output.emailConstraintLabel)
             .disposed(by: disposeBag)
         
+        input.submitButtnTapped
+            .subscribe(onNext: { [weak self] in
+                self?.signUpUseCase.signUp()
+                    .observe(on: MainScheduler.instance)
+                    .subscribe(onNext: { isSuccess in
+                                                
+                    })
+                    .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
         return output
     }
     
@@ -99,8 +109,5 @@ final class SignUpViewModel: ViewModelType {
                              nickName: nickname)
         })
         .bind(to: signUpUseCase.signUpInfo).disposed(by: disposeBag)
-        
-        
-        
     }
 }
