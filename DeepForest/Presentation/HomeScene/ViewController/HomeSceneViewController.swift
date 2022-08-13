@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainSceneViewController: UIViewController {
+class HomeSceneViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
