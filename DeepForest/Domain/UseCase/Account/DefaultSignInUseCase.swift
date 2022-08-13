@@ -9,13 +9,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-enum SignInFail: Error {
+enum AuthFail: Error {
     case noData
     case signInFailure
     case decodeFail
 }
 
-extension SignInFail: LocalizedError {
+extension AuthFail: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .noData:
@@ -42,9 +42,9 @@ final class DefaultSignInUseCase: SignInUseCase {
     
     func signIn() -> Observable<String?> {
         guard let signIn = try? signInInfo.value() else {
-            return Observable.error(SignInFail.noData)
+            return Observable.error(AuthFail.noData)
         }
-        print(signIn)
+
         return networkRepository.post(accountInfo: signIn).map { result in
             switch result {
             case .success(let data):
@@ -56,7 +56,7 @@ final class DefaultSignInUseCase: SignInUseCase {
                         return ("로그인에 실패했습니다!")
                     }
                 } catch {
-                    return SignInFail.decodeFail.localizedDescription
+                    return AuthFail.decodeFail.localizedDescription
                 }
             case .failure(let error):
                 return error.localizedDescription
