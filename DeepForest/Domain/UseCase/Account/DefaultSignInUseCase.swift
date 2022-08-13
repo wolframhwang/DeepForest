@@ -6,7 +6,23 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-class DefaultSignInUseCase: SignInUseCase {
+final class DefaultSignInUseCase: SignInUseCase {
+    private let userRepository: UserRepository
+    private let networkRepository: NetworkRepository
     
+    var signInInfo = BehaviorSubject<AccountForSignIn>(value: AccountForSignIn(id: "", pw: ""))
+    var tappedSignInButton = PublishSubject<Void>()
+
+    init(userRepository: UserRepository,
+         networkRepository: NetworkRepository) {
+        self.userRepository = userRepository
+        self.networkRepository = networkRepository
+    }
+    
+    func singIn() -> Observable<Bool> {
+        return networkRepository
+    }
 }
