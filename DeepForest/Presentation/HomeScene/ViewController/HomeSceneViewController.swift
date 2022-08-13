@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import SnapKit
 
 class HomeSceneViewController: UIViewController {
-
+    private let disposeBag = DisposeBag()
+    var viewModel: HomeSceneViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
 
