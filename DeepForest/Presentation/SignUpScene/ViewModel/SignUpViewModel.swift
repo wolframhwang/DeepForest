@@ -87,5 +87,20 @@ final class SignUpViewModel: ViewModelType {
             self?.signUpUseCase.validatePassword(password: password, rePassword: rePassword)
         })
         .disposed(by: disposeBag)
+        
+        Observable.combineLatest(input.idTextFieldDidEditEvent,
+                                 input.pwTextFieldDidEditEvent,
+                                 input.emailTextFieldDidEditEvent,
+                                 input.nickNameTextFieldDidEditEvent)
+        .map({ id, pw, email, nickname in
+            AccountForSignUp(userId: id,
+                             password: pw,
+                             email: email,
+                             nickName: nickname)
+        })
+        .bind(to: signUpUseCase.signUpInfo).disposed(by: disposeBag)
+        
+        
+        
     }
 }
