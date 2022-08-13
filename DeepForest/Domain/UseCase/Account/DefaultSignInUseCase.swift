@@ -14,7 +14,6 @@ final class DefaultSignInUseCase: SignInUseCase {
     private let networkRepository: NetworkRepository
     
     var signInInfo = BehaviorSubject<AccountForSignIn>(value: AccountForSignIn(id: "", pw: ""))
-    var tappedSignInButton = PublishSubject<Void>()
 
     init(userRepository: UserRepository,
          networkRepository: NetworkRepository) {

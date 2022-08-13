@@ -11,7 +11,6 @@ import RxSwift
 
 protocol SignInUseCase {
     var signInInfo: BehaviorSubject<AccountForSignIn> { get }
-    var tappedSignInButton: PublishSubject<Void> { get }
     
     func singIn() -> Observable<Bool>
 }
