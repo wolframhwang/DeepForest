@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import RxSwift
+
+final class DefaultSignUpUseCase: SignUpUseCase {
+    
+}

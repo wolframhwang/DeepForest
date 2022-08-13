@@ -6,3 +6,19 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+final class SignUpViewModel: ViewModelType {
+    struct Input {
+        
+    }
+    
+    struct Output {
+        
+    }
+    
+    func transform(from input: Input) -> Output {
+        return Output()
+    }
+}
