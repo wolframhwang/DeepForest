@@ -50,18 +50,19 @@ class SignInViewController: UIViewController {
     }
     
     private func configureUI() {
+        view.backgroundColor = .systemBackground
         idTextField.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(30)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(30)
             make.leading.trailing.equalToSuperview().inset(15)
         }
         
         pwTextField.snp.makeConstraints { make in
-            make.top.equalTo(idTextField).offset(15)
+            make.top.equalTo(idTextField.snp.bottom).offset(15)
             make.leading.trailing.equalToSuperview().inset(15)
         }
         
         submitButton.snp.makeConstraints { make in
-            make.top.equalTo(pwTextField).offset(30)
+            make.top.equalTo(pwTextField.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(15)
         }
     }
@@ -72,8 +73,5 @@ class SignInViewController: UIViewController {
                                           buttonTapObservable: self.submitButton.rx.tap.asObservable())
         
         let output = viewModel?.transform(from: input)
-        
-        
-        
     }
 }

@@ -47,14 +47,18 @@ final class SignInViewModel: ViewModelType {
     private func createOutput(from input: Input, disposeBag: DisposeBag) -> Output {
         input.buttonTapObservable
             .subscribe(onNext: { [weak self] in
-                self?.signInUseCase.singIn()
+                self?.signInUseCase.signIn()
                     .observe(on: MainScheduler.instance)
-                    .subscribe(onNext: { _ in
-                        self?.coordinator?.finish()
-                    }, onError: { error in
-                        self?.coordinator?.showAlert(error)
+                    .subscribe(onNext: { failMessage in
+                        guard let failMessage = failMessage else {
+                            self?.coordinator?.finish()
+                            return
+                        }
+                        self?.coordinator?.showAlert(failMessage)                        
                     })
                     .disposed(by: disposeBag)
+            }, onError: { error in
+                self.coordinator?.showAlert(error.localizedDescription)
             })
             .disposed(by: disposeBag)
         
