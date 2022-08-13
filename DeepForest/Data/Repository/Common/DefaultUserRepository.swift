@@ -6,3 +6,27 @@
 //
 
 import Foundation
+
+final class DefaultUserRepository: UserRepository {
+    func saveSignInInfo() {
+        
+    }
+    
+    func deleteUserInfo() {
+        
+    }
+    
+    func fetchToken() -> String? {
+        return nil
+    }
+    
+    func fetchNickName() -> String? {
+        return nil
+    }
+    
+    func fetchUserInfo() {
+        
+    }
+    
+    
+}
