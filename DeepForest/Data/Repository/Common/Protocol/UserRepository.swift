@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+protocol UserRepository {
+    func saveSignInInfo()
+    func deleteUserInfo()
+    func fetchToken() -> String?
+    func fetchNickName() -> String?
+    func fetchUserInfo()
+}
