@@ -15,7 +15,7 @@ protocol SignUpUseCase {
     var passwordState: BehaviorSubject<String> { get }
     var emailState: BehaviorSubject<String> { get }
     
-    var signUpInfo: BehaviorSubject<AccoutForSignUp> { get }
+    var signUpInfo: BehaviorSubject<AccountForSignUp> { get }
 
     func validateUserId(userId: String)
     func validateNickName(nickName: String)
