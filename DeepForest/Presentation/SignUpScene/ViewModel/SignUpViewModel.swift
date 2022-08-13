@@ -39,7 +39,7 @@ final class SignUpViewModel: ViewModelType {
     
     func transform(from input: Input) -> Output {
         configureInput(input)
-        return Output()
+        return configureOutput(from: input)
     }
     
     private func configureOutput(from input: Input) -> Output {
