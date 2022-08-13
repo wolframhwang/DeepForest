@@ -33,7 +33,10 @@ final class DefaultSignChoiceCoordinator: SignChoiceCoordinator {
     }
     
     func showSignUpFlow() {
-        
+        let signUpCoordinator = DefaultSignUpCoordinator(self.navigationController)
+        signUpCoordinator.finishDelegate = self
+        self.childCoordinators.append(signUpCoordinator)
+        signUpCoordinator.pushSignUpViewController()
     }
     
     func joinNoSignInFlow() {

@@ -36,6 +36,11 @@ final class SignChoiceViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
+        input.signUpButtonDidTapEvent
+            .subscribe(onNext: {[weak self] _ in
+                self?.coordinator?.showSignUpFlow()
+            })
+            .disposed(by: disposeBag)
         return output
     }
 }
