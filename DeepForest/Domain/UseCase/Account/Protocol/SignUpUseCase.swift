@@ -22,5 +22,5 @@ protocol SignUpUseCase {
     func validatePassword(password: String, rePassword: String)
     func validateEmail(email: String)
     
-    func signUp() -> Observable<Bool>
+    func signUp() -> Observable<String?>
 }
