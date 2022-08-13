@@ -21,7 +21,17 @@ final class DefaultHomeSceneCoordinator: HomeSceneCoordinator {
     }
     
     func start() {
-        
+        let homeSceneCoordinator = DefaultHomeSceneCoordinator(self.navigationController)
+        HomeSceneViewModel = HomeSceneViewModel(coordinator: self)
+        homeSceneCoordinator.finishDelegate = self
+        self.childCoordinators.append(homeSceneCoordinator)
     }
     
+}
+
+extension DefaultHomeSceneCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        self.childCoordinators.removeAll()
+        self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
 }
