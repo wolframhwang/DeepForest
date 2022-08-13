@@ -27,8 +27,28 @@ final class DefaultSignUpUseCase: SignUpUseCase {
         self.networkRepository = networkRepository
     }
     
-    func signUp() -> Observable<Bool> {
-        
+    func signUp() -> Observable<String?> {
+        guard let signUp = try? signUpInfo.value() else {
+            return Observable.error(AuthFail.noData)
+        }
+
+        return networkRepository.post(accountInfo: signUp).map { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(SignUpResponseDTO.self, from: data)
+                    if response.success {
+                        return nil
+                    } else {
+                        return ("회원가입에 실패했습니다!")
+                    }
+                } catch {
+                    return AuthFail.decodeFail.localizedDescription
+                }
+            case .failure(let error):
+                return error.localizedDescription
+            }
+        }
     }
         
     func validateUserId(userId: String) {
