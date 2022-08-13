@@ -26,6 +26,12 @@
 		7BE63A9828A791F20068BD67 /* SignInResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63A9728A791F20068BD67 /* SignInResponseDTO.swift */; };
 		7BE63A9A28A792150068BD67 /* TokenResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63A9928A792150068BD67 /* TokenResultDTO.swift */; };
 		7BE63A9D28A792570068BD67 /* RESTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63A9C28A792570068BD67 /* RESTError.swift */; };
+		7BE63AA928A7CE7C0068BD67 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AA828A7CE7C0068BD67 /* SignUpViewController.swift */; };
+		7BE63AAB28A7CE8A0068BD67 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AAA28A7CE8A0068BD67 /* SignUpViewModel.swift */; };
+		7BE63AAE28A7CEB10068BD67 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AAD28A7CEB10068BD67 /* SignUpCoordinator.swift */; };
+		7BE63AB028A7CEB90068BD67 /* DefaultSignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AAF28A7CEB90068BD67 /* DefaultSignUpCoordinator.swift */; };
+		7BE63AB228A7CEDA0068BD67 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AB128A7CEDA0068BD67 /* SignUpUseCase.swift */; };
+		7BE63AB428A7CEE30068BD67 /* DefaultSignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AB328A7CEE30068BD67 /* DefaultSignUpUseCase.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
 		7BF3FA42288EE1560072218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA41288EE1560072218E /* ViewController.swift */; };
@@ -88,6 +94,12 @@
 		7BE63A9728A791F20068BD67 /* SignInResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponseDTO.swift; sourceTree = "<group>"; };
 		7BE63A9928A792150068BD67 /* TokenResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResultDTO.swift; sourceTree = "<group>"; };
 		7BE63A9C28A792570068BD67 /* RESTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTError.swift; sourceTree = "<group>"; };
+		7BE63AA828A7CE7C0068BD67 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		7BE63AAA28A7CE8A0068BD67 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		7BE63AAD28A7CEB10068BD67 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
+		7BE63AAF28A7CEB90068BD67 /* DefaultSignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignUpCoordinator.swift; sourceTree = "<group>"; };
+		7BE63AB128A7CEDA0068BD67 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
+		7BE63AB328A7CEE30068BD67 /* DefaultSignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignUpUseCase.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF3FA3F288EE1560072218E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -305,6 +317,7 @@
 		7BE63AA328A7CD8F0068BD67 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7BE63AA828A7CE7C0068BD67 /* SignUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -312,6 +325,7 @@
 		7BE63AA428A7CD960068BD67 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7BE63AAA28A7CE8A0068BD67 /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -319,8 +333,18 @@
 		7BE63AA528A7CD9C0068BD67 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				7BE63AAC28A7CE940068BD67 /* Protocol */,
+				7BE63AAF28A7CEB90068BD67 /* DefaultSignUpCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7BE63AAC28A7CE940068BD67 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63AAD28A7CEB10068BD67 /* SignUpCoordinator.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		7BF3FA31288EE1560072218E = {
@@ -562,6 +586,7 @@
 			children = (
 				7BF3FA9528901FC60072218E /* Protocol */,
 				7B9356F028996AE200406022 /* DefaultSignInUseCase.swift */,
+				7BE63AB328A7CEE30068BD67 /* DefaultSignUpUseCase.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -570,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				7B9356EE28996AD600406022 /* SignInUseCase.swift */,
+				7BE63AB128A7CEDA0068BD67 /* SignUpUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -826,6 +852,7 @@
 				7BF3FA8A288EF5B30072218E /* SignChoiceCoordinator.swift in Sources */,
 				7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */,
 				7B1CCCE92892C3C5004389A8 /* DefaultSignInCoordinator.swift in Sources */,
+				7BE63AB228A7CEDA0068BD67 /* SignUpUseCase.swift in Sources */,
 				7BE63A9428A74E740068BD67 /* DefaultURLSessionNetworkService.swift in Sources */,
 				7BE63A9828A791F20068BD67 /* SignInResponseDTO.swift in Sources */,
 				7BD5BED028A2BCDC00330F96 /* NetworkRepository.swift in Sources */,
@@ -839,7 +866,9 @@
 				7BE63A9228A74D120068BD67 /* DefaultNetworkRepository.swift in Sources */,
 				7BF3FA8E288EF6AE0072218E /* SignChoiceViewController.swift in Sources */,
 				7BD5BECA28A2946A00330F96 /* DefaultUserRepository.swift in Sources */,
+				7BE63AA928A7CE7C0068BD67 /* SignUpViewController.swift in Sources */,
 				7BF3FA82288EEEE10072218E /* DefaultAppCoordinator.swift in Sources */,
+				7BE63AAB28A7CE8A0068BD67 /* SignUpViewModel.swift in Sources */,
 				7B1CCCE72892C3B4004389A8 /* SignInCoordinator.swift in Sources */,
 				7BF3FA7B288EE37D0072218E /* CoordinatorFinishDelegate.swift in Sources */,
 				7BD5BECC28A2947200330F96 /* UserRepository.swift in Sources */,
@@ -850,8 +879,11 @@
 				7BE63A9A28A792150068BD67 /* TokenResultDTO.swift in Sources */,
 				7BF3FA91289018FB0072218E /* ViewModelType.swift in Sources */,
 				7B1CCCEB2892C411004389A8 /* SignInViewController.swift in Sources */,
+				7BE63AAE28A7CEB10068BD67 /* SignUpCoordinator.swift in Sources */,
 				7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */,
 				7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */,
+				7BE63AB428A7CEE30068BD67 /* DefaultSignUpUseCase.swift in Sources */,
+				7BE63AB028A7CEB90068BD67 /* DefaultSignUpCoordinator.swift in Sources */,
 				7BF3FA80288EEDD30072218E /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
