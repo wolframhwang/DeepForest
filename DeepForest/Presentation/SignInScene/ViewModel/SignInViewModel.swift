@@ -22,7 +22,7 @@ final class SignInViewModel: ViewModelType {
     }
     
     struct Output {
-        let info = BehaviorRelay<Void>(value: Void())
+        let info = PublishRelay<Bool>()
     }
     
     init(coordinator: SignInCoordinator?, signInUseCase: SignInUseCase) {
@@ -31,29 +31,33 @@ final class SignInViewModel: ViewModelType {
     }
     
     func transform(from input: Input) -> Output {
-        self.configureInput(input: input, disposeBag: disposeBag)
+        configureInput(input)
         return createOutput(from: input, disposeBag: disposeBag)
     }
     
-    private func configureInput(input: Input, disposeBag: DisposeBag) {
-        input.idObserverable
-            .subscribe(onNext: { [weak self] username in
-                self?.signInUseCase.validateId(text: username)
-            })
-            .disposed(by: disposeBag)
-        
-        input.pwObservable
-            .subscribe(onNext: { [weak self] password in
-                self?.signInUseCase.validatePw(text: password)
-            })
+    private func configureInput(_ input: Input) {
+        Observable
+            .combineLatest(input.idObserverable, input.pwObservable) { id, pw in
+                return AccountForSignIn(id: id, pw: pw)
+            }
+            .bind(to: signInUseCase.signInInfo)
             .disposed(by: disposeBag)
     }
     
     private func createOutput(from input: Input, disposeBag: DisposeBag) -> Output {
-        let output = Output()
+        input.buttonTapObservable
+            .subscribe(onNext: { [weak self] in
+                self?.signInUseCase.singIn()
+                    .observe(on: MainScheduler.instance)
+                    .subscribe(onNext: { _ in
+                        self?.coordinator?.finish()
+                    }, onError: { error in
+                        self?.coordinator?.showAlert(error)
+                    })
+                    .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
         
-        
-        
-        return output
+        return Output()
     }
 }
