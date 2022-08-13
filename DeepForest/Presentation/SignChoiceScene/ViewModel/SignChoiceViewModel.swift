@@ -22,6 +22,7 @@ final class SignChoiceViewModel: ViewModelType {
     struct Output {
         
     }
+    
     init(coordinator: SignChoiceCoordinator?) {
         self.coordinator = coordinator
     }
@@ -29,10 +30,8 @@ final class SignChoiceViewModel: ViewModelType {
     @discardableResult
     func transform(from input: Input) -> Output {
         let output =  Output()
-        print("TRANSFORM")
         input.signInButtonDidTapEvent
             .subscribe(onNext: { [weak self] _ in
-                print("Tapped")
                 self?.coordinator?.showSignInFlow()
             })
             .disposed(by: disposeBag)
