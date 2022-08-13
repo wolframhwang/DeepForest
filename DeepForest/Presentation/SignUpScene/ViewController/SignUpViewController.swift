@@ -160,6 +160,8 @@ extension SignUpViewController {
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.asyncInstance)
         )
         
+        let output = viewModel?.transform(from: input)
+        
     }
     
     private func configureSubviews() {
