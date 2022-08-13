@@ -11,7 +11,7 @@ import RxSwift
 final class DefaultHomeSceneCoordinator: HomeSceneCoordinator {
     weak var finishDelegate: CoordinatorFinishDelegate?
     var navigationController: UINavigationController
-    var mainSceneViewController: HomeSceneViewController
+    var homeSceneViewController: HomeSceneViewController
     var childCoordinators: [Coordinator] = []
     var type: CoordinatorType = .home
     
