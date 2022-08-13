@@ -39,6 +39,27 @@ final class SignUpViewModel: ViewModelType {
     }
     
     private func configureInput(_ input: Input) {
+        input.idTextFieldDidEditEvent
+            .subscribe(onNext: { [weak self] userId in
+                self?.signUpUseCase.validateUserId(userId: userId)
+            })
+            .disposed(by: disposeBag)
         
+        input.nickNameTextFieldDidEditEvent
+            .subscribe(onNext: { [weak self] nickName in
+                self?.signUpUseCase.validateNickName(nickName: nickName)
+            })
+            .disposed(by: disposeBag)
+        
+        input.emailTextFieldDidEditEvent
+            .subscribe(onNext: { [weak self] email in
+                self?.signUpUseCase.validateEmail(email: email)
+            })
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(input.pwTextFieldDidEditEvent, input.repwTextFieldDidEditEvent).subscribe(onNext: { [weak self] password, rePassword in
+            self?.signUpUseCase.validatePassword(password: password, rePassword: rePassword)
+        })
+        .disposed(by: disposeBag)
     }
 }
