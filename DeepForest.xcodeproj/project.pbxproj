@@ -34,6 +34,10 @@
 		7BE63AB428A7CEE30068BD67 /* DefaultSignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AB328A7CEE30068BD67 /* DefaultSignUpUseCase.swift */; };
 		7BE63AB628A7F7160068BD67 /* AccountForSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AB528A7F7160068BD67 /* AccountForSignUp.swift */; };
 		7BE63AB828A7FC190068BD67 /* SignUpResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AB728A7FC190068BD67 /* SignUpResponseDTO.swift */; };
+		7BE63ABA28A80F860068BD67 /* MainSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AB928A80F860068BD67 /* MainSceneCoordinator.swift */; };
+		7BE63ABD28A80F960068BD67 /* DefaultMainSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63ABC28A80F960068BD67 /* DefaultMainSceneCoordinator.swift */; };
+		7BE63ABF28A80F9E0068BD67 /* MainSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63ABE28A80F9E0068BD67 /* MainSceneViewModel.swift */; };
+		7BE63AC128A80FAF0068BD67 /* MainSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AC028A80FAF0068BD67 /* MainSceneViewController.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
 		7BF3FA42288EE1560072218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA41288EE1560072218E /* ViewController.swift */; };
@@ -104,6 +108,10 @@
 		7BE63AB328A7CEE30068BD67 /* DefaultSignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignUpUseCase.swift; sourceTree = "<group>"; };
 		7BE63AB528A7F7160068BD67 /* AccountForSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountForSignUp.swift; sourceTree = "<group>"; };
 		7BE63AB728A7FC190068BD67 /* SignUpResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseDTO.swift; sourceTree = "<group>"; };
+		7BE63AB928A80F860068BD67 /* MainSceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneCoordinator.swift; sourceTree = "<group>"; };
+		7BE63ABC28A80F960068BD67 /* DefaultMainSceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMainSceneCoordinator.swift; sourceTree = "<group>"; };
+		7BE63ABE28A80F9E0068BD67 /* MainSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneViewModel.swift; sourceTree = "<group>"; };
+		7BE63AC028A80FAF0068BD67 /* MainSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneViewController.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF3FA3F288EE1560072218E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -291,6 +299,7 @@
 		7BE63A9F28A7CD2F0068BD67 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7BE63AC028A80FAF0068BD67 /* MainSceneViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -298,6 +307,7 @@
 		7BE63AA028A7CD370068BD67 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7BE63ABE28A80F9E0068BD67 /* MainSceneViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -305,6 +315,8 @@
 		7BE63AA128A7CD3D0068BD67 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				7BE63ABB28A80F890068BD67 /* Protocol */,
+				7BE63ABC28A80F960068BD67 /* DefaultMainSceneCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -348,6 +360,14 @@
 			isa = PBXGroup;
 			children = (
 				7BE63AAD28A7CEB10068BD67 /* SignUpCoordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7BE63ABB28A80F890068BD67 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63AB928A80F860068BD67 /* MainSceneCoordinator.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -863,6 +883,8 @@
 				7BE63A9828A791F20068BD67 /* SignInResponseDTO.swift in Sources */,
 				7BD5BED028A2BCDC00330F96 /* NetworkRepository.swift in Sources */,
 				7BD5BEC528A280AD00330F96 /* AccountForSignIn.swift in Sources */,
+				7BE63AC128A80FAF0068BD67 /* MainSceneViewController.swift in Sources */,
+				7BE63ABD28A80F960068BD67 /* DefaultMainSceneCoordinator.swift in Sources */,
 				7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */,
 				7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */,
 				7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */,
@@ -870,10 +892,12 @@
 				7B9356EA2898147800406022 /* URLSessionNetworkService.swift in Sources */,
 				7BE63A9D28A792570068BD67 /* RESTError.swift in Sources */,
 				7BE63A9228A74D120068BD67 /* DefaultNetworkRepository.swift in Sources */,
+				7BE63ABA28A80F860068BD67 /* MainSceneCoordinator.swift in Sources */,
 				7BF3FA8E288EF6AE0072218E /* SignChoiceViewController.swift in Sources */,
 				7BD5BECA28A2946A00330F96 /* DefaultUserRepository.swift in Sources */,
 				7BE63AA928A7CE7C0068BD67 /* SignUpViewController.swift in Sources */,
 				7BF3FA82288EEEE10072218E /* DefaultAppCoordinator.swift in Sources */,
+				7BE63ABF28A80F9E0068BD67 /* MainSceneViewModel.swift in Sources */,
 				7BE63AAB28A7CE8A0068BD67 /* SignUpViewModel.swift in Sources */,
 				7BE63AB828A7FC190068BD67 /* SignUpResponseDTO.swift in Sources */,
 				7B1CCCE72892C3B4004389A8 /* SignInCoordinator.swift in Sources */,
