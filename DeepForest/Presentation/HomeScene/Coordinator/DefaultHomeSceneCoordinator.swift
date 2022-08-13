@@ -17,7 +17,7 @@ final class DefaultHomeSceneCoordinator: HomeSceneCoordinator {
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.mainSceneViewController = HomeSceneViewController()
+        self.homeSceneViewController = HomeSceneViewController()
     }
     
     func start() {
