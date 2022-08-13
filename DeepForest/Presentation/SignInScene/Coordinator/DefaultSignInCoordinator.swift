@@ -25,6 +25,9 @@ class DefaultSignInCoordinator: SignInCoordinator {
     }
     
     func pushSignInViewController() {
+        self.signInViewController.viewModel = SignInViewModel(coordinator: self,
+                                                              signInUseCase: DefaultSignInUseCase(userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService())))
+        
         self.navigationController.pushViewController(self.signInViewController, animated: true)
     }
     
@@ -32,11 +35,12 @@ class DefaultSignInCoordinator: SignInCoordinator {
         self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
     
-    func showAlert(_ errorMessage: Error) {
+    func showAlert(_ errorMessage: String) {
         let alert = UIAlertController(title: "SignInError",
-                                      message: errorMessage.localizedDescription,
+                                      message: errorMessage,
                                       preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
-        self.signInViewController.show(alert, sender: nil)
+        alert.addAction(action)
+        self.signInViewController.present(alert, animated: true)
     }
 }

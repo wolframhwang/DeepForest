@@ -8,5 +8,5 @@
 import Foundation
 
 protocol SignInCoordinator: Coordinator {
-    func showAlert(_ errorMessage: Error)
+    func showAlert(_ errorMessage: String)
 }
