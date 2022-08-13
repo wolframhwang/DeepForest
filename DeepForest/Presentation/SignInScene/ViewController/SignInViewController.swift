@@ -15,6 +15,7 @@ class SignInViewController: UIViewController {
     private lazy var idTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
+        textField.placeholder = "아이디"
         
         return textField
     }()
@@ -23,6 +24,7 @@ class SignInViewController: UIViewController {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.isSecureTextEntry = true
+        textField.placeholder = "비밀번호"
         
         return textField
     }()
