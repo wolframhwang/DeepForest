@@ -8,11 +8,11 @@
 import Foundation
 import RxSwift
 
-final class DefaultHomeSceneCoordinator: MainSceneCoordinator {
-    var finishDelegate: CoordinatorFinishDelegate?
+final class DefaultHomeSceneCoordinator: HomeSceneCoordinator {
+    weak var finishDelegate: CoordinatorFinishDelegate?
     var navigationController: UINavigationController
     var mainSceneViewController: HomeSceneViewController
-    var childCoordinators: [Coordinator]
+    var childCoordinators: [Coordinator] = []
     var type: CoordinatorType = .home
     
     init(_ navigationController: UINavigationController) {
