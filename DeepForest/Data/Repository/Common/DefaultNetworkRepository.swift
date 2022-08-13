@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-let baseURL = "http://3.36.205.23:8080"
+let baseURL = "http://52.78.99.238:8080"
 let HTTPHeaders = ["Content-Type": "application/json"]
 
 final class DefaultNetworkRepository: NetworkRepository {
@@ -21,8 +21,8 @@ final class DefaultNetworkRepository: NetworkRepository {
     func post(accountInfo: AccountForSignIn) -> Observable<Result<Data, URLSessionNetworkServiceError>> {
         return network
             .post(accountInfo,
-                  url: baseURL + "/api/v1/auth/signIn",
-                  headers: nil)
+                  url: baseURL + "/api/v1/auth/signin",
+                  headers: HTTPHeaders)
     }
     
 }
