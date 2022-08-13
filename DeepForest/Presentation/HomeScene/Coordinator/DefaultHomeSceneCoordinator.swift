@@ -22,7 +22,7 @@ final class DefaultHomeSceneCoordinator: HomeSceneCoordinator {
     
     func start() {
         let homeSceneCoordinator = DefaultHomeSceneCoordinator(self.navigationController)
-        HomeSceneViewModel = HomeSceneViewModel(coordinator: self)
+        homeSceneViewController.viewModel = HomeSceneViewModel(coordinator: self)
         homeSceneCoordinator.finishDelegate = self
         self.childCoordinators.append(homeSceneCoordinator)
     }
