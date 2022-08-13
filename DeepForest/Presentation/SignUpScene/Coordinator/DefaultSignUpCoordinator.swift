@@ -37,4 +37,13 @@ final class DefaultSignUpCoordinator: SignUpCoordinator {
     func finish() {
         self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
+    
+    func showAlert(_ errorMessage: String) {
+        let alert = UIAlertController(title: "SignUpError",
+                                      message: errorMessage,
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.signUpViewController.present(alert, animated: true)
+    }
 }
