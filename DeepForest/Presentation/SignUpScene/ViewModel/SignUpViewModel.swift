@@ -67,9 +67,10 @@ final class SignUpViewModel: ViewModelType {
                     .observe(on: MainScheduler.instance)
                     .subscribe(onNext: { response in
                         guard let response = response else {
+                            self?.coordinator?.finish()
                             return
                         }
-                        self?.coordinator?.finish()
+                        self?.coordinator?.showAlert(response)
                     })
                     .disposed(by: disposeBag)
             })
