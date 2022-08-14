@@ -24,5 +24,9 @@ final class DefaultMenuCoordinator: MenuCoordinator {
         
     }
     
+    func pushMenuViewController() {
+        self.menuViewController.viewModel = MenuViewModel(coordinator: self)
+        self.navigationController.pushViewController(self.menuViewController, animated: true)
+    }
     
 }

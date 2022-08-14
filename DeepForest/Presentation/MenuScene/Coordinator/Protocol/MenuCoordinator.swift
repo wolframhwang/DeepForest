@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol MenuCoordinator: Coordinator {
-    
+    func pushMenuViewController()
 }

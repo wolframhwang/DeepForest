@@ -35,7 +35,7 @@ final class HomeSceneViewModel: ViewModelType {
     
     private func configureInput(_ input: Input) {
         input.menuButtonTapped.subscribe(onNext: { [weak self] in
-
+            self?.coordinator?.showMenuScene()
         })
         .disposed(by: disposeBag)
     }
