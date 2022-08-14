@@ -96,7 +96,9 @@ class SignInViewController: UIViewController {
     private func bindViewModel() {
         let input = SignInViewModel.Input(idObserverable: self.idTextField.rx.text.orEmpty.asObservable(),
                                           pwObservable: self.pwTextField.rx.text.orEmpty.asObservable(),
-                                          buttonTapObservable: self.submitButton.rx.tap.asObservable())
+                                          buttonTapObservable: self.submitButton.rx.tap.asObservable(),
+                                          backButtonTapObservable: self.backButton.rx.tap.asObservable()
+        )
         
         let output = viewModel?.transform(from: input)
     }

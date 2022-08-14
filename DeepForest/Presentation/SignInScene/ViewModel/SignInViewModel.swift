@@ -19,6 +19,7 @@ final class SignInViewModel: ViewModelType {
         let idObserverable: Observable<String>
         let pwObservable: Observable<String>
         let buttonTapObservable: Observable<Void>
+        let backButtonTapObservable: Observable<Void>
     }
     
     struct Output {
@@ -42,6 +43,11 @@ final class SignInViewModel: ViewModelType {
             }
             .bind(to: signInUseCase.signInInfo)
             .disposed(by: disposeBag)
+        
+        input.backButtonTapObservable.subscribe(onNext: { [weak self] in
+            self?.coordinator?.popScene()
+        })
+        .disposed(by: disposeBag)
     }
     
     private func createOutput(from input: Input, disposeBag: DisposeBag) -> Output {
