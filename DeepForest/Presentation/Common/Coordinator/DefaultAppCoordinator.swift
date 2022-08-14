@@ -29,6 +29,14 @@ final class DefaultAppCoordinator: AppCoordinator {
         childCoordinators.append(signChoiceCoordinator)
     }
     
+    func homeSceneFlow() {
+        let homeSceneCoordinator = DefaultHomeSceneCoordinator(self.navigationController)
+        print("HOME SCENE")
+        homeSceneCoordinator.finishDelegate = self
+        homeSceneCoordinator.start()
+        childCoordinators.append(homeSceneCoordinator)
+    }
+    
     func showMainSceneFlow() {
         // To-do: Network 구현 시 구현해야함
     }
@@ -46,7 +54,7 @@ extension DefaultAppCoordinator: CoordinatorFinishDelegate {
         
         switch childCoordinator.type {
         case .signChoice:
-            self.showSignChoiceFlow()
+            self.homeSceneFlow()
         case .home:
             self.showMainSceneFlow()
         default:

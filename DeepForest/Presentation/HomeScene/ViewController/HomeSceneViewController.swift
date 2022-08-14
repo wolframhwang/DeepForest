@@ -15,6 +15,6 @@ class HomeSceneViewController: UIViewController {
     var viewModel: HomeSceneViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .red
     }
 }

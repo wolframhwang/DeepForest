@@ -25,6 +25,7 @@ final class DefaultHomeSceneCoordinator: HomeSceneCoordinator {
         homeSceneViewController.viewModel = HomeSceneViewModel(coordinator: self)
         homeSceneCoordinator.finishDelegate = self
         self.childCoordinators.append(homeSceneCoordinator)
+        self.navigationController.viewControllers = [self.homeSceneViewController]
     }
     
 }
