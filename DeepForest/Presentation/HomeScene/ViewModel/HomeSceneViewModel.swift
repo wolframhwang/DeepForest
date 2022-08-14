@@ -13,7 +13,7 @@ final class HomeSceneViewModel: ViewModelType {
     let disposeBag = DisposeBag()
     
     struct Input {
-        
+        let menuButtonTapped: Observable<Void>
     }
     
     struct Output {
@@ -25,6 +25,18 @@ final class HomeSceneViewModel: ViewModelType {
     }
     
     func transform(from input: Input) -> Output {
+        configureInput(input)
+        return configrueOutput(from: input, disposeBag: disposeBag)
+    }
+    
+    private func configrueOutput(from input: Input, disposeBag: DisposeBag) -> Output {
         return Output()
+    }
+    
+    private func configureInput(_ input: Input) {
+        input.menuButtonTapped.subscribe(onNext: { [weak self] in
+
+        })
+        .disposed(by: disposeBag)
     }
 }
