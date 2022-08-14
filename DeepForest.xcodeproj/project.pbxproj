@@ -458,8 +458,8 @@
 		7BF3FA70288EE1EA0072218E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				7BE63AA228A7CD850068BD67 /* SignUpScene */,
 				7BE63A9E28A7CD1C0068BD67 /* HomeScene */,
+				7BE63AA228A7CD850068BD67 /* SignUpScene */,
 				7B1CCCE12892C35F004389A8 /* SignInScene */,
 				7BF3FA74288EE31B0072218E /* Common */,
 				7BF3FA83288EF5360072218E /* SignChoiceScene */,

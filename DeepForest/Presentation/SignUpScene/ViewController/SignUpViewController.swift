@@ -176,20 +176,33 @@ extension SignUpViewController {
     }
     
     private func configureSubviews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
         [idLabel, idTextField, idConstraint,
          nickNameLabel, nickNameTextField, nickNameConstraint,
          passwordLabel ,passwordTextField, rePasswordTextField, passwordConstraint,
          emailLabel ,emailTextField, emailConstraint,
          submitButton].forEach {
-            view.addSubview($0)
+            contentView.addSubview($0)
         }
     }
     
     private func configureUI() {
         view.backgroundColor = .systemBackground
-                
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+            $0.width.equalTo(view.frame.width)
+            $0.height.equalTo(view.frame.height + 300)
+        }
+
         idLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(100)
+            $0.top.equalToSuperview().offset(40)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
@@ -257,6 +270,5 @@ extension SignUpViewController {
             $0.top.equalTo(emailConstraint.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
-
     }
 }
