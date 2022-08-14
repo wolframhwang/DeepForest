@@ -7,17 +7,44 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 final class MenuViewModel: ViewModelType {
+    var coordinator: MenuCoordinator?
+    let disposeBag = DisposeBag()
+    
     struct Input {
-        
+        let trigger: Driver<Void>
+        let selection: Driver<IndexPath>
     }
     
     struct Output {
-        
+        //let crateMenu: Driver<Void>
+        let menus: Driver<[MenuTableCellViewModel]>
+    }
+    
+    init(coordinator: MenuCoordinator?) {
+        self.coordinator = coordinator
     }
     
     func transform(from input: Input) -> Output {
-        return Output()
+        let menus = Observable<[MenuItem]>.create { observe in
+            observe.onNext([
+                MenuItem(title: "메이저 갤러리", type: .galleryList),
+                MenuItem(title: "마이너 갤러리", type: .galleryList),
+                MenuItem(title: "미니 갤러리", type: .galleryList)
+            ])
+            observe.onCompleted()
+            return Disposables.create()
+        }
+        .asDriver(onErrorJustReturn: [])
+        .map {
+            $0.map { item in
+                MenuTableCellViewModel(with: item)
+            }
+        }
+        
+        return Output(menus: menus)
     }
+    
 }
