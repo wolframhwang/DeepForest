@@ -44,6 +44,7 @@
 		7BE63ACF28A91DD80068BD67 /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63ACE28A91DD80068BD67 /* MenuCoordinator.swift */; };
 		7BE63AD328A94C090068BD67 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AD228A94C090068BD67 /* MenuTableViewCell.swift */; };
 		7BE63AD528A94C130068BD67 /* MenuTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AD428A94C130068BD67 /* MenuTableCellViewModel.swift */; };
+		7BE63AD728A94C8F0068BD67 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AD628A94C8F0068BD67 /* MenuItem.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
 		7BF3FA42288EE1560072218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA41288EE1560072218E /* ViewController.swift */; };
@@ -124,6 +125,7 @@
 		7BE63ACE28A91DD80068BD67 /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 		7BE63AD228A94C090068BD67 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		7BE63AD428A94C130068BD67 /* MenuTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableCellViewModel.swift; sourceTree = "<group>"; };
+		7BE63AD628A94C8F0068BD67 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF3FA3F288EE1560072218E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -653,6 +655,7 @@
 			children = (
 				7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */,
 				7BE63AB528A7F7160068BD67 /* AccountForSignUp.swift */,
+				7BE63AD628A94C8F0068BD67 /* MenuItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				7BE63ABF28A80F9E0068BD67 /* HomeSceneViewModel.swift in Sources */,
 				7BE63AD328A94C090068BD67 /* MenuTableViewCell.swift in Sources */,
 				7BE63AAB28A7CE8A0068BD67 /* SignUpViewModel.swift in Sources */,
+				7BE63AD728A94C8F0068BD67 /* MenuItem.swift in Sources */,
 				7BE63AB828A7FC190068BD67 /* SignUpResponseDTO.swift in Sources */,
 				7B1CCCE72892C3B4004389A8 /* SignInCoordinator.swift in Sources */,
 				7BF3FA7B288EE37D0072218E /* CoordinatorFinishDelegate.swift in Sources */,
