@@ -38,6 +38,10 @@
 		7BE63ABD28A80F960068BD67 /* DefaultHomeSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63ABC28A80F960068BD67 /* DefaultHomeSceneCoordinator.swift */; };
 		7BE63ABF28A80F9E0068BD67 /* HomeSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63ABE28A80F9E0068BD67 /* HomeSceneViewModel.swift */; };
 		7BE63AC128A80FAF0068BD67 /* HomeSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AC028A80FAF0068BD67 /* HomeSceneViewController.swift */; };
+		7BE63AC728A91DA00068BD67 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AC628A91DA00068BD67 /* MenuViewController.swift */; };
+		7BE63AC928A91DAA0068BD67 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AC828A91DAA0068BD67 /* MenuViewModel.swift */; };
+		7BE63ACC28A91DC40068BD67 /* DefaultMenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63ACB28A91DC40068BD67 /* DefaultMenuCoordinator.swift */; };
+		7BE63ACF28A91DD80068BD67 /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63ACE28A91DD80068BD67 /* MenuCoordinator.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
 		7BF3FA42288EE1560072218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA41288EE1560072218E /* ViewController.swift */; };
@@ -112,6 +116,10 @@
 		7BE63ABC28A80F960068BD67 /* DefaultHomeSceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeSceneCoordinator.swift; sourceTree = "<group>"; };
 		7BE63ABE28A80F9E0068BD67 /* HomeSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneViewModel.swift; sourceTree = "<group>"; };
 		7BE63AC028A80FAF0068BD67 /* HomeSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneViewController.swift; sourceTree = "<group>"; };
+		7BE63AC628A91DA00068BD67 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7BE63AC828A91DAA0068BD67 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		7BE63ACB28A91DC40068BD67 /* DefaultMenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMenuCoordinator.swift; sourceTree = "<group>"; };
+		7BE63ACE28A91DD80068BD67 /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF3FA3F288EE1560072218E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -372,6 +380,49 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		7BE63AC228A91D730068BD67 /* MenuScene */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63AC528A91D8E0068BD67 /* Coordinator */,
+				7BE63AC428A91D870068BD67 /* ViewModel */,
+				7BE63AC328A91D7E0068BD67 /* ViewController */,
+			);
+			path = MenuScene;
+			sourceTree = "<group>";
+		};
+		7BE63AC328A91D7E0068BD67 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63AC628A91DA00068BD67 /* MenuViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7BE63AC428A91D870068BD67 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63AC828A91DAA0068BD67 /* MenuViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7BE63AC528A91D8E0068BD67 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63ACD28A91DC70068BD67 /* Protocol */,
+				7BE63ACB28A91DC40068BD67 /* DefaultMenuCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7BE63ACD28A91DC70068BD67 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63ACE28A91DD80068BD67 /* MenuCoordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		7BF3FA31288EE1560072218E = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +509,7 @@
 		7BF3FA70288EE1EA0072218E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				7BE63AC228A91D730068BD67 /* MenuScene */,
 				7BE63A9E28A7CD1C0068BD67 /* HomeScene */,
 				7BE63AA228A7CD850068BD67 /* SignUpScene */,
 				7B1CCCE12892C35F004389A8 /* SignInScene */,
@@ -884,9 +936,11 @@
 				7BD5BED028A2BCDC00330F96 /* NetworkRepository.swift in Sources */,
 				7BD5BEC528A280AD00330F96 /* AccountForSignIn.swift in Sources */,
 				7BE63AC128A80FAF0068BD67 /* HomeSceneViewController.swift in Sources */,
+				7BE63ACC28A91DC40068BD67 /* DefaultMenuCoordinator.swift in Sources */,
 				7BE63ABD28A80F960068BD67 /* DefaultHomeSceneCoordinator.swift in Sources */,
 				7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */,
 				7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */,
+				7BE63ACF28A91DD80068BD67 /* MenuCoordinator.swift in Sources */,
 				7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */,
 				7B1CCCDE28916A3C004389A8 /* SignChoiceViewModel.swift in Sources */,
 				7B9356EA2898147800406022 /* URLSessionNetworkService.swift in Sources */,
@@ -902,8 +956,10 @@
 				7BE63AB828A7FC190068BD67 /* SignUpResponseDTO.swift in Sources */,
 				7B1CCCE72892C3B4004389A8 /* SignInCoordinator.swift in Sources */,
 				7BF3FA7B288EE37D0072218E /* CoordinatorFinishDelegate.swift in Sources */,
+				7BE63AC928A91DAA0068BD67 /* MenuViewModel.swift in Sources */,
 				7BD5BECC28A2947200330F96 /* UserRepository.swift in Sources */,
 				7BF3FA78288EE34B0072218E /* Coordinator.swift in Sources */,
+				7BE63AC728A91DA00068BD67 /* MenuViewController.swift in Sources */,
 				7BF3FA7E288EE3FB0072218E /* CoordinatorType.swift in Sources */,
 				7BF3FA42288EE1560072218E /* ViewController.swift in Sources */,
 				7BF3FA8C288EF60F0072218E /* DefaultSignChoiceCoordinator.swift in Sources */,
