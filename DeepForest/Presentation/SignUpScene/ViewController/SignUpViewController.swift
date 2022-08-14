@@ -183,6 +183,8 @@ extension SignUpViewController {
                                           repwTextFieldDidEditEvent: rePasswordTextField.rx.text.orEmpty.asObservable(),
                                           emailTextFieldDidEditEvent: emailTextField.rx.text.orEmpty.asObservable(),
                                           submitButtonTapped: submitButton.rx.tap.asObservable()
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.asyncInstance),
+                                          backButtonTapped: backButton.rx.tap.asObservable()
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.asyncInstance)
         )
         

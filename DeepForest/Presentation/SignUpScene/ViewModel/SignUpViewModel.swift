@@ -22,6 +22,7 @@ final class SignUpViewModel: ViewModelType {
         let repwTextFieldDidEditEvent: Observable<String>
         let emailTextFieldDidEditEvent: Observable<String>
         let submitButtonTapped: Observable<Void>
+        let backButtonTapped: Observable<Void>
     }
     
     struct Output {
