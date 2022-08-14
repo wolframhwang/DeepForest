@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol HomeSceneCoordinator: Coordinator {
-    
+    func showMenuScene()
 }
