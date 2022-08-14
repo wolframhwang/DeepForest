@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+final class MenuTableCellViewModel {
+    let title: String
+    let type: MenuType
+    init(with menuItem: MenuItem) {
+        self.title = menuItem.title
+        self.type = menuItem.type
+    }
+}

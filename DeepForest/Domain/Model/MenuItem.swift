@@ -13,5 +13,5 @@ enum MenuType {
 
 struct MenuItem {
     let title: String
-    let item: MenuType
+    let type: MenuType
 }
