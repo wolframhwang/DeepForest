@@ -12,6 +12,16 @@ import SnapKit
 class SignInViewController: UIViewController {
     private var disposeBag = DisposeBag()
     var viewModel: SignInViewModel?
+    
+    private lazy var directionView = UIView()
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        
+        return button
+    }()
+    
     private lazy var idTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
@@ -46,6 +56,9 @@ class SignInViewController: UIViewController {
     }
     
     private func configureSubviews() {
+        view.addSubview(directionView)
+        directionView.addSubview(backButton)
+        
         [idTextField, pwTextField, submitButton].forEach { subview in
             view.addSubview(subview)
         }
@@ -53,8 +66,19 @@ class SignInViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .systemBackground
+        
+        directionView.snp.makeConstraints {
+            $0.leading.top.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(50)
+        }
+        
+        backButton.snp.makeConstraints {
+            $0.leading.top.equalToSuperview()
+            $0.width.height.equalTo(directionView.snp.height)
+        }
+        
         idTextField.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(30)
+            make.top.equalTo(directionView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(15)
         }
         
