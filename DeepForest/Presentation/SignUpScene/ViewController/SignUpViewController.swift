@@ -24,11 +24,16 @@ class SignUpViewController: UIViewController {
         return idLabel
     }()
     
+    @objc func singleTapGestureCaptured(gesture: UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
     private lazy var idTextField: UITextField = {
         let tf = UITextField()
         tf.borderStyle = .roundedRect
         tf.placeholder = "ID를 입력해주세요"
         tf.tag = 1
+        tf.delegate = self
         
         return tf
     }()
@@ -54,6 +59,7 @@ class SignUpViewController: UIViewController {
         tf.borderStyle = .roundedRect
         tf.placeholder = "닉네임을 입력해주세요"
         tf.tag = 2
+        tf.delegate = self
         
         return tf
     }()
@@ -80,6 +86,7 @@ class SignUpViewController: UIViewController {
         tf.placeholder = "비밀번호를 입력해주세요"
         tf.isSecureTextEntry = true
         tf.tag = 3
+        tf.delegate = self
         
         return tf
     }()
@@ -90,6 +97,7 @@ class SignUpViewController: UIViewController {
         tf.placeholder = "비밀번호를 한번 더 확인 해주세요"
         tf.isSecureTextEntry = true
         tf.tag = 4
+        tf.delegate = self
         
         return tf
     }()
@@ -98,7 +106,7 @@ class SignUpViewController: UIViewController {
         let passwordConstraint = UILabel()
         passwordConstraint.text = "영문, 숫자 8~20자 내외로 해주세요"
         passwordConstraint.textColor = UIColor.systemGray
-        passwordConstraint.font = UIFont.systemFont(ofSize: 8)
+        passwordConstraint.font = UIFont.systemFont(ofSize: 10)
         
         return passwordConstraint
     }()
@@ -115,6 +123,7 @@ class SignUpViewController: UIViewController {
         tf.borderStyle = .roundedRect
         tf.placeholder = "이메일을 입력해주세요."
         tf.tag = 5
+        tf.delegate = self
         
         return tf
     }()
@@ -123,7 +132,7 @@ class SignUpViewController: UIViewController {
         let emailConstraint = UILabel()
         emailConstraint.text = "이메일을 넣어주세요!"
         emailConstraint.textColor = UIColor.systemGray
-        emailConstraint.font = UIFont.systemFont(ofSize: 8)
+        emailConstraint.font = UIFont.systemFont(ofSize: 10)
         
         return emailConstraint
     }()
@@ -144,13 +153,22 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         configureSubviews()
         configureUI()
+        setAttribute()
         bindViewModel()
     }
-    
 }
 
 extension SignUpViewController {
+    private func setAttribute() {
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(singleTapGestureCaptured))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+    }
+    
     private func bindViewModel() {
+        
         let input = SignUpViewModel.Input(idTextFieldDidEditEvent: idTextField.rx.text.orEmpty.asObservable(),
                                           nickNameTextFieldDidEditEvent: nickNameTextField.rx.text.orEmpty.asObservable(),
                                           pwTextFieldDidEditEvent: passwordTextField.rx.text.orEmpty.asObservable(),
@@ -270,5 +288,13 @@ extension SignUpViewController {
             $0.top.equalTo(emailConstraint.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
+        
+    }
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

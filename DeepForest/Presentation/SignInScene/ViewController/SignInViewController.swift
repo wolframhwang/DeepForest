@@ -76,4 +76,8 @@ class SignInViewController: UIViewController {
         
         let output = viewModel?.transform(from: input)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
