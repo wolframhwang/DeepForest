@@ -21,7 +21,7 @@ final class SignUpViewModel: ViewModelType {
         let pwTextFieldDidEditEvent: Observable<String>
         let repwTextFieldDidEditEvent: Observable<String>
         let emailTextFieldDidEditEvent: Observable<String>
-        let submitButtnTapped: Observable<Void>
+        let submitButtonTapped: Observable<Void>
     }
     
     struct Output {
@@ -61,7 +61,7 @@ final class SignUpViewModel: ViewModelType {
             .bind(to: output.emailConstraintLabel)
             .disposed(by: disposeBag)
         
-        input.submitButtnTapped
+        input.submitButtonTapped
             .subscribe(onNext: { [weak self] in
                 self?.signUpUseCase.signUp()
                     .observe(on: MainScheduler.instance)
