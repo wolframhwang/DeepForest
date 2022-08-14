@@ -32,6 +32,7 @@ final class DefaultAppCoordinator: AppCoordinator {
     func homeSceneFlow() {
         let homeSceneCoordinator = DefaultHomeSceneCoordinator(self.navigationController)
         homeSceneCoordinator.finishDelegate = self
+        navigationController.setNavigationBarHidden(false, animated: true)
         homeSceneCoordinator.start()
         childCoordinators.append(homeSceneCoordinator)
     }
