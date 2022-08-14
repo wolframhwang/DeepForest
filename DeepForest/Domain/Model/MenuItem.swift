@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum MenuItems {
+enum MenuType {
     case galleryList
 }
 
 struct MenuItem {
     let title: String
-    let item: MenuItems
+    let item: MenuType
 }
