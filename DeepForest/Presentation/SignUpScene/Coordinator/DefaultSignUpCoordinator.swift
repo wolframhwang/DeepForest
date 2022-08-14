@@ -38,6 +38,10 @@ final class DefaultSignUpCoordinator: SignUpCoordinator {
         self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
     
+    func popScene() {
+        self.finishDelegate?.popChildScene(childCoordinator: self)
+    }
+    
     func showAlert(_ errorMessage: String) {
         let alert = UIAlertController(title: "SignUpError",
                                       message: errorMessage,

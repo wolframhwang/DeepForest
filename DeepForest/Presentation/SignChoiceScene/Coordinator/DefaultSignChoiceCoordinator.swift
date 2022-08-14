@@ -49,4 +49,9 @@ extension DefaultSignChoiceCoordinator: CoordinatorFinishDelegate {
         self.childCoordinators.removeAll()
         self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
+    
+    func popChildScene(childCoordinator: Coordinator) {
+        navigationController.popViewController(animated: true)
+        self.childCoordinators.removeLast()        
+    }
 }

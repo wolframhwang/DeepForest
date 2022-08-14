@@ -113,6 +113,13 @@ final class SignUpViewModel: ViewModelType {
                              email: email,
                              nickName: nickname)
         })
-        .bind(to: signUpUseCase.signUpInfo).disposed(by: disposeBag)
+        .bind(to: signUpUseCase.signUpInfo)
+        .disposed(by: disposeBag)
+        
+        input.backButtonTapped.subscribe(onNext: { [weak self] in
+            print("TAP")
+            self?.coordinator?.popScene()
+        })
+        .disposed(by: disposeBag)
     }
 }

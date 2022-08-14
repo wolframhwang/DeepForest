@@ -31,7 +31,6 @@ final class DefaultAppCoordinator: AppCoordinator {
     
     func homeSceneFlow() {
         let homeSceneCoordinator = DefaultHomeSceneCoordinator(self.navigationController)
-        print("HOME SCENE")
         homeSceneCoordinator.finishDelegate = self
         homeSceneCoordinator.start()
         childCoordinators.append(homeSceneCoordinator)
@@ -60,5 +59,9 @@ extension DefaultAppCoordinator: CoordinatorFinishDelegate {
         default:
             break
         }
+    }
+    
+    func popChildScene(childCoordinator: Coordinator) {
+        
     }
 }

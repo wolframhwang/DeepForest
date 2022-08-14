@@ -9,4 +9,5 @@ import Foundation
 
 protocol SignInCoordinator: Coordinator {
     func showAlert(_ errorMessage: String)
+    func popScene()
 }
