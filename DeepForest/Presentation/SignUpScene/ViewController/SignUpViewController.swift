@@ -16,6 +16,14 @@ class SignUpViewController: UIViewController {
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
+    private lazy var directionView = UIView()
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        
+        return button
+    }()
     
     private lazy var idLabel: UILabel = {
         let idLabel = UILabel()
@@ -194,6 +202,9 @@ extension SignUpViewController {
     }
     
     private func configureSubviews() {
+        view.addSubview(directionView)
+        directionView.addSubview(backButton)
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
@@ -209,8 +220,19 @@ extension SignUpViewController {
     private func configureUI() {
         view.backgroundColor = .systemBackground
         
+        directionView.snp.makeConstraints {
+            $0.leading.top.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(50)
+        }
+        
+        backButton.snp.makeConstraints {
+            $0.leading.top.equalToSuperview()
+            $0.width.height.equalTo(directionView.snp.height)
+        }
+        
         scrollView.snp.makeConstraints {
-            $0.edges.equalTo(0)
+            $0.left.right.bottom.equalTo(0)
+            $0.top.equalTo(directionView.snp.bottom)
         }
         
         contentView.snp.makeConstraints {
