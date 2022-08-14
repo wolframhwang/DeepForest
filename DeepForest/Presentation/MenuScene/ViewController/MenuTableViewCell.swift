@@ -26,6 +26,5 @@ class MenuTableViewCell: UITableViewCell {
     
     func bind(_ viewModel: MenuTableCellViewModel) {
         self.titleLabel.text = viewModel.title
-        print("BIND", viewModel.title)
     }
 }
