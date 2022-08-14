@@ -117,7 +117,6 @@ final class SignUpViewModel: ViewModelType {
         .disposed(by: disposeBag)
         
         input.backButtonTapped.subscribe(onNext: { [weak self] in
-            print("TAP")
             self?.coordinator?.popScene()
         })
         .disposed(by: disposeBag)

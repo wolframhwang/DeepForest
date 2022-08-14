@@ -68,7 +68,6 @@ class SignChoiceViewController: UIViewController {
 
 extension SignChoiceViewController {
     func configureSubViews() {
-        print("configureSub")
         view.addSubview(buttonStackView)
         buttonStackView.addArrangedSubview(signInButton)
         buttonStackView.addArrangedSubview(signUpButton)
@@ -76,7 +75,6 @@ extension SignChoiceViewController {
     }
     
     func configureUI() {
-        print("configureUI")
         view.backgroundColor = .systemBackground
         
         buttonStackView.snp.makeConstraints { make in
@@ -99,7 +97,6 @@ extension SignChoiceViewController {
     }
     
     func bindViewModel() {
-        print("bindViewModel")
         let input = SignChoiceViewModel.Input(signInButtonDidTapEvent: signInButton.rx.tap.asObservable(),
                                               signUpButtonDidTapEvent: signUpButton.rx.tap.asObservable(),
                                               noSignJoinButtonDidTapEvent: noSignJoinButton.rx.tap.asObservable())
