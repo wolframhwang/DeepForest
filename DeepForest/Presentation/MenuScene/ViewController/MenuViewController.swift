@@ -6,24 +6,34 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import SnapKit
 
-class MenuViewController: UIViewController {
-
+final class MenuViewController: UIViewController {
+    private var disposeBag = DisposeBag()
+    var viewModel: MenuViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureSubviews()
+        configureUI()
+        setAttribute()
+        bindViewModel()
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension MenuViewController {
+    func configureSubviews() {
+        
     }
-    */
-
+    func configureUI() {
+        
+    }
+    func setAttribute() {
+        
+    }
+    func bindViewModel() {
+        
+    }
 }

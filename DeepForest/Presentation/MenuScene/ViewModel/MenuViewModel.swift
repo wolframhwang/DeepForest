@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import RxSwift
+
+final class MenuViewModel: ViewModelType {
+    struct Input {
+        
+    }
+    
+    struct Output {
+        
+    }
+    
+    func transform(from input: Input) -> Output {
+        return Output()
+    }
+}

@@ -11,11 +11,17 @@ import RxSwift
 final class DefaultMenuCoordinator: MenuCoordinator {
     var finishDelegate: CoordinatorFinishDelegate?
     var navigationController: UINavigationController
+    var menuViewController: MenuViewController
     var childCoordinators: [Coordinator] = []
     var type: CoordinatorType = .menu
     
+    init(_ navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        self.menuViewController = MenuViewController()
+    }
+    
     func start() {
-        <#code#>
+        
     }
     
     
