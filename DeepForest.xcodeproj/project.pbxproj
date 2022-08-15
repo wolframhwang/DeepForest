@@ -52,6 +52,10 @@
 		7BE63AE228A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AE128A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift */; };
 		7BE63AE428A9F7A00068BD67 /* TokenItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AE328A9F7A00068BD67 /* TokenItem.swift */; };
 		7BE63AE628A9FB260068BD67 /* RefreshTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AE528A9FB260068BD67 /* RefreshTokenResponseDTO.swift */; };
+		7BE63AEF28AA04850068BD67 /* GalleryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AEE28AA04850068BD67 /* GalleryListViewController.swift */; };
+		7BE63AF128AA048E0068BD67 /* GalleryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AF028AA048E0068BD67 /* GalleryListViewModel.swift */; };
+		7BE63AF328AA049F0068BD67 /* DefaultGalleryListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AF228AA049F0068BD67 /* DefaultGalleryListCoordinator.swift */; };
+		7BE63AF528AA04AB0068BD67 /* GalleryListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AF428AA04AB0068BD67 /* GalleryListCoordinator.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
 		7BF3FA42288EE1560072218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA41288EE1560072218E /* ViewController.swift */; };
@@ -140,6 +144,10 @@
 		7BE63AE128A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignChoiceUseCase.swift; sourceTree = "<group>"; };
 		7BE63AE328A9F7A00068BD67 /* TokenItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenItem.swift; sourceTree = "<group>"; };
 		7BE63AE528A9FB260068BD67 /* RefreshTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenResponseDTO.swift; sourceTree = "<group>"; };
+		7BE63AEE28AA04850068BD67 /* GalleryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListViewController.swift; sourceTree = "<group>"; };
+		7BE63AF028AA048E0068BD67 /* GalleryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListViewModel.swift; sourceTree = "<group>"; };
+		7BE63AF228AA049F0068BD67 /* DefaultGalleryListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGalleryListCoordinator.swift; sourceTree = "<group>"; };
+		7BE63AF428AA04AB0068BD67 /* GalleryListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListCoordinator.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF3FA3F288EE1560072218E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -464,6 +472,49 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		7BE63AE928AA04350068BD67 /* GalleryListScene */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63AEC28AA04660068BD67 /* Coordinator */,
+				7BE63AEB28AA04610068BD67 /* ViewModel */,
+				7BE63AEA28AA04540068BD67 /* ViewController */,
+			);
+			path = GalleryListScene;
+			sourceTree = "<group>";
+		};
+		7BE63AEA28AA04540068BD67 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63AEE28AA04850068BD67 /* GalleryListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7BE63AEB28AA04610068BD67 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63AF028AA048E0068BD67 /* GalleryListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7BE63AEC28AA04660068BD67 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63AED28AA046A0068BD67 /* Protocol */,
+				7BE63AF228AA049F0068BD67 /* DefaultGalleryListCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7BE63AED28AA046A0068BD67 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7BE63AF428AA04AB0068BD67 /* GalleryListCoordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		7BF3FA31288EE1560072218E = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +602,7 @@
 		7BF3FA70288EE1EA0072218E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				7BE63AE928AA04350068BD67 /* GalleryListScene */,
 				7BE63AC228A91D730068BD67 /* MenuScene */,
 				7BE63A9E28A7CD1C0068BD67 /* HomeScene */,
 				7BE63AE728AA03FF0068BD67 /* Auth */,
@@ -976,6 +1028,7 @@
 				7BF3FA8A288EF5B30072218E /* SignChoiceCoordinator.swift in Sources */,
 				7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */,
 				7B1CCCE92892C3C5004389A8 /* DefaultSignInCoordinator.swift in Sources */,
+				7BE63AF128AA048E0068BD67 /* GalleryListViewModel.swift in Sources */,
 				7BE63AB228A7CEDA0068BD67 /* SignUpUseCase.swift in Sources */,
 				7BE63ADA28A9525F0068BD67 /* Reusable.swift in Sources */,
 				7BE63A9428A74E740068BD67 /* DefaultURLSessionNetworkService.swift in Sources */,
@@ -996,6 +1049,7 @@
 				7BE63A9D28A792570068BD67 /* RESTError.swift in Sources */,
 				7BE63A9228A74D120068BD67 /* DefaultNetworkRepository.swift in Sources */,
 				7BE63AE628A9FB260068BD67 /* RefreshTokenResponseDTO.swift in Sources */,
+				7BE63AF328AA049F0068BD67 /* DefaultGalleryListCoordinator.swift in Sources */,
 				7BE63ABA28A80F860068BD67 /* HomeSceneCoordinator.swift in Sources */,
 				7BF3FA8E288EF6AE0072218E /* SignChoiceViewController.swift in Sources */,
 				7BD5BECA28A2946A00330F96 /* DefaultUserRepository.swift in Sources */,
@@ -1014,11 +1068,13 @@
 				7BD5BECC28A2947200330F96 /* UserRepository.swift in Sources */,
 				7BF3FA78288EE34B0072218E /* Coordinator.swift in Sources */,
 				7BE63AE428A9F7A00068BD67 /* TokenItem.swift in Sources */,
+				7BE63AF528AA04AB0068BD67 /* GalleryListCoordinator.swift in Sources */,
 				7BE63AC728A91DA00068BD67 /* MenuViewController.swift in Sources */,
 				7BF3FA7E288EE3FB0072218E /* CoordinatorType.swift in Sources */,
 				7BF3FA42288EE1560072218E /* ViewController.swift in Sources */,
 				7BF3FA8C288EF60F0072218E /* DefaultSignChoiceCoordinator.swift in Sources */,
 				7BE63A9A28A792150068BD67 /* TokenResultDTO.swift in Sources */,
+				7BE63AEF28AA04850068BD67 /* GalleryListViewController.swift in Sources */,
 				7BF3FA91289018FB0072218E /* ViewModelType.swift in Sources */,
 				7B1CCCEB2892C411004389A8 /* SignInViewController.swift in Sources */,
 				7BE63AAE28A7CEB10068BD67 /* SignUpCoordinator.swift in Sources */,
