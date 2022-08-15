@@ -13,17 +13,19 @@ final class DefaultSignChoiceUseCase: SignChoiceUseCase {
     private let userRepository: UserRepository
     private let networkRepository: NetworkRepository
     
-    var tokenInfo = BehaviorSubject<TokenItem?>(value: nil)
-    
     init(userRepository: UserRepository, networkRepository: NetworkRepository) {
         self.userRepository = userRepository
         self.networkRepository = networkRepository
     }
     
     func refreshToken() -> Observable<Bool> {
-        guard let tokenItem = try? tokenInfo.value() else {
+        guard let token = userRepository.fetchToken() else {
             return Observable.error(AuthFail.noData)
         }
+        guard let refreshToken = userRepository.fetchRefreshToken() else {
+            return Observable.error(AuthFail.noData)
+        }
+        let tokenItem = TokenItem(token: token, refreshToken: refreshToken)
         
         return networkRepository.post(tokenItem: tokenItem).map { [weak self] result in
             switch result {
