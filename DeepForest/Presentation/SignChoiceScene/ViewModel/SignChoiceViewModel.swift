@@ -14,6 +14,7 @@ final class SignChoiceViewModel: ViewModelType {
     let disposeBag = DisposeBag()
     
     struct Input {
+        let trigger: Observable<Void>
         let signInButtonDidTapEvent: Observable<Void>
         let signUpButtonDidTapEvent: Observable<Void>
         let noSignJoinButtonDidTapEvent: Observable<Void>
@@ -30,6 +31,13 @@ final class SignChoiceViewModel: ViewModelType {
     @discardableResult
     func transform(from input: Input) -> Output {
         let output =  Output()
+        
+        input.trigger.subscribe(onNext: { [weak self] in
+            
+        })
+        .disposed(by: disposeBag)
+        
+        
         input.signInButtonDidTapEvent
             .subscribe(onNext: { [weak self] _ in
                 self?.coordinator?.showSignInFlow()
