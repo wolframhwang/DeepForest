@@ -12,5 +12,5 @@ import RxCocoa
 protocol SignChoiceUseCase {
     var tokenInfo: BehaviorSubject<TokenItem?> { get }
 
-    func refreshToken() -> Observable<String?>
+    func refreshToken() -> Observable<Bool>
 }

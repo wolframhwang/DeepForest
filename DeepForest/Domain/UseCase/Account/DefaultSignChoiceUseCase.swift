@@ -20,7 +20,7 @@ final class DefaultSignChoiceUseCase: SignChoiceUseCase {
         self.networkRepository = networkRepository
     }
     
-    func refreshToken() -> Observable<String?> {
+    func refreshToken() -> Observable<Bool> {
         guard let tokenItem = try? tokenInfo.value() else {
             return Observable.error(AuthFail.noData)
         }
@@ -29,23 +29,22 @@ final class DefaultSignChoiceUseCase: SignChoiceUseCase {
             switch result {
             case .success(let data):
                 do {
-                    let response = try JSONDecoder().decode(SignInResponseDTO.self, from: data)
+                    let response = try JSONDecoder().decode(RefreshTokenResponse.self, from: data)
                     if response.success {
-                        guard let signInResponse = response.result else {
-                            return "로그인에 실패했습니다!"
+                        guard let refreshTokenResponse = response.result else {
+                            return false
                         }
-                        self?.userRepository.saveToken(token: signInResponse.accessToken,
-                                                 refreshToken: signInResponse.refreshToken)
-                        self?.userRepository.saveNickName(nickName: signIn.id)
-                        return nil
+                        self?.userRepository.saveToken(token: refreshTokenResponse.accessToken,
+                                                 refreshToken: refreshTokenResponse.refreshToken)
+                        return true
                     } else {
-                        return ("로그인에 실패했습니다!")
+                        return false
                     }
                 } catch {
-                    return AuthFail.decodeFail.localizedDescription
+                    return false
                 }
             case .failure(let error):
-                return error.localizedDescription
+                return false
             }
         }
     }
