@@ -8,9 +8,10 @@
 import Foundation
 
 protocol UserRepository {
-    func saveSignInInfo()
-    func deleteUserInfo()
+    func saveNickName(nickName: String)
+    func saveToken(token: String, refreshToken: String)
+    func deleteSignInfo()
     func fetchToken() -> String?
+    func fetchRefreshToken() -> String?
     func fetchNickName() -> String?
-    func fetchUserInfo()
 }
