@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 final class HomeSceneViewModel: ViewModelType {
-    var coordinator: HomeSceneCoordinator?
+    private weak var coordinator: HomeSceneCoordinator?
     let disposeBag = DisposeBag()
     
     struct Input {

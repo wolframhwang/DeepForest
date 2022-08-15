@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 final class MenuViewModel: ViewModelType {
-    var coordinator: MenuCoordinator?
+    private weak var coordinator: MenuCoordinator?
     let disposeBag = DisposeBag()
     
     struct Input {
