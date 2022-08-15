@@ -31,5 +31,12 @@ final class DefaultNetworkRepository: NetworkRepository {
                   url: baseURL + "/api/v1/auth/signup",
                   headers: HTTPHeaders)
     }
+    
+    func post(tokenItem: TokenItem) -> Observable<Result<Data, URLSessionNetworkServiceError>> {
+        return network
+            .post(tokenItem,
+                  url: baseURL + "/api/v1/auth/reissue",
+                  headers: HTTPHeaders)
+    }
 
 }

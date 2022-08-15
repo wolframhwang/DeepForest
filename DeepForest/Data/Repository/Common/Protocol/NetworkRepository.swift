@@ -11,4 +11,5 @@ import RxSwift
 protocol NetworkRepository {
     func post(accountInfo: AccountForSignIn) -> Observable<Result<Data, URLSessionNetworkServiceError>>
     func post(accountInfo: AccountForSignUp) -> Observable<Result<Data, URLSessionNetworkServiceError>>
+    func post(tokenItem: TokenItem) -> Observable<Result<Data, URLSessionNetworkServiceError>>
 }

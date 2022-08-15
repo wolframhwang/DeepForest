@@ -51,6 +51,7 @@
 		7BE63AE028A9F6940068BD67 /* SignChoiceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63ADF28A9F6940068BD67 /* SignChoiceUseCase.swift */; };
 		7BE63AE228A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AE128A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift */; };
 		7BE63AE428A9F7A00068BD67 /* TokenItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AE328A9F7A00068BD67 /* TokenItem.swift */; };
+		7BE63AE628A9FB260068BD67 /* RefreshTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AE528A9FB260068BD67 /* RefreshTokenResponseDTO.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
 		7BF3FA42288EE1560072218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA41288EE1560072218E /* ViewController.swift */; };
@@ -138,6 +139,7 @@
 		7BE63ADF28A9F6940068BD67 /* SignChoiceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignChoiceUseCase.swift; sourceTree = "<group>"; };
 		7BE63AE128A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignChoiceUseCase.swift; sourceTree = "<group>"; };
 		7BE63AE328A9F7A00068BD67 /* TokenItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenItem.swift; sourceTree = "<group>"; };
+		7BE63AE528A9FB260068BD67 /* RefreshTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenResponseDTO.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF3FA3F288EE1560072218E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				7BE63A9728A791F20068BD67 /* SignInResponseDTO.swift */,
 				7BE63A9928A792150068BD67 /* TokenResultDTO.swift */,
 				7BE63AB728A7FC190068BD67 /* SignUpResponseDTO.swift */,
+				7BE63AE528A9FB260068BD67 /* RefreshTokenResponseDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -984,6 +987,7 @@
 				7BE63AE228A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift in Sources */,
 				7BE63A9D28A792570068BD67 /* RESTError.swift in Sources */,
 				7BE63A9228A74D120068BD67 /* DefaultNetworkRepository.swift in Sources */,
+				7BE63AE628A9FB260068BD67 /* RefreshTokenResponseDTO.swift in Sources */,
 				7BE63ABA28A80F860068BD67 /* HomeSceneCoordinator.swift in Sources */,
 				7BF3FA8E288EF6AE0072218E /* SignChoiceViewController.swift in Sources */,
 				7BD5BECA28A2946A00330F96 /* DefaultUserRepository.swift in Sources */,

@@ -6,7 +6,11 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol SignChoiceUseCase {
-    
+    var tokenInfo: BehaviorSubject<TokenItem?> { get }
+
+    func refreshToken() -> Observable<String?>
 }
