@@ -6,18 +6,27 @@
 //
 
 import UIKit
+import SnapKit
 
 class GalleryListTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    private lazy var titleLabel = UILabel()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+                .inset(10)
+            make.centerY.equalToSuperview()
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder: NSCoder) {
+        fatalError("GalleryCell Error")
+    }
+    
+    func bind(_ viewModel: GalleryListCellViewModel) {
+        self.titleLabel.text = viewModel.name
     }
 
 }

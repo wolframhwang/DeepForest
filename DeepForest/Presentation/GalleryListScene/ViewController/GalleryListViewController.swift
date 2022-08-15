@@ -16,6 +16,7 @@ class GalleryListViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(GalleryListTableViewCell.self, forCellReuseIdentifier: GalleryListTableViewCell.reuseID)
         
         return tableView
     }()
@@ -23,7 +24,6 @@ class GalleryListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Test Code
-        view.backgroundColor = .red
         configureSubviews()
         configureUI()
         setAttribute()
@@ -33,15 +33,32 @@ class GalleryListViewController: UIViewController {
 
 extension GalleryListViewController {
     func configureSubviews() {
-        
+        view.addSubview(tableView)
     }
     func configureUI() {
-        
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     func setAttribute() {
         
     }
     func bindViewModel() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .map { _ -> Void in return Void() }
+            .asDriver(onErrorDriveWith: .empty())
         
+        let input = GalleryListViewModel.Input(trigger: viewWillAppear, selection: tableView.rx.itemSelected.asDriver())
+        
+        let output = viewModel?.transform(from: input)
+        
+        output?.galleryLists.drive(tableView.rx.items(cellIdentifier: GalleryListTableViewCell.reuseID, cellType: GalleryListTableViewCell.self)) {
+            tv, viewModel, cell in
+            cell.bind(viewModel)
+        }
+        .disposed(by: disposeBag)
+        
+        output?.selectedGallery.drive()
+            .disposed(by: disposeBag)
     }
 }

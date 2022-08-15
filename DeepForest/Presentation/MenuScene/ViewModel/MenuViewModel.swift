@@ -50,7 +50,7 @@ final class MenuViewModel: ViewModelType {
                 return menus[indexPath.row]
             }
             .do(onNext: { [weak self] viewModel in
-                self?.coordinator?.pushGalleryListViewController(menuViewModel: viewModel)
+                self?.coordinator?.pushGalleryListViewController(menuTableCellViewModel: viewModel)
             })
         
         return Output(menus: menus, selectedMenu: selectedMenu)

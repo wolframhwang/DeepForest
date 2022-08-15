@@ -25,8 +25,76 @@ final class DefaultURLSessionNetworkService: URLSessionNetworkService {
         return request(url: urlString, headers: header, method: HTTPMethod.get)
     }
     
+    func fetch(url urlString: String, queryItems: [String: String]?, header: [String : String]?) -> Observable<Result<Data, URLSessionNetworkServiceError>> {
+        return request(url: urlString, queryItems: queryItems, headers: header, method: HTTPMethod.get)
+    }
+    
     func delete<T>(_ data: T, url urlString: String, header: [String : String]?) -> Observable<Result<Data, URLSessionNetworkServiceError>> where T : Decodable, T : Encodable {
         return request(url: urlString, headers: header, method: HTTPMethod.delete)
+    }
+    
+    private func URLGenerate(urlString : String, queryItems: [String: String]?) -> String {
+        var urlString = urlString, index = 0
+        
+        guard let queryItems = queryItems else {
+            return urlString
+        }
+        urlString += "?"
+
+        for item in queryItems {
+            if index != 0 {
+                urlString += "&"
+            }
+            urlString += "\(item.key)=\(item.value)"
+            index += 1
+        }
+        return urlString
+    }
+    
+    private func request(
+        url urlString: String,
+        queryItems: [String: String]? = nil,
+        headers: [String: String]? = nil,
+        method: String
+    ) -> Observable<Result<Data, URLSessionNetworkServiceError>> {
+        guard let url = URL(string: URLGenerate(urlString: urlString, queryItems: queryItems)) else {
+            return Observable.error(URLSessionNetworkServiceError.invalidURLError)
+        }
+        
+        return Observable<Result<Data, URLSessionNetworkServiceError>>.create { emitter in
+            let request = self.createHTTPRequest(of: url,
+                                                 with: headers,
+                                                 httpMethod: method)
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    emitter.onError(URLSessionNetworkServiceError.unknownError)
+                    return
+                }
+                
+                if error != nil {
+                    emitter.onError(self.configureHTTPError(errorCode: httpResponse.statusCode))
+                    return
+                }
+                
+                guard 200..<300 ~= httpResponse.statusCode else {
+                    emitter.onError(self.configureHTTPError(errorCode: httpResponse.statusCode))
+                    return
+                }
+                
+                guard let data = data else {
+                    emitter.onNext(.failure(.emptyDataError))
+                    return
+                }
+                
+                emitter.onNext(.success(data))
+                emitter.onCompleted()
+            }
+            task.resume()
+            
+            return Disposables.create {
+                task.cancel()
+            }
+        }
     }
     
     private func request(

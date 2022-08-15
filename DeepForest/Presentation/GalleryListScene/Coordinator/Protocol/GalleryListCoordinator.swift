@@ -8,5 +8,5 @@
 import Foundation
 
 protocol GalleryListCoordinator: Coordinator {
-    func pushGalleryListViewController(menuViewModel: MenuTableCellViewModel)
+    func pushGalleryListViewController(menuTableCellViewModel: MenuTableCellViewModel)
 }

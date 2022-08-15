@@ -8,7 +8,18 @@
 import Foundation
 
 enum GalleryType: String, Codable {
-    case major = "MAJOR"
-    case minor = "MINOR"
-    case mini = "MINI"
+    case major = "메이저 갤러리"
+    case minor = "마이너 갤러리"
+    case mini = "미니 갤러리"
+    
+    var galleryType: String {
+        switch self {
+        case .major:
+            return "MAJOR"
+        case .minor:
+            return "MINOR"
+        case .mini:
+            return "MINI"
+        }
+    }
 }

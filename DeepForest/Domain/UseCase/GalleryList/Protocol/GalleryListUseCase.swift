@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol GalleryListUseCase {
-    
+    func fetchGalleryList() -> Observable<[Gallery]>
 }

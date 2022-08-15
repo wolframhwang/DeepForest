@@ -29,12 +29,11 @@ final class DefaultMenuCoordinator: MenuCoordinator {
         self.navigationController.pushViewController(self.menuViewController, animated: true)
     }
     
-    func pushGalleryListViewController(menuViewModel: MenuTableCellViewModel) {
+    func pushGalleryListViewController(menuTableCellViewModel: MenuTableCellViewModel) {
         let galleryListCoordinator = DefaultGalleryListCoordinator(self.navigationController)
         galleryListCoordinator.finishDelegate = self
-        self.childCoordinators.append(galleryListCoordinator)
-        navigationController.setNavigationBarHidden(true, animated: true)
-        galleryListCoordinator.pushGalleryListViewController(menuViewModel: menuViewModel)
+        self.childCoordinators.append(galleryListCoordinator)        
+        galleryListCoordinator.pushGalleryListViewController(menuTableCellViewModel: menuTableCellViewModel)
     }
     
 }
