@@ -45,12 +45,18 @@ final class DefaultSignInUseCase: SignInUseCase {
             return Observable.error(AuthFail.noData)
         }
 
-        return networkRepository.post(accountInfo: signIn).map { result in
+        return networkRepository.post(accountInfo: signIn).map { [weak self] result in
             switch result {
             case .success(let data):
                 do {
                     let response = try JSONDecoder().decode(SignInResponseDTO.self, from: data)
                     if response.success {
+                        guard let signInResponse = response.result else {
+                            return "로그인에 실패했습니다!"
+                        }
+                        self?.userRepository.saveToken(token: signInResponse.accessToken,
+                                                 refreshToken: signInResponse.refreshToken)
+                        self?.userRepository.saveNickName(nickName: signIn.id)
                         return nil
                     } else {
                         return ("로그인에 실패했습니다!")
