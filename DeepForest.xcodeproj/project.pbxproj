@@ -60,6 +60,8 @@
 		7BE63AF928AA41370068BD67 /* GalleryListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AF828AA41370068BD67 /* GalleryListCellViewModel.swift */; };
 		7BE63AFD28AA422C0068BD67 /* DefaultGalleryListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AFC28AA422C0068BD67 /* DefaultGalleryListUseCase.swift */; };
 		7BE63AFF28AA42350068BD67 /* GalleryListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AFE28AA42350068BD67 /* GalleryListUseCase.swift */; };
+		7BE63B0128AA79D90068BD67 /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63B0028AA79D90068BD67 /* Gallery.swift */; };
+		7BE63B0328AA7A7F0068BD67 /* GalleryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63B0228AA7A7F0068BD67 /* GalleryType.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
 		7BF3FA42288EE1560072218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA41288EE1560072218E /* ViewController.swift */; };
@@ -156,6 +158,8 @@
 		7BE63AF828AA41370068BD67 /* GalleryListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListCellViewModel.swift; sourceTree = "<group>"; };
 		7BE63AFC28AA422C0068BD67 /* DefaultGalleryListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGalleryListUseCase.swift; sourceTree = "<group>"; };
 		7BE63AFE28AA42350068BD67 /* GalleryListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListUseCase.swift; sourceTree = "<group>"; };
+		7BE63B0028AA79D90068BD67 /* Gallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
+		7BE63B0228AA7A7F0068BD67 /* GalleryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryType.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF3FA3F288EE1560072218E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -708,6 +712,7 @@
 				7BF3FA7D288EE3FB0072218E /* CoordinatorType.swift */,
 				7BE63ADB28A9EF2A0068BD67 /* MenuType.swift */,
 				7BE63ADD28A9EF5A0068BD67 /* UserDefaultsKey.swift */,
+				7BE63B0228AA7A7F0068BD67 /* GalleryType.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -770,6 +775,7 @@
 				7BE63AB528A7F7160068BD67 /* AccountForSignUp.swift */,
 				7BE63AD628A94C8F0068BD67 /* MenuItem.swift */,
 				7BE63AE328A9F7A00068BD67 /* TokenItem.swift */,
+				7BE63B0028AA79D90068BD67 /* Gallery.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1111,11 +1117,13 @@
 				7BE63AAE28A7CEB10068BD67 /* SignUpCoordinator.swift in Sources */,
 				7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */,
 				7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */,
+				7BE63B0128AA79D90068BD67 /* Gallery.swift in Sources */,
 				7BE63AB428A7CEE30068BD67 /* DefaultSignUpUseCase.swift in Sources */,
 				7BE63AB628A7F7160068BD67 /* AccountForSignUp.swift in Sources */,
 				7BE63AB028A7CEB90068BD67 /* DefaultSignUpCoordinator.swift in Sources */,
 				7BE63AF728AA41280068BD67 /* GalleryListTableViewCell.swift in Sources */,
 				7BF3FA80288EEDD30072218E /* AppCoordinator.swift in Sources */,
+				7BE63B0328AA7A7F0068BD67 /* GalleryType.swift in Sources */,
 				7BE63AE028A9F6940068BD67 /* SignChoiceUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
