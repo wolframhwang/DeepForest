@@ -33,6 +33,7 @@ final class DefaultMenuCoordinator: MenuCoordinator {
         let galleryListCoordinator = DefaultGalleryListCoordinator(self.navigationController)
         galleryListCoordinator.finishDelegate = self
         self.childCoordinators.append(galleryListCoordinator)
+        navigationController.setNavigationBarHidden(true, animated: true)
         galleryListCoordinator.pushGalleryListViewController(menuViewModel: menuViewModel)
     }
     
