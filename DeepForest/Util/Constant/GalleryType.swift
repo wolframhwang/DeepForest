@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GalleryType: String {
+enum GalleryType: String, Codable {
     case major = "MAJOR"
     case minor = "MINOR"
     case mini = "MINI"
