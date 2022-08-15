@@ -29,4 +29,22 @@ final class DefaultMenuCoordinator: MenuCoordinator {
         self.navigationController.pushViewController(self.menuViewController, animated: true)
     }
     
+    func pushGalleryListViewController(menuViewModel: MenuTableCellViewModel) {
+        let galleryListCoordinator = DefaultGalleryListCoordinator(self.navigationController)
+        galleryListCoordinator.finishDelegate = self
+        self.childCoordinators.append(galleryListCoordinator)
+        galleryListCoordinator.pushGalleryListViewController(menuViewModel: menuViewModel)
+    }
+    
+}
+
+extension DefaultMenuCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        self.childCoordinators.removeAll()
+        self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
+    
+    func popChildScene(childCoordinator: Coordinator) {
+        self.finishDelegate?.popChildScene(childCoordinator: self)
+    }            
 }

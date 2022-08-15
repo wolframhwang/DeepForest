@@ -58,5 +58,8 @@ extension MenuViewController {
             cell.bind(viewModel)
         }.disposed(by: disposeBag)
         
+        output?.selectedMenu.drive()
+            .disposed(by: disposeBag)
+        
     }
 }

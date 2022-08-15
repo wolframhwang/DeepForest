@@ -21,6 +21,7 @@ final class MenuViewModel: ViewModelType {
     struct Output {
         //let crateMenu: Driver<Void>
         let menus: Driver<[MenuTableCellViewModel]>
+        let selectedMenu: Driver<MenuTableCellViewModel>
     }
     
     init(coordinator: MenuCoordinator?) {
@@ -44,7 +45,15 @@ final class MenuViewModel: ViewModelType {
             }
         }
         
-        return Output(menus: menus)
+        let selectedMenu = input.selection
+            .withLatestFrom(menus) { (indexPath, menus) -> MenuTableCellViewModel in
+                return menus[indexPath.row]
+            }
+            .do(onNext: { [weak self] viewModel in
+                self?.coordinator?.pushGalleryListViewController(menuViewModel: viewModel)
+            })
+        
+        return Output(menus: menus, selectedMenu: selectedMenu)
     }
     
 }

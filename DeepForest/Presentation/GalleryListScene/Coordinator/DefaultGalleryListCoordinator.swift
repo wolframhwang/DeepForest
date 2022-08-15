@@ -24,5 +24,9 @@ final class DefaultGalleryListCoordinator: GalleryListCoordinator {
         
     }
     
+    func pushGalleryListViewController(menuViewModel: MenuTableCellViewModel) {
+        self.galleryListViewController.viewModel = GalleryListViewModel(coordinator: self)
+        self.navigationController.pushViewController(self.galleryListViewController, animated: true)
+    }
     
 }

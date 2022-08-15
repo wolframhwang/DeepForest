@@ -10,4 +10,5 @@ import RxSwift
 
 protocol MenuCoordinator: Coordinator {
     func pushMenuViewController()
+    func pushGalleryListViewController(menuViewModel: MenuTableCellViewModel)
 }
