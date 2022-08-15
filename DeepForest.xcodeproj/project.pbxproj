@@ -56,6 +56,8 @@
 		7BE63AF128AA048E0068BD67 /* GalleryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AF028AA048E0068BD67 /* GalleryListViewModel.swift */; };
 		7BE63AF328AA049F0068BD67 /* DefaultGalleryListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AF228AA049F0068BD67 /* DefaultGalleryListCoordinator.swift */; };
 		7BE63AF528AA04AB0068BD67 /* GalleryListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AF428AA04AB0068BD67 /* GalleryListCoordinator.swift */; };
+		7BE63AF728AA41280068BD67 /* GalleryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AF628AA41280068BD67 /* GalleryListTableViewCell.swift */; };
+		7BE63AF928AA41370068BD67 /* GalleryListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE63AF828AA41370068BD67 /* GalleryListCellViewModel.swift */; };
 		7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3D288EE1560072218E /* AppDelegate.swift */; };
 		7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA3F288EE1560072218E /* SceneDelegate.swift */; };
 		7BF3FA42288EE1560072218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF3FA41288EE1560072218E /* ViewController.swift */; };
@@ -148,6 +150,8 @@
 		7BE63AF028AA048E0068BD67 /* GalleryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListViewModel.swift; sourceTree = "<group>"; };
 		7BE63AF228AA049F0068BD67 /* DefaultGalleryListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGalleryListCoordinator.swift; sourceTree = "<group>"; };
 		7BE63AF428AA04AB0068BD67 /* GalleryListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListCoordinator.swift; sourceTree = "<group>"; };
+		7BE63AF628AA41280068BD67 /* GalleryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListTableViewCell.swift; sourceTree = "<group>"; };
+		7BE63AF828AA41370068BD67 /* GalleryListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListCellViewModel.swift; sourceTree = "<group>"; };
 		7BF3FA3A288EE1560072218E /* DeepForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF3FA3D288EE1560072218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF3FA3F288EE1560072218E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -486,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				7BE63AEE28AA04850068BD67 /* GalleryListViewController.swift */,
+				7BE63AF628AA41280068BD67 /* GalleryListTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				7BE63AF028AA048E0068BD67 /* GalleryListViewModel.swift */,
+				7BE63AF828AA41370068BD67 /* GalleryListCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1041,6 +1047,7 @@
 				7BE63ABD28A80F960068BD67 /* DefaultHomeSceneCoordinator.swift in Sources */,
 				7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */,
 				7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */,
+				7BE63AF928AA41370068BD67 /* GalleryListCellViewModel.swift in Sources */,
 				7BE63ACF28A91DD80068BD67 /* MenuCoordinator.swift in Sources */,
 				7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */,
 				7B1CCCDE28916A3C004389A8 /* SignChoiceViewModel.swift in Sources */,
@@ -1083,6 +1090,7 @@
 				7BE63AB428A7CEE30068BD67 /* DefaultSignUpUseCase.swift in Sources */,
 				7BE63AB628A7F7160068BD67 /* AccountForSignUp.swift in Sources */,
 				7BE63AB028A7CEB90068BD67 /* DefaultSignUpCoordinator.swift in Sources */,
+				7BE63AF728AA41280068BD67 /* GalleryListTableViewCell.swift in Sources */,
 				7BF3FA80288EEDD30072218E /* AppCoordinator.swift in Sources */,
 				7BE63AE028A9F6940068BD67 /* SignChoiceUseCase.swift in Sources */,
 			);
