@@ -97,7 +97,11 @@ extension SignChoiceViewController {
     }
     
     func bindViewModel() {
-        let input = SignChoiceViewModel.Input(signInButtonDidTapEvent: signInButton.rx.tap.asObservable(),
+        let trigger = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .map { _ in }.asDriver(onErrorDriveWith: .empty())
+        
+        let input = SignChoiceViewModel.Input(trigger: trigger,
+                                              signInButtonDidTapEvent: signInButton.rx.tap.asObservable(),
                                               signUpButtonDidTapEvent: signUpButton.rx.tap.asObservable(),
                                               noSignJoinButtonDidTapEvent: noSignJoinButton.rx.tap.asObservable())
         

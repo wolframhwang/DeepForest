@@ -10,11 +10,11 @@ import RxSwift
 import RxCocoa
 
 final class SignChoiceViewModel: ViewModelType {
-    var coordinator: SignChoiceCoordinator?
-    let disposeBag = DisposeBag()
+    private weak var coordinator: SignChoiceCoordinator?
+    private let signChoiceUseCase: SignChoiceUseCase
     
     struct Input {
-        let trigger: Observable<Void>
+        let trigger: Driver<Void>
         let signInButtonDidTapEvent: Observable<Void>
         let signUpButtonDidTapEvent: Observable<Void>
         let noSignJoinButtonDidTapEvent: Observable<Void>
@@ -24,16 +24,24 @@ final class SignChoiceViewModel: ViewModelType {
         
     }
     
-    init(coordinator: SignChoiceCoordinator?) {
+    init(coordinator: SignChoiceCoordinator?, signChoiceUseCase: SignChoiceUseCase) {
         self.coordinator = coordinator
+        self.signChoiceUseCase = signChoiceUseCase
     }
     
     @discardableResult
     func transform(from input: Input) -> Output {
+        let disposeBag = DisposeBag()
         let output =  Output()
         
-        input.trigger.subscribe(onNext: { [weak self] in
-            
+        input.trigger.drive(onNext: { [weak self] in
+            self?.signChoiceUseCase.refreshToken()
+                .observe(on: MainScheduler.asyncInstance).subscribe(onNext: { [weak self] isSuccessRefresh in
+                if isSuccessRefresh {
+                    self?.coordinator?.finish()
+                }
+            })
+            .disposed(by: disposeBag)
         })
         .disposed(by: disposeBag)
         

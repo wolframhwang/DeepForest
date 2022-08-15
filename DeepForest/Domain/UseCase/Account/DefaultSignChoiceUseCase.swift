@@ -26,7 +26,8 @@ final class DefaultSignChoiceUseCase: SignChoiceUseCase {
             return Observable.error(AuthFail.noData)
         }
         let tokenItem = TokenItem(token: token, refreshToken: refreshToken)
-        
+
+        userRepository.deleteSignInfo()
         return networkRepository.post(tokenItem: tokenItem).map { [weak self] result in
             switch result {
             case .success(let data):
@@ -51,3 +52,6 @@ final class DefaultSignChoiceUseCase: SignChoiceUseCase {
         }
     }
 }
+/*
+ TokenItem(token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiYXV0aCI6IlJPTEVfQURNSU4iLCJleHAiOjE2NjA1Mzg3ODd9.OcuAtEoRt7wLfcU5QczLHnnjATvioy9TWDGGVORwA2mf-EjN4cyRCsHPRGtnh8EM8bKPSu7K7opqP1bQQVFmbg", refreshToken: "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2NjExNDE3ODd9.J19nRMf10ZeY34fkEsoznfDihu2dSK3qAzn05W1eva6dd3fRWodFDjDTrOYUFz25YGB4Z6WAeXlCCzA_4QsLBA")
+ */

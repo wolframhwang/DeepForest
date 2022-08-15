@@ -21,8 +21,15 @@ final class DefaultSignChoiceCoordinator: SignChoiceCoordinator {
     }
     
     func start() {
-        self.signChoiceViewController.viewModel = SignChoiceViewModel(coordinator: self)
+        self.signChoiceViewController.viewModel = SignChoiceViewModel(coordinator: self,
+                                                                      signChoiceUseCase: DefaultSignChoiceUseCase(userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService())
+                                                                                                                 )
+        )
         self.navigationController.viewControllers = [self.signChoiceViewController]
+    }
+    
+    func finish() {
+        self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
     
     func showSignInFlow() {
