@@ -19,6 +19,8 @@
 		7B92818428AFB1DA007A3004 /* SettingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92818328AFB1DA007A3004 /* SettingUseCase.swift */; };
 		7B92818628AFB1F4007A3004 /* DefaultSettingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92818528AFB1F4007A3004 /* DefaultSettingUseCase.swift */; };
 		7B92818828AFCC43007A3004 /* SettingSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92818728AFCC43007A3004 /* SettingSectionItem.swift */; };
+		7B92818A28AFD057007A3004 /* SettingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92818928AFD057007A3004 /* SettingListCell.swift */; };
+		7B92818C28AFD063007A3004 /* SettingListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92818B28AFD063007A3004 /* SettingListCellViewModel.swift */; };
 		7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356E52898144000406022 /* DefaultURLSessionNetworkServiceError.swift */; };
 		7B9356EA2898147800406022 /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356E92898147800406022 /* URLSessionNetworkService.swift */; };
 		7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356EC2899661600406022 /* SignInViewModel.swift */; };
@@ -126,6 +128,8 @@
 		7B92818328AFB1DA007A3004 /* SettingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUseCase.swift; sourceTree = "<group>"; };
 		7B92818528AFB1F4007A3004 /* DefaultSettingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingUseCase.swift; sourceTree = "<group>"; };
 		7B92818728AFCC43007A3004 /* SettingSectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionItem.swift; sourceTree = "<group>"; };
+		7B92818928AFD057007A3004 /* SettingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListCell.swift; sourceTree = "<group>"; };
+		7B92818B28AFD063007A3004 /* SettingListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListCellViewModel.swift; sourceTree = "<group>"; };
 		7B9356E52898144000406022 /* DefaultURLSessionNetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultURLSessionNetworkServiceError.swift; sourceTree = "<group>"; };
 		7B9356E92898147800406022 /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
 		7B9356EC2899661600406022 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -305,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				7B92817828AFB0CD007A3004 /* SettingViewController.swift */,
+				7B92818928AFD057007A3004 /* SettingListCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */,
+				7B92818B28AFD063007A3004 /* SettingListCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1155,6 +1161,7 @@
 				7BE63AFF28AA42350068BD67 /* GalleryListUseCase.swift in Sources */,
 				7BE63A9828A791F20068BD67 /* SignInResponseDTO.swift in Sources */,
 				7BD5BED028A2BCDC00330F96 /* NetworkRepository.swift in Sources */,
+				7B92818C28AFD063007A3004 /* SettingListCellViewModel.swift in Sources */,
 				7BD5BEC528A280AD00330F96 /* AccountForSignIn.swift in Sources */,
 				7BE63AC128A80FAF0068BD67 /* HomeSceneViewController.swift in Sources */,
 				7BE63ACC28A91DC40068BD67 /* DefaultMenuCoordinator.swift in Sources */,
@@ -1200,6 +1207,7 @@
 				7BF3FA7E288EE3FB0072218E /* CoordinatorType.swift in Sources */,
 				7BF3FA42288EE1560072218E /* ViewController.swift in Sources */,
 				7BF3FA8C288EF60F0072218E /* DefaultSignChoiceCoordinator.swift in Sources */,
+				7B92818A28AFD057007A3004 /* SettingListCell.swift in Sources */,
 				7BE63A9A28A792150068BD67 /* TokenResultDTO.swift in Sources */,
 				7BE63AEF28AA04850068BD67 /* GalleryListViewController.swift in Sources */,
 				7BF3FA91289018FB0072218E /* ViewModelType.swift in Sources */,
