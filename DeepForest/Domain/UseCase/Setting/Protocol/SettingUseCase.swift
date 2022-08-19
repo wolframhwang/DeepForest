@@ -10,5 +10,5 @@ import RxSwift
 import RxCocoa
 
 protocol SettingUseCase {
-    
+    func makeSettingDataSource() -> Observable<[SettingSectionModel]>
 }

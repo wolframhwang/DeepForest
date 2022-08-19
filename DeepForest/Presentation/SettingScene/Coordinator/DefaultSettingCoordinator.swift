@@ -26,7 +26,7 @@ final class DefaultSettingCoordinator: SettingCoordinator {
     
     func pushSettingViewController() {
         // Todo: ViewModel Setting 해야 함
-        self.settingViewController.viewModel = SettingViewModel()
+        self.settingViewController.viewModel = SettingViewModel(coordinator: self, settingUseCase: DefaultSettingUseCase(userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService())))
         self.navigationController.pushViewController(self.settingViewController, animated: true)
     }
 }
