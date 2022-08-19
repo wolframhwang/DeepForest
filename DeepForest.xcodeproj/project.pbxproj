@@ -12,6 +12,12 @@
 		7B1CCCE72892C3B4004389A8 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1CCCE62892C3B4004389A8 /* SignInCoordinator.swift */; };
 		7B1CCCE92892C3C5004389A8 /* DefaultSignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1CCCE82892C3C5004389A8 /* DefaultSignInCoordinator.swift */; };
 		7B1CCCEB2892C411004389A8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1CCCEA2892C411004389A8 /* SignInViewController.swift */; };
+		7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817828AFB0CD007A3004 /* SettingViewController.swift */; };
+		7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */; };
+		7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */; };
+		7B92818028AFB0F0007A3004 /* DefaultSettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817F28AFB0F0007A3004 /* DefaultSettingCoordinator.swift */; };
+		7B92818428AFB1DA007A3004 /* SettingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92818328AFB1DA007A3004 /* SettingUseCase.swift */; };
+		7B92818628AFB1F4007A3004 /* DefaultSettingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92818528AFB1F4007A3004 /* DefaultSettingUseCase.swift */; };
 		7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356E52898144000406022 /* DefaultURLSessionNetworkServiceError.swift */; };
 		7B9356EA2898147800406022 /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356E92898147800406022 /* URLSessionNetworkService.swift */; };
 		7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356EC2899661600406022 /* SignInViewModel.swift */; };
@@ -112,6 +118,12 @@
 		7B1CCCE62892C3B4004389A8 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		7B1CCCE82892C3C5004389A8 /* DefaultSignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInCoordinator.swift; sourceTree = "<group>"; };
 		7B1CCCEA2892C411004389A8 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		7B92817828AFB0CD007A3004 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
+		7B92817F28AFB0F0007A3004 /* DefaultSettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingCoordinator.swift; sourceTree = "<group>"; };
+		7B92818328AFB1DA007A3004 /* SettingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUseCase.swift; sourceTree = "<group>"; };
+		7B92818528AFB1F4007A3004 /* DefaultSettingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingUseCase.swift; sourceTree = "<group>"; };
 		7B9356E52898144000406022 /* DefaultURLSessionNetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultURLSessionNetworkServiceError.swift; sourceTree = "<group>"; };
 		7B9356E92898147800406022 /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
 		7B9356EC2899661600406022 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -273,6 +285,66 @@
 			isa = PBXGroup;
 			children = (
 				7B1CCCE62892C3B4004389A8 /* SignInCoordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7B92817428AFB0A3007A3004 /* SettingScene */ = {
+			isa = PBXGroup;
+			children = (
+				7B92817728AFB0BA007A3004 /* Coordinator */,
+				7B92817628AFB0B2007A3004 /* ViewModel */,
+				7B92817528AFB0AA007A3004 /* ViewController */,
+			);
+			path = SettingScene;
+			sourceTree = "<group>";
+		};
+		7B92817528AFB0AA007A3004 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7B92817828AFB0CD007A3004 /* SettingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7B92817628AFB0B2007A3004 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B92817728AFB0BA007A3004 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7B92817C28AFB0D8007A3004 /* Protocol */,
+				7B92817F28AFB0F0007A3004 /* DefaultSettingCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7B92817C28AFB0D8007A3004 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7B92818128AFB1C3007A3004 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				7B92818228AFB1D0007A3004 /* Protocol */,
+				7B92818528AFB1F4007A3004 /* DefaultSettingUseCase.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		7B92818228AFB1D0007A3004 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7B92818328AFB1DA007A3004 /* SettingUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -638,6 +710,7 @@
 		7BF3FA70288EE1EA0072218E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				7B92817428AFB0A3007A3004 /* SettingScene */,
 				7BE63AE928AA04350068BD67 /* GalleryListScene */,
 				7BE63AC228A91D730068BD67 /* MenuScene */,
 				7BE63A9E28A7CD1C0068BD67 /* HomeScene */,
@@ -789,6 +862,7 @@
 		7BF3FA9328901CB30072218E /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				7B92818128AFB1C3007A3004 /* Setting */,
 				7BE63AFA28AA420F0068BD67 /* GalleryList */,
 				7BF3FA9428901FA40072218E /* Account */,
 			);
@@ -1066,6 +1140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BF3FA8A288EF5B30072218E /* SignChoiceCoordinator.swift in Sources */,
+				7B92818028AFB0F0007A3004 /* DefaultSettingCoordinator.swift in Sources */,
 				7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */,
 				7B1CCCE92892C3C5004389A8 /* DefaultSignInCoordinator.swift in Sources */,
 				7BE63AF128AA048E0068BD67 /* GalleryListViewModel.swift in Sources */,
@@ -1073,6 +1148,7 @@
 				7BE63ADA28A9525F0068BD67 /* Reusable.swift in Sources */,
 				7BE63A9428A74E740068BD67 /* DefaultURLSessionNetworkService.swift in Sources */,
 				7BE63AD528A94C130068BD67 /* MenuTableCellViewModel.swift in Sources */,
+				7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */,
 				7BE63AFF28AA42350068BD67 /* GalleryListUseCase.swift in Sources */,
 				7BE63A9828A791F20068BD67 /* SignInResponseDTO.swift in Sources */,
 				7BD5BED028A2BCDC00330F96 /* NetworkRepository.swift in Sources */,
@@ -1080,6 +1156,7 @@
 				7BE63AC128A80FAF0068BD67 /* HomeSceneViewController.swift in Sources */,
 				7BE63ACC28A91DC40068BD67 /* DefaultMenuCoordinator.swift in Sources */,
 				7BE63ABD28A80F960068BD67 /* DefaultHomeSceneCoordinator.swift in Sources */,
+				7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */,
 				7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */,
 				7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */,
 				7BE63AF928AA41370068BD67 /* GalleryListCellViewModel.swift in Sources */,
@@ -1096,6 +1173,7 @@
 				7BF3FA8E288EF6AE0072218E /* SignChoiceViewController.swift in Sources */,
 				7BD5BECA28A2946A00330F96 /* DefaultUserRepository.swift in Sources */,
 				7BE63AFD28AA422C0068BD67 /* DefaultGalleryListUseCase.swift in Sources */,
+				7B92818428AFB1DA007A3004 /* SettingUseCase.swift in Sources */,
 				7BE63AA928A7CE7C0068BD67 /* SignUpViewController.swift in Sources */,
 				7BF3FA82288EEEE10072218E /* DefaultAppCoordinator.swift in Sources */,
 				7BE63ABF28A80F9E0068BD67 /* HomeSceneViewModel.swift in Sources */,
@@ -1106,6 +1184,7 @@
 				7BE63AD728A94C8F0068BD67 /* MenuItem.swift in Sources */,
 				7BE63B0528AA94930068BD67 /* UseCaseError.swift in Sources */,
 				7BE63AB828A7FC190068BD67 /* SignUpResponseDTO.swift in Sources */,
+				7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */,
 				7B1CCCE72892C3B4004389A8 /* SignInCoordinator.swift in Sources */,
 				7BF3FA7B288EE37D0072218E /* CoordinatorFinishDelegate.swift in Sources */,
 				7BE63AC928A91DAA0068BD67 /* MenuViewModel.swift in Sources */,
@@ -1124,6 +1203,7 @@
 				7BE63AAE28A7CEB10068BD67 /* SignUpCoordinator.swift in Sources */,
 				7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */,
 				7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */,
+				7B92818628AFB1F4007A3004 /* DefaultSettingUseCase.swift in Sources */,
 				7BE63B0128AA79D90068BD67 /* Gallery.swift in Sources */,
 				7BE63AB428A7CEE30068BD67 /* DefaultSignUpUseCase.swift in Sources */,
 				7BE63B0728AA950F0068BD67 /* GalleryListResponseDTO.swift in Sources */,
