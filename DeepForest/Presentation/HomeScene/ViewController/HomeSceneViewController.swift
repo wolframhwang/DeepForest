@@ -22,6 +22,14 @@ class HomeSceneViewController: UIViewController {
         return menuButton
     }()
     
+    private lazy var settingButton: UIBarButtonItem = {
+        let settingbutton = UIBarButtonItem()
+        settingbutton.style = .plain
+        settingbutton.image = UIImage(systemName: "gear")
+        
+        return settingbutton
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         
@@ -48,7 +56,7 @@ class HomeSceneViewController: UIViewController {
 extension HomeSceneViewController {
     func configureSubviews() {
         navigationItem.leftBarButtonItem = sideMenuButton
-        
+        navigationItem.rightBarButtonItem = settingButton
         view.addSubview(tableView)
     }
     
