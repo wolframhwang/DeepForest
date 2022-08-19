@@ -40,8 +40,7 @@ final class GalleryListViewModel: ViewModelType {
         
         let selectedGallery = input.selection.withLatestFrom(galleryList) { (indexPath, galleryList) -> GalleryListCellViewModel in
             return galleryList[indexPath.row]
-        }
-            .do(onNext: { [weak self] viewModel in
+        }.do(onNext: { [weak self] viewModel in
                 print("SELECTED", viewModel)
             })
         
