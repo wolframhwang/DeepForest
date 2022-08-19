@@ -15,6 +15,10 @@ final class DefaultUserRepository: UserRepository {
         UserDefaults.standard.set(token, forKey: UserDefaultsKey.token)
         UserDefaults.standard.set(refreshToken, forKey: UserDefaultsKey.refreshToken)
     }
+    func deleteTokenInfo() {
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.token)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.refreshToken)
+    }
     func deleteSignInfo() {
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.token)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.refreshToken)

@@ -27,7 +27,7 @@ final class DefaultSignChoiceUseCase: SignChoiceUseCase {
         }
         let tokenItem = TokenItem(token: token, refreshToken: refreshToken)
 
-        userRepository.deleteSignInfo()
+        userRepository.deleteTokenInfo()
         return networkRepository.post(tokenItem: tokenItem).map { [weak self] result in
             switch result {
             case .success(let data):
