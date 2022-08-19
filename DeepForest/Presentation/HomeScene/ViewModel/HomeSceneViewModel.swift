@@ -14,6 +14,7 @@ final class HomeSceneViewModel: ViewModelType {
     
     struct Input {
         let menuButtonTapped: Observable<Void>
+        let settingButtonTapped: Observable<Void>
     }
     
     struct Output {
@@ -36,6 +37,11 @@ final class HomeSceneViewModel: ViewModelType {
     private func configureInput(_ input: Input) {
         input.menuButtonTapped.subscribe(onNext: { [weak self] in
             self?.coordinator?.showMenuScene()
+        })
+        .disposed(by: disposeBag)
+        
+        input.settingButtonTapped.subscribe(onNext: { [weak self] in
+            self?.coordinator?.showSettingScene()
         })
         .disposed(by: disposeBag)
     }

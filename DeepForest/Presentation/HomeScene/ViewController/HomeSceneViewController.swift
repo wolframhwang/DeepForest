@@ -68,7 +68,8 @@ extension HomeSceneViewController {
     }
     
     func bindViewModel() {
-        let input = HomeSceneViewModel.Input(menuButtonTapped: sideMenuButton.rx.tap.throttle(.seconds(1), latest: false, scheduler: MainScheduler.asyncInstance).asObservable())
+        let input = HomeSceneViewModel.Input(menuButtonTapped: sideMenuButton.rx.tap.throttle(.seconds(1), latest: false, scheduler: MainScheduler.asyncInstance).asObservable(),
+                                             settingButtonTapped: settingButton.rx.tap.throttle(.seconds(1), scheduler: MainScheduler.asyncInstance).asObservable())
         let output = viewModel?.transform(from: input)
     }
 }

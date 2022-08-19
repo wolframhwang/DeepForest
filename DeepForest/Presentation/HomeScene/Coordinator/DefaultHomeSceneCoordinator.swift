@@ -35,6 +35,13 @@ final class DefaultHomeSceneCoordinator: HomeSceneCoordinator {
         menuCoordinator.pushMenuViewController()
     }
     
+    func showSettingScene() {
+        let settingCoordinator = DefaultSettingCoordinator(self.navigationController)
+        settingCoordinator.finishDelegate = self
+        self.childCoordinators.append(settingCoordinator)
+        settingCoordinator.pushSettingViewController()
+    }
+    
 }
 
 extension DefaultHomeSceneCoordinator: CoordinatorFinishDelegate {

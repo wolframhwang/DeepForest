@@ -10,4 +10,5 @@ import RxSwift
 
 protocol HomeSceneCoordinator: Coordinator {
     func showMenuScene()
+    func showSettingScene()
 }
