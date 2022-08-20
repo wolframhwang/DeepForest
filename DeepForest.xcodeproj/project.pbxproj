@@ -16,6 +16,8 @@
 		7B68BC7E28B0F67400D2C406 /* SignInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC7D28B0F67400D2C406 /* SignInfoViewModel.swift */; };
 		7B68BC8028B0F67F00D2C406 /* SignInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC7F28B0F67F00D2C406 /* SignInfoCoordinator.swift */; };
 		7B68BC8228B0F68900D2C406 /* DefaultSignInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC8128B0F68900D2C406 /* DefaultSignInfoCoordinator.swift */; };
+		7B68BC8428B108CF00D2C406 /* SignInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC8328B108CF00D2C406 /* SignInfoUseCase.swift */; };
+		7B68BC8628B108E500D2C406 /* DefaultSignInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC8528B108E500D2C406 /* DefaultSignInfoUseCase.swift */; };
 		7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817828AFB0CD007A3004 /* SettingViewController.swift */; };
 		7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */; };
 		7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */; };
@@ -128,6 +130,8 @@
 		7B68BC7D28B0F67400D2C406 /* SignInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoViewModel.swift; sourceTree = "<group>"; };
 		7B68BC7F28B0F67F00D2C406 /* SignInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoCoordinator.swift; sourceTree = "<group>"; };
 		7B68BC8128B0F68900D2C406 /* DefaultSignInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInfoCoordinator.swift; sourceTree = "<group>"; };
+		7B68BC8328B108CF00D2C406 /* SignInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoUseCase.swift; sourceTree = "<group>"; };
+		7B68BC8528B108E500D2C406 /* DefaultSignInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInfoUseCase.swift; sourceTree = "<group>"; };
 		7B92817828AFB0CD007A3004 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
@@ -394,6 +398,7 @@
 			children = (
 				7B92818228AFB1D0007A3004 /* Protocol */,
 				7B92818528AFB1F4007A3004 /* DefaultSettingUseCase.swift */,
+				7B68BC8528B108E500D2C406 /* DefaultSignInfoUseCase.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -402,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				7B92818328AFB1DA007A3004 /* SettingUseCase.swift */,
+				7B68BC8328B108CF00D2C406 /* SignInfoUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1229,6 +1235,7 @@
 				7BE63A9228A74D120068BD67 /* DefaultNetworkRepository.swift in Sources */,
 				7BE63AE628A9FB260068BD67 /* RefreshTokenResponseDTO.swift in Sources */,
 				7BE63AF328AA049F0068BD67 /* DefaultGalleryListCoordinator.swift in Sources */,
+				7B68BC8628B108E500D2C406 /* DefaultSignInfoUseCase.swift in Sources */,
 				7BE63ABA28A80F860068BD67 /* HomeSceneCoordinator.swift in Sources */,
 				7BF3FA8E288EF6AE0072218E /* SignChoiceViewController.swift in Sources */,
 				7BD5BECA28A2946A00330F96 /* DefaultUserRepository.swift in Sources */,
@@ -1236,6 +1243,7 @@
 				7B92818428AFB1DA007A3004 /* SettingUseCase.swift in Sources */,
 				7BE63AA928A7CE7C0068BD67 /* SignUpViewController.swift in Sources */,
 				7BF3FA82288EEEE10072218E /* DefaultAppCoordinator.swift in Sources */,
+				7B68BC8428B108CF00D2C406 /* SignInfoUseCase.swift in Sources */,
 				7BE63ABF28A80F9E0068BD67 /* HomeSceneViewModel.swift in Sources */,
 				7BE63ADC28A9EF2A0068BD67 /* MenuType.swift in Sources */,
 				7BE63ADE28A9EF5A0068BD67 /* UserDefaultsKey.swift in Sources */,
