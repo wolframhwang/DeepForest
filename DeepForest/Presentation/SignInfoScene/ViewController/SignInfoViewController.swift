@@ -16,13 +16,14 @@ class SignInfoViewController: UIViewController {
     
     private lazy var idInfoLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 15)
         
         return label
     }()
     
     private lazy var signOffButton: UIButton = {
         let button = UIButton()
+        button.setTitle("로그아웃", for: .normal)
         button.backgroundColor = .systemGreen
         
         return button
@@ -40,7 +41,13 @@ class SignInfoViewController: UIViewController {
 
 extension SignInfoViewController {
     func bindViewModel() {
+        let input = SignInfoViewModel.Input(tapSignOffbutton: signOffButton.rx.tap.asObservable())
         
+        let output = viewModel?.transform(from: input)
+        output?.idText.drive(idInfoLabel.rx.text).disposed(by: disposeBag)
+        output?.titleContent.drive(onNext: { [weak self] title in
+            self?.title = title
+        }).disposed(by: disposeBag)
     }
     
     func configureSubViews() {
@@ -61,6 +68,6 @@ extension SignInfoViewController {
         }
     }
     func setAttribute() {
-        
+        view.backgroundColor = .systemBackground
     }
 }

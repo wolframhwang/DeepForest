@@ -29,5 +29,23 @@ final class DefaultSettingCoordinator: SettingCoordinator {
         self.settingViewController.viewModel = SettingViewModel(coordinator: self, settingUseCase: DefaultSettingUseCase(userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService())))
         self.navigationController.pushViewController(self.settingViewController, animated: true)
     }
+    
+    func showSignInfoScene() {
+        let signInfoCoordinator = DefaultSignInfoCoordinator(self.navigationController)
+        signInfoCoordinator.finishDelegate = self
+        self.childCoordinators.append(signInfoCoordinator)
+        signInfoCoordinator.pushSignInfoViewController()
+    }
+}
+
+extension DefaultSettingCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        self.childCoordinators.removeAll()
+        self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
+    
+    func popChildScene(childCoordinator: Coordinator) {
+        
+    }
 }
 

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol SettingCoordinator: Coordinator {
-    
+    func showSignInfoScene()
 }

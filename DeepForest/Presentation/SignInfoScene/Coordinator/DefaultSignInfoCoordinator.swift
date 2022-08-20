@@ -24,4 +24,14 @@ final class DefaultSignInfoCoordinator: SignInfoCooridnator {
     func start() {
         
     }
+    
+    func pushSignInfoViewController() {
+        self.signInfoViewController
+            .viewModel = SignInfoViewModel(coordinator: self, signInfoUseCase: DefaultSignInfoUseCase(userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService())))
+        self.navigationController.pushViewController(self.signInfoViewController, animated: true)
+    }
+    
+    func finish() {
+        self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
 }

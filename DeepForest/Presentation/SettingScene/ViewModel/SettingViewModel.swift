@@ -48,8 +48,10 @@ final class SettingViewModel: ViewModelType {
         })
         .disposed(by: disposeBag)
         
-        settingUseCase.signOutPublisher.subscribe(onNext: { [weak self] in
-            // Todo: Go to SignOut Scene...
+        settingUseCase.signOutPublisher
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+            self?.coordinator?.showSignInfoScene()
             
         })
         .disposed(by: disposeBag)

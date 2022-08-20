@@ -6,7 +6,12 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol SignInfoUseCase {
+    var titleInfo: BehaviorRelay<String> { get }
+    var idInfo: BehaviorRelay<String> { get }
     
+    func signOff() -> Observable<Void>
 }

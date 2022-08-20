@@ -51,12 +51,11 @@ extension DefaultAppCoordinator: CoordinatorFinishDelegate {
         })
         self.navigationController.view.backgroundColor = .systemBackground
         self.navigationController.viewControllers.removeAll()
-        
         switch childCoordinator.type {
         case .signChoice:
             self.homeSceneFlow()
         case .home:
-            self.showMainSceneFlow()
+            self.showSignChoiceFlow()
         default:
             break
         }
