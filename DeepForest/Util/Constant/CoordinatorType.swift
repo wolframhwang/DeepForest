@@ -13,6 +13,6 @@ enum CoordinatorType {
     case signin, signup
     case menu
     case compose, detail
-    case mypage, setting, gallery
+    case signInfo, setting, gallery
     case galleryList
 }
