@@ -12,6 +12,10 @@
 		7B1CCCE72892C3B4004389A8 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1CCCE62892C3B4004389A8 /* SignInCoordinator.swift */; };
 		7B1CCCE92892C3C5004389A8 /* DefaultSignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1CCCE82892C3C5004389A8 /* DefaultSignInCoordinator.swift */; };
 		7B1CCCEB2892C411004389A8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1CCCEA2892C411004389A8 /* SignInViewController.swift */; };
+		7B68BC7C28B0F66C00D2C406 /* SignInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC7B28B0F66C00D2C406 /* SignInfoViewController.swift */; };
+		7B68BC7E28B0F67400D2C406 /* SignInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC7D28B0F67400D2C406 /* SignInfoViewModel.swift */; };
+		7B68BC8028B0F67F00D2C406 /* SignInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC7F28B0F67F00D2C406 /* SignInfoCoordinator.swift */; };
+		7B68BC8228B0F68900D2C406 /* DefaultSignInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC8128B0F68900D2C406 /* DefaultSignInfoCoordinator.swift */; };
 		7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817828AFB0CD007A3004 /* SettingViewController.swift */; };
 		7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */; };
 		7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */; };
@@ -120,6 +124,10 @@
 		7B1CCCE62892C3B4004389A8 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		7B1CCCE82892C3C5004389A8 /* DefaultSignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInCoordinator.swift; sourceTree = "<group>"; };
 		7B1CCCEA2892C411004389A8 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		7B68BC7B28B0F66C00D2C406 /* SignInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoViewController.swift; sourceTree = "<group>"; };
+		7B68BC7D28B0F67400D2C406 /* SignInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoViewModel.swift; sourceTree = "<group>"; };
+		7B68BC7F28B0F67F00D2C406 /* SignInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoCoordinator.swift; sourceTree = "<group>"; };
+		7B68BC8128B0F68900D2C406 /* DefaultSignInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInfoCoordinator.swift; sourceTree = "<group>"; };
 		7B92817828AFB0CD007A3004 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
@@ -289,6 +297,49 @@
 			isa = PBXGroup;
 			children = (
 				7B1CCCE62892C3B4004389A8 /* SignInCoordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7B68BC7628B0F63400D2C406 /* SignInfoScene */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC7928B0F64C00D2C406 /* Coordinator */,
+				7B68BC7828B0F64500D2C406 /* ViewModel */,
+				7B68BC7728B0F63F00D2C406 /* ViewController */,
+			);
+			path = SignInfoScene;
+			sourceTree = "<group>";
+		};
+		7B68BC7728B0F63F00D2C406 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC7B28B0F66C00D2C406 /* SignInfoViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7B68BC7828B0F64500D2C406 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC7D28B0F67400D2C406 /* SignInfoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B68BC7928B0F64C00D2C406 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC7A28B0F65600D2C406 /* Protocol */,
+				7B68BC8128B0F68900D2C406 /* DefaultSignInfoCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7B68BC7A28B0F65600D2C406 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC7F28B0F67F00D2C406 /* SignInfoCoordinator.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -716,6 +767,7 @@
 		7BF3FA70288EE1EA0072218E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				7B68BC7628B0F63400D2C406 /* SignInfoScene */,
 				7B92817428AFB0A3007A3004 /* SettingScene */,
 				7BE63AE928AA04350068BD67 /* GalleryListScene */,
 				7BE63AC228A91D730068BD67 /* MenuScene */,
@@ -1172,6 +1224,7 @@
 				7B1CCCDE28916A3C004389A8 /* SignChoiceViewModel.swift in Sources */,
 				7B9356EA2898147800406022 /* URLSessionNetworkService.swift in Sources */,
 				7BE63AE228A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift in Sources */,
+				7B68BC7C28B0F66C00D2C406 /* SignInfoViewController.swift in Sources */,
 				7BE63A9D28A792570068BD67 /* RESTError.swift in Sources */,
 				7BE63A9228A74D120068BD67 /* DefaultNetworkRepository.swift in Sources */,
 				7BE63AE628A9FB260068BD67 /* RefreshTokenResponseDTO.swift in Sources */,
@@ -1193,6 +1246,8 @@
 				7BE63AB828A7FC190068BD67 /* SignUpResponseDTO.swift in Sources */,
 				7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */,
 				7B1CCCE72892C3B4004389A8 /* SignInCoordinator.swift in Sources */,
+				7B68BC7E28B0F67400D2C406 /* SignInfoViewModel.swift in Sources */,
+				7B68BC8228B0F68900D2C406 /* DefaultSignInfoCoordinator.swift in Sources */,
 				7BF3FA7B288EE37D0072218E /* CoordinatorFinishDelegate.swift in Sources */,
 				7BE63AC928A91DAA0068BD67 /* MenuViewModel.swift in Sources */,
 				7BD5BECC28A2947200330F96 /* UserRepository.swift in Sources */,
@@ -1210,6 +1265,7 @@
 				7B1CCCEB2892C411004389A8 /* SignInViewController.swift in Sources */,
 				7BE63AAE28A7CEB10068BD67 /* SignUpCoordinator.swift in Sources */,
 				7BF3FA3E288EE1560072218E /* AppDelegate.swift in Sources */,
+				7B68BC8028B0F67F00D2C406 /* SignInfoCoordinator.swift in Sources */,
 				7BF3FA40288EE1560072218E /* SceneDelegate.swift in Sources */,
 				7B92818628AFB1F4007A3004 /* DefaultSettingUseCase.swift in Sources */,
 				7BE63B0128AA79D90068BD67 /* Gallery.swift in Sources */,
