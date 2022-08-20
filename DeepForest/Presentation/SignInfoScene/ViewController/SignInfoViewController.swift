@@ -10,7 +10,9 @@ import RxSwift
 import RxCocoa
 
 class SignInfoViewController: UIViewController {
-
+    var viewModel: SignInfoViewModel?
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
