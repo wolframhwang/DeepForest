@@ -34,6 +34,11 @@ final class SettingViewController: UIViewController {
 
 extension SettingViewController {
     func bindViewModel() {
+        tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            self?.tableView.deselectRow(at: indexPath, animated: true)
+        })
+        .disposed(by: disposeBag)
+        
         let configureCell: (TableViewSectionedDataSource<SectionModel<String, String>>,UITableView,IndexPath,String) -> UITableViewCell = {(dataSource, tableView, indexPath, element) in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingListCell.reuseID, for: indexPath) as? SettingListCell else { return UITableViewCell() }
             cell.textLabel?.text = element
@@ -46,7 +51,8 @@ extension SettingViewController {
             return dataSource.sectionModels[index].model
         }
         
-        let input = SettingViewModel.Input(selection: tableView.rx.itemSelected.asDriver())
+        let input = SettingViewModel.Input(selection: tableView.rx.itemSelected.asObservable())
+        
         let output = viewModel?.transform(from: input)
         output?.settingItems.bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)

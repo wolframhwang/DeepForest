@@ -10,5 +10,10 @@ import RxSwift
 import RxCocoa
 
 protocol SettingUseCase {
+    var signOutPublisher: PublishRelay<Void> { get }
+    var signInPublisher: PublishRelay<Void> { get }
+    
     func makeSettingDataSource() -> Observable<[SettingSectionModel]>
+    
+    func signChecker()
 }

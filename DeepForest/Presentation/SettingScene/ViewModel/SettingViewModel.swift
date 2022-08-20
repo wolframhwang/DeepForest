@@ -18,7 +18,7 @@ final class SettingViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
     struct Input {
-        let selection: Driver<IndexPath>
+        let selection: Observable<IndexPath>
     }
     
     struct Output {
@@ -32,6 +32,28 @@ final class SettingViewModel: ViewModelType {
     }
     
     func transform(from input: Input) -> Output {
-        return Output(settingItems: settingUseCase.makeSettingDataSource())
+        let settingItems = settingUseCase.makeSettingDataSource()
+        
+        input.selection.filter { indexPath in
+            return !(indexPath.section == 1 && indexPath.row == 1)
+        }.subscribe(onNext: { [weak self] indexPath in
+            if indexPath.section == 0 {
+                self?.settingUseCase.signChecker()
+            }
+        })
+        .disposed(by: disposeBag)
+        
+        settingUseCase.signInPublisher.subscribe(onNext: { [weak self] in
+            // Todo: Go to SignIn Scene...
+        })
+        .disposed(by: disposeBag)
+        
+        settingUseCase.signOutPublisher.subscribe(onNext: { [weak self] in
+            // Todo: Go to SignOut Scene...
+            
+        })
+        .disposed(by: disposeBag)
+
+        return Output(settingItems: settingItems)
     }
 }
