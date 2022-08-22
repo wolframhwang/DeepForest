@@ -18,6 +18,12 @@
 		7B68BC8228B0F68900D2C406 /* DefaultSignInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC8128B0F68900D2C406 /* DefaultSignInfoCoordinator.swift */; };
 		7B68BC8428B108CF00D2C406 /* SignInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC8328B108CF00D2C406 /* SignInfoUseCase.swift */; };
 		7B68BC8628B108E500D2C406 /* DefaultSignInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC8528B108E500D2C406 /* DefaultSignInfoUseCase.swift */; };
+		7B68BC8D28B3AC8F00D2C406 /* GalleryPostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC8C28B3AC8F00D2C406 /* GalleryPostListViewController.swift */; };
+		7B68BC8F28B3ACA000D2C406 /* GalleryPostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC8E28B3ACA000D2C406 /* GalleryPostListViewModel.swift */; };
+		7B68BC9228B3ACC400D2C406 /* DefaultGalleryPostListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC9128B3ACC400D2C406 /* DefaultGalleryPostListCoordinator.swift */; };
+		7B68BC9428B3ACCB00D2C406 /* GalleryPostListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC9328B3ACCB00D2C406 /* GalleryPostListCoordinator.swift */; };
+		7B68BC9828B3ADBB00D2C406 /* GalleryPostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC9728B3ADBB00D2C406 /* GalleryPostListUseCase.swift */; };
+		7B68BC9A28B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC9928B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift */; };
 		7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817828AFB0CD007A3004 /* SettingViewController.swift */; };
 		7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */; };
 		7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */; };
@@ -132,6 +138,12 @@
 		7B68BC8128B0F68900D2C406 /* DefaultSignInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInfoCoordinator.swift; sourceTree = "<group>"; };
 		7B68BC8328B108CF00D2C406 /* SignInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoUseCase.swift; sourceTree = "<group>"; };
 		7B68BC8528B108E500D2C406 /* DefaultSignInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInfoUseCase.swift; sourceTree = "<group>"; };
+		7B68BC8C28B3AC8F00D2C406 /* GalleryPostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostListViewController.swift; sourceTree = "<group>"; };
+		7B68BC8E28B3ACA000D2C406 /* GalleryPostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostListViewModel.swift; sourceTree = "<group>"; };
+		7B68BC9128B3ACC400D2C406 /* DefaultGalleryPostListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGalleryPostListCoordinator.swift; sourceTree = "<group>"; };
+		7B68BC9328B3ACCB00D2C406 /* GalleryPostListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostListCoordinator.swift; sourceTree = "<group>"; };
+		7B68BC9728B3ADBB00D2C406 /* GalleryPostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostListUseCase.swift; sourceTree = "<group>"; };
+		7B68BC9928B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGalleryPostListUseCase.swift; sourceTree = "<group>"; };
 		7B92817828AFB0CD007A3004 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
@@ -351,6 +363,9 @@
 		7B68BC8728B3AC3B00D2C406 /* GalleryPostListScene */ = {
 			isa = PBXGroup;
 			children = (
+				7B68BC8B28B3AC7F00D2C406 /* Coordinator */,
+				7B68BC8A28B3AC7A00D2C406 /* ViewModel */,
+				7B68BC8928B3AC7400D2C406 /* ViewController */,
 			);
 			path = GalleryPostListScene;
 			sourceTree = "<group>";
@@ -362,6 +377,56 @@
 				7BE63AE928AA04350068BD67 /* GalleryListScene */,
 			);
 			path = Gallery;
+			sourceTree = "<group>";
+		};
+		7B68BC8928B3AC7400D2C406 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC8C28B3AC8F00D2C406 /* GalleryPostListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7B68BC8A28B3AC7A00D2C406 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC8E28B3ACA000D2C406 /* GalleryPostListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B68BC8B28B3AC7F00D2C406 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC9028B3ACA400D2C406 /* Protocol */,
+				7B68BC9128B3ACC400D2C406 /* DefaultGalleryPostListCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7B68BC9028B3ACA400D2C406 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC9328B3ACCB00D2C406 /* GalleryPostListCoordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7B68BC9528B3ADA700D2C406 /* GalleryPostList */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC9628B3ADB000D2C406 /* Protocol */,
+				7B68BC9928B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift */,
+			);
+			path = GalleryPostList;
+			sourceTree = "<group>";
+		};
+		7B68BC9628B3ADB000D2C406 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC9728B3ADBB00D2C406 /* GalleryPostListUseCase.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		7B92817428AFB0A3007A3004 /* SettingScene */ = {
@@ -942,6 +1007,7 @@
 		7BF3FA9328901CB30072218E /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				7B68BC9528B3ADA700D2C406 /* GalleryPostList */,
 				7B92818128AFB1C3007A3004 /* Setting */,
 				7BE63AFA28AA420F0068BD67 /* GalleryList */,
 				7BF3FA9428901FA40072218E /* Account */,
@@ -1234,6 +1300,7 @@
 				7BD5BED028A2BCDC00330F96 /* NetworkRepository.swift in Sources */,
 				7B92818C28AFD063007A3004 /* SettingListCellViewModel.swift in Sources */,
 				7BD5BEC528A280AD00330F96 /* AccountForSignIn.swift in Sources */,
+				7B68BC8F28B3ACA000D2C406 /* GalleryPostListViewModel.swift in Sources */,
 				7BE63AC128A80FAF0068BD67 /* HomeSceneViewController.swift in Sources */,
 				7BE63ACC28A91DC40068BD67 /* DefaultMenuCoordinator.swift in Sources */,
 				7BE63ABD28A80F960068BD67 /* DefaultHomeSceneCoordinator.swift in Sources */,
@@ -1255,8 +1322,10 @@
 				7BE63ABA28A80F860068BD67 /* HomeSceneCoordinator.swift in Sources */,
 				7BF3FA8E288EF6AE0072218E /* SignChoiceViewController.swift in Sources */,
 				7BD5BECA28A2946A00330F96 /* DefaultUserRepository.swift in Sources */,
+				7B68BC8D28B3AC8F00D2C406 /* GalleryPostListViewController.swift in Sources */,
 				7BE63AFD28AA422C0068BD67 /* DefaultGalleryListUseCase.swift in Sources */,
 				7B92818428AFB1DA007A3004 /* SettingUseCase.swift in Sources */,
+				7B68BC9828B3ADBB00D2C406 /* GalleryPostListUseCase.swift in Sources */,
 				7BE63AA928A7CE7C0068BD67 /* SignUpViewController.swift in Sources */,
 				7BF3FA82288EEEE10072218E /* DefaultAppCoordinator.swift in Sources */,
 				7B68BC8428B108CF00D2C406 /* SignInfoUseCase.swift in Sources */,
@@ -1278,10 +1347,12 @@
 				7BF3FA78288EE34B0072218E /* Coordinator.swift in Sources */,
 				7BE63AE428A9F7A00068BD67 /* TokenItem.swift in Sources */,
 				7BE63AF528AA04AB0068BD67 /* GalleryListCoordinator.swift in Sources */,
+				7B68BC9A28B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift in Sources */,
 				7BE63AC728A91DA00068BD67 /* MenuViewController.swift in Sources */,
 				7BF3FA7E288EE3FB0072218E /* CoordinatorType.swift in Sources */,
 				7BF3FA42288EE1560072218E /* ViewController.swift in Sources */,
 				7BF3FA8C288EF60F0072218E /* DefaultSignChoiceCoordinator.swift in Sources */,
+				7B68BC9228B3ACC400D2C406 /* DefaultGalleryPostListCoordinator.swift in Sources */,
 				7B92818A28AFD057007A3004 /* SettingListCell.swift in Sources */,
 				7BE63A9A28A792150068BD67 /* TokenResultDTO.swift in Sources */,
 				7BE63AEF28AA04850068BD67 /* GalleryListViewController.swift in Sources */,
@@ -1298,6 +1369,7 @@
 				7BE63AB628A7F7160068BD67 /* AccountForSignUp.swift in Sources */,
 				7BE63AB028A7CEB90068BD67 /* DefaultSignUpCoordinator.swift in Sources */,
 				7BE63AF728AA41280068BD67 /* GalleryListTableViewCell.swift in Sources */,
+				7B68BC9428B3ACCB00D2C406 /* GalleryPostListCoordinator.swift in Sources */,
 				7BF3FA80288EEDD30072218E /* AppCoordinator.swift in Sources */,
 				7BE63B0328AA7A7F0068BD67 /* GalleryType.swift in Sources */,
 				7BE63AE028A9F6940068BD67 /* SignChoiceUseCase.swift in Sources */,
