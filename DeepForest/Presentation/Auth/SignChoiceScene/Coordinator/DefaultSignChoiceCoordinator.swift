@@ -25,7 +25,8 @@ final class DefaultSignChoiceCoordinator: SignChoiceCoordinator {
                                                                       signChoiceUseCase: DefaultSignChoiceUseCase(userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService())
                                                                                                                  )
         )
-        self.navigationController.viewControllers = [self.signChoiceViewController]
+        self.navigationController
+            .pushViewController(signChoiceViewController, animated: true)
     }
     
     func finish() {

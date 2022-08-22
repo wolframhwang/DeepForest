@@ -25,6 +25,7 @@ final class DefaultAppCoordinator: AppCoordinator {
     func showSignChoiceFlow() {
         let signChoiceCoordinator = DefaultSignChoiceCoordinator(self.navigationController)
         signChoiceCoordinator.finishDelegate = self
+        navigationController.setNavigationBarHidden(true, animated: true)
         signChoiceCoordinator.start()
         childCoordinators.append(signChoiceCoordinator)
     }
