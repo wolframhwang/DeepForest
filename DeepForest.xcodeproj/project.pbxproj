@@ -348,6 +348,22 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		7B68BC8728B3AC3B00D2C406 /* GalleryPostListScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GalleryPostListScene;
+			sourceTree = "<group>";
+		};
+		7B68BC8828B3AC4F00D2C406 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BC8728B3AC3B00D2C406 /* GalleryPostListScene */,
+				7BE63AE928AA04350068BD67 /* GalleryListScene */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
 		7B92817428AFB0A3007A3004 /* SettingScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -773,9 +789,9 @@
 		7BF3FA70288EE1EA0072218E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				7B68BC8828B3AC4F00D2C406 /* Gallery */,
 				7B68BC7628B0F63400D2C406 /* SignInfoScene */,
 				7B92817428AFB0A3007A3004 /* SettingScene */,
-				7BE63AE928AA04350068BD67 /* GalleryListScene */,
 				7BE63AC228A91D730068BD67 /* MenuScene */,
 				7BE63A9E28A7CD1C0068BD67 /* HomeScene */,
 				7BE63AE728AA03FF0068BD67 /* Auth */,
