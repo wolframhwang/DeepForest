@@ -15,6 +15,15 @@ class SignInViewController: UIViewController {
     
     private lazy var directionView = UIView()
     
+    private lazy var signInSceneMessage: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.font = UIFont.systemFont(ofSize: 30, weight: .heavy)
+        label.text = "Welcome\nSignInScene!"
+        
+        return label
+    }()
+    
     private lazy var backButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
@@ -26,6 +35,7 @@ class SignInViewController: UIViewController {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.placeholder = "아이디"
+        textField.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 25)
         
         return textField
     }()
@@ -35,6 +45,7 @@ class SignInViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.isSecureTextEntry = true
         textField.placeholder = "비밀번호"
+        textField.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 25)
         
         return textField
     }()
@@ -44,6 +55,8 @@ class SignInViewController: UIViewController {
         button.setTitle("Submit", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = .green
+        button.layer.cornerRadius = 10
+        //button.layer.borderWidth = 2
         
         return button
     }()
@@ -59,7 +72,7 @@ class SignInViewController: UIViewController {
         view.addSubview(directionView)
         directionView.addSubview(backButton)
         
-        [idTextField, pwTextField, submitButton].forEach { subview in
+        [signInSceneMessage ,idTextField, pwTextField, submitButton].forEach { subview in
             view.addSubview(subview)
         }
     }
@@ -73,23 +86,32 @@ class SignInViewController: UIViewController {
         }
         
         backButton.snp.makeConstraints {
-            $0.leading.top.equalToSuperview()
-            $0.width.height.equalTo(directionView.snp.height)
+            $0.width.height.equalTo(41)
+            $0.leading.equalToSuperview().offset(22)
+            $0.top.equalToSuperview().offset(18)
+        }
+        
+        signInSceneMessage.snp.makeConstraints { make in
+            make.top.equalTo(backButton.snp.bottom).offset(28)
+            make.leading.equalTo(22)
         }
         
         idTextField.snp.makeConstraints { make in
-            make.top.equalTo(directionView.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(15)
+            make.top.equalTo(signInSceneMessage.snp.bottom).offset(22)
+            make.height.equalTo(56)
+            make.leading.trailing.equalToSuperview().inset(22)
         }
         
         pwTextField.snp.makeConstraints { make in
             make.top.equalTo(idTextField.snp.bottom).offset(15)
-            make.leading.trailing.equalToSuperview().inset(15)
+            make.height.equalTo(56)
+            make.leading.trailing.equalToSuperview().inset(22)
         }
         
         submitButton.snp.makeConstraints { make in
-            make.top.equalTo(pwTextField.snp.bottom).offset(30)
-            make.leading.trailing.equalToSuperview().inset(15)
+            make.top.equalTo(pwTextField.snp.bottom).offset(62)
+            make.height.equalTo(56)
+            make.leading.trailing.equalToSuperview().inset(22)
         }
     }
     
