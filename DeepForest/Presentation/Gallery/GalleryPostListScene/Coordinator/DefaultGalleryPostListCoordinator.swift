@@ -23,4 +23,9 @@ final class DefaultGalleryPostListCoordinator: GalleryPostListCoordinator {
     func start() {
         
     }
+    
+    func pushGalleryPostList(GalleryInfo: Gallery) {
+        self.galleryPostListViewController.viewModel = GalleryPostListViewModel(coordinator: self, galleryPostListUseCase: DefaultGalleryPostListUseCase(networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService()), galleryInfo: GalleryInfo))
+        self.navigationController.pushViewController(galleryPostListViewController, animated: true)
+    }
 }

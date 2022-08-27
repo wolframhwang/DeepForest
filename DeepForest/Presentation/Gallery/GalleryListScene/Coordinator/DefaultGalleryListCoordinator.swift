@@ -30,6 +30,23 @@ final class DefaultGalleryListCoordinator: GalleryListCoordinator {
     }
     
     func pushGalleryPostList(GalleryInfo: Gallery) {
-        print("GALLERYPOST LISt")
+        let galleryPostListCoordinator = DefaultGalleryPostListCoordinator(self.navigationController)
+        galleryPostListCoordinator.finishDelegate = self
+        self.childCoordinators.append(galleryPostListCoordinator)
+        
+        galleryPostListCoordinator.pushGalleryPostList(GalleryInfo: GalleryInfo)
     }
+}
+
+extension DefaultGalleryListCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        self.childCoordinators.removeAll()
+        self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
+    
+    func popChildScene(childCoordinator: Coordinator) {
+        self.finishDelegate?.popChildScene(childCoordinator: self)
+    }
+    
+    
 }

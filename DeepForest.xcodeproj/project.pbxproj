@@ -24,6 +24,7 @@
 		7B68BC9428B3ACCB00D2C406 /* GalleryPostListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC9328B3ACCB00D2C406 /* GalleryPostListCoordinator.swift */; };
 		7B68BC9828B3ADBB00D2C406 /* GalleryPostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC9728B3ADBB00D2C406 /* GalleryPostListUseCase.swift */; };
 		7B68BC9A28B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC9928B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift */; };
+		7B68BC9C28B3B18C00D2C406 /* GalleryPostListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC9B28B3B18C00D2C406 /* GalleryPostListTableViewCell.swift */; };
 		7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817828AFB0CD007A3004 /* SettingViewController.swift */; };
 		7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */; };
 		7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */; };
@@ -144,6 +145,7 @@
 		7B68BC9328B3ACCB00D2C406 /* GalleryPostListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostListCoordinator.swift; sourceTree = "<group>"; };
 		7B68BC9728B3ADBB00D2C406 /* GalleryPostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostListUseCase.swift; sourceTree = "<group>"; };
 		7B68BC9928B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGalleryPostListUseCase.swift; sourceTree = "<group>"; };
+		7B68BC9B28B3B18C00D2C406 /* GalleryPostListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostListTableViewCell.swift; sourceTree = "<group>"; };
 		7B92817828AFB0CD007A3004 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				7B68BC8C28B3AC8F00D2C406 /* GalleryPostListViewController.swift */,
+				7B68BC9B28B3B18C00D2C406 /* GalleryPostListTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1338,6 +1341,7 @@
 				7BE63B0528AA94930068BD67 /* UseCaseError.swift in Sources */,
 				7BE63AB828A7FC190068BD67 /* SignUpResponseDTO.swift in Sources */,
 				7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */,
+				7B68BC9C28B3B18C00D2C406 /* GalleryPostListTableViewCell.swift in Sources */,
 				7B1CCCE72892C3B4004389A8 /* SignInCoordinator.swift in Sources */,
 				7B68BC7E28B0F67400D2C406 /* SignInfoViewModel.swift in Sources */,
 				7B68BC8228B0F68900D2C406 /* DefaultSignInfoCoordinator.swift in Sources */,
