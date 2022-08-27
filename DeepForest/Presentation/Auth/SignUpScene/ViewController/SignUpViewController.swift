@@ -150,7 +150,7 @@ class SignUpViewController: UIViewController {
         
         signUpButton.setTitle("가입하기", for: .normal)
         //signUpButton.layer.opacity = 0
-        signUpButton.backgroundColor = UIColor.systemBlue
+        signUpButton.backgroundColor = UIColor.systemIndigo
         signUpButton.titleLabel?.textColor = .white
         signUpButton.layer.cornerRadius = 8
         

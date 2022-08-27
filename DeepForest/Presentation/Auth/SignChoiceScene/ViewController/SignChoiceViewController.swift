@@ -46,7 +46,7 @@ class SignChoiceViewController: UIViewController {
     private lazy var signUpButton: UIButton = {
         let signUpButton = UIButton()
         signUpButton.setTitleColor(UIColor.white, for: .normal)
-        signUpButton.backgroundColor = .green
+        signUpButton.backgroundColor = .systemIndigo
         signUpButton.setTitle("회원가입", for: .normal)
         signUpButton.layer.cornerRadius = 5
         
@@ -55,8 +55,7 @@ class SignChoiceViewController: UIViewController {
     
     private lazy var noSignJoinButton: UIButton = {
         let noSignJoinButton = UIButton()
-        noSignJoinButton.setTitleColor(UIColor.green, for: .normal)
-        noSignJoinButton.backgroundColor = .white
+        noSignJoinButton.setTitleColor(UIColor.lightGray, for: .normal)
         noSignJoinButton.setTitle("비회원 로그인", for: .normal)
         noSignJoinButton.layer.cornerRadius = 5
         
@@ -90,19 +89,19 @@ extension SignChoiceViewController {
         noSignJoinButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-80)
             make.leading.trailing.equalToSuperview().inset(22)
-            make.height.equalTo(34)
+            make.height.equalTo(40)
         }
         
         signUpButton.snp.makeConstraints { make in
             make.bottom.equalTo(noSignJoinButton.snp.top).offset(-30)
             make.leading.trailing.equalToSuperview().inset(22)
-            make.height.equalTo(34)
+            make.height.equalTo(40)
         }
         
         signInButton.snp.makeConstraints { make in
             make.bottom.equalTo(signUpButton.snp.top).offset(-30)
             make.leading.trailing.equalToSuperview().inset(22)
-            make.height.equalTo(34)
+            make.height.equalTo(40)
         }
         
         sceneLabel.snp.makeConstraints { make in

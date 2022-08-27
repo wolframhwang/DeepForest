@@ -53,8 +53,8 @@ class SignInViewController: UIViewController {
     private lazy var submitButton: UIButton = {
         let button = UIButton()
         button.setTitle("Submit", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = .green
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.backgroundColor = .gray
         button.layer.cornerRadius = 10
         //button.layer.borderWidth = 2
         
