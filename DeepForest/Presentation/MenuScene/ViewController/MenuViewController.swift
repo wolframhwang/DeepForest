@@ -42,7 +42,7 @@ extension MenuViewController {
     }
     
     func setAttribute() {
-        
+        view.backgroundColor = .systemBackground
     }
     
     func bindViewModel() {
@@ -60,6 +60,11 @@ extension MenuViewController {
         
         output?.selectedMenu.drive()
             .disposed(by: disposeBag)
+        
+        output?.title.drive(onNext: { [weak self] title in
+            self?.title = title
+        })
+        .disposed(by: disposeBag)
         
         tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
             self?.tableView.deselectRow(at: indexPath, animated: true)

@@ -22,6 +22,7 @@ final class MenuViewModel: ViewModelType {
         //let crateMenu: Driver<Void>
         let menus: Driver<[MenuTableCellViewModel]>
         let selectedMenu: Driver<MenuTableCellViewModel>
+        let title: Driver<String>
     }
     
     init(coordinator: MenuCoordinator?) {
@@ -53,7 +54,10 @@ final class MenuViewModel: ViewModelType {
                 self?.coordinator?.pushGalleryListViewController(menuTableCellViewModel: viewModel)
             })
         
-        return Output(menus: menus, selectedMenu: selectedMenu)
+        let title = Observable.just("메뉴")
+        return Output(menus: menus,
+                      selectedMenu: selectedMenu,
+                      title: title.asDriver(onErrorJustReturn: ""))
     }
     
 }
