@@ -41,7 +41,7 @@ extension GalleryListViewController {
         }
     }
     func setAttribute() {
-        
+        view.backgroundColor = .systemBackground
     }
     func bindViewModel() {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))

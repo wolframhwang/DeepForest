@@ -70,6 +70,6 @@ extension SettingViewController {
     }
     
     func setAttribute() {
-        
+        view.backgroundColor = .systemBackground
     }
 }

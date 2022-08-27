@@ -15,7 +15,7 @@ final class MenuViewController: UIViewController {
     var viewModel: MenuViewModel?
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        let tableView = UITableView()//frame: .zero, style: .insetGrouped)
         tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: MenuTableViewCell.reuseID)
         
         return tableView
