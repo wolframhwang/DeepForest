@@ -10,4 +10,5 @@ import RxSwift
 
 protocol GalleryListUseCase {
     func fetchGalleryList() -> Observable<[Gallery]>
+    var title: Observable<String> { get }
 }

@@ -14,12 +14,13 @@ final class DefaultGalleryListUseCase: GalleryListUseCase {
     
     private let menuItem: MenuTableCellViewModel
     
-    //var title: GalleryType
+    var title: Observable<String>
     
     init(networkRepository: NetworkRepository,
          menuItem: MenuTableCellViewModel) {
         self.networkRepository = networkRepository
         self.menuItem = menuItem
+        self.title = Observable.just(menuItem.title)
     }
     
     func fetchGalleryList() -> Observable<[Gallery]> {

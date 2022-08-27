@@ -21,6 +21,7 @@ final class GalleryListViewModel: ViewModelType {
     struct Output {
         let galleryLists: Driver<[GalleryListCellViewModel]>
         let selectedGallery: Driver<GalleryListCellViewModel>
+        let title: Driver<String>
     }
     
     init(coordinator: GalleryListCoordinator?,
@@ -44,7 +45,10 @@ final class GalleryListViewModel: ViewModelType {
                 print("SELECTED", viewModel)
             })
         
+        let title = galleryListUseCase.title.asDriver(onErrorJustReturn: "")
+        
         return Output(galleryLists: galleryList,
-                      selectedGallery: selectedGallery)
+                      selectedGallery: selectedGallery,
+                      title: title)
     }
 }
