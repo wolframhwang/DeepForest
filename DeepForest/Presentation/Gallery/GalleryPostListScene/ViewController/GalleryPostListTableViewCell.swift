@@ -9,7 +9,15 @@ import UIKit
 import SnapKit
 
 class GalleryPostListTableViewCell: UITableViewCell {
-    private lazy var uiView = UIView()
+    private lazy var mainStackView = UIStackView()
+    private lazy var uiView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 8
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        
+        return view
+    }()
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -78,18 +86,18 @@ class GalleryPostListTableViewCell: UITableViewCell {
         let attributedString = NSMutableAttributedString(string: countLabelText)
         attributedString.addAttribute(.font, value: font, range: (countLabelText as NSString).range(of: "추천"))
         attributedString.addAttribute(.foregroundColor,
-                                      value: UIColor.tertiarySystemBackground,
+                                      value: UIColor.gray,
                                       range: (countLabelText as NSString).range(of: "추천"))
         attributedString.addAttribute(.font, value: font, range: (countLabelText as NSString).range(of: "조회"))
         attributedString.addAttribute(.foregroundColor,
-                                      value: UIColor.tertiarySystemBackground,
+                                      value: UIColor.gray,
                                       range: (countLabelText as NSString).range(of: "조회"))
         
         countLabel.attributedText = attributedString
     }
     
     func bind(_ galleryPostListCellViewModel: GalleryPostListCellViewModel) {
-        titleLabel.text = galleryPostListCellViewModel.title
+        titleLabel.text = galleryPostListCellViewModel.title + " [\(galleryPostListCellViewModel.commentCount)]"
         nickname.text = galleryPostListCellViewModel.writer
         countLabel.text = "| 추천 \(galleryPostListCellViewModel.likeCount) | 조회 \(galleryPostListCellViewModel.viewCount) |"
         countLabelAttribute()
@@ -101,7 +109,9 @@ class GalleryPostListTableViewCell: UITableViewCell {
 
     private func configureSubviews() {
         //addSubview(uiView)
-        self.addSubview(stackView)
+        self.addSubview(mainStackView)
+        mainStackView.addArrangedSubview(uiView)
+        uiView.addSubview(stackView)
         
         [titleLabel, nickname, layerStackView].forEach { subview in
             stackView.addArrangedSubview(subview)
@@ -113,26 +123,15 @@ class GalleryPostListTableViewCell: UITableViewCell {
     }
     
     private func configureUI() {
-        //stackView.snp.contentHuggingVerticalPriority = 250
-        //stackView.snp.contentHuggingHorizontalPriority = 250
+        mainStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(5)
+        }
+        
         stackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
+            make.trailing.equalToSuperview().inset(15)
+            make.leading.equalToSuperview().inset(15)
             make.top.bottom.equalToSuperview().inset(15)
         }
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(15)
-        }
-        
-        nickname.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(15)
-        }
-        
-        countLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(5)
-        }
-        
-        createAt.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-10)
-        }
+
     }
 }

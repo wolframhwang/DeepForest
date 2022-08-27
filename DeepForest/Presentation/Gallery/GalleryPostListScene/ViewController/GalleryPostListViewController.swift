@@ -15,9 +15,23 @@ class GalleryPostListViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.separatorStyle = .none
         tableView.register(GalleryPostListTableViewCell.self, forCellReuseIdentifier: GalleryPostListTableViewCell.reuseID)
         
+        
         return tableView
+    }()
+    
+    private lazy var writePostButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(" ✏️ 글 쓰기 ", for: .normal)
+        button.setTitleColor(UIColor.tintColor, for: .normal)
+        button.backgroundColor = .systemBackground
+        button.layer.cornerRadius = 8
+        button.layer.borderWidth = 0.6
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        
+        return button
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +59,10 @@ extension GalleryPostListViewController {
         
         output?.selectedPost.drive()
             .disposed(by: disposeBag)
+        output?.title.drive(onNext: { [weak self] title in
+            self?.title = title
+        })
+        .disposed(by: disposeBag)
         
         tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
             self?.tableView.deselectRow(at: indexPath, animated: true)
@@ -53,12 +71,19 @@ extension GalleryPostListViewController {
     }
     
     private func configureSubviews() {
-        view.addSubview(tableView)
+        [tableView, writePostButton].forEach { subview in
+            view.addSubview(subview)
+        }
     }
     
     private func configureUI() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        writePostButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-64)
         }
     }
     
