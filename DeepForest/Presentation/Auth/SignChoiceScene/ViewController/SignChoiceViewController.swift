@@ -14,13 +14,23 @@ class SignChoiceViewController: UIViewController {
     private let disposeBag = DisposeBag()
     var viewModel: SignChoiceViewModel?
     
-    private lazy var buttonStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.spacing = 20
-        stackView.axis = .vertical
-        stackView.alignment = .center
+    private lazy var sceneLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 50, weight: .heavy)
+        label.textAlignment = .right
+        label.text = "Deep Forest"
         
-        return stackView
+        return label
+    }()
+    
+    private lazy var commyLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.textAlignment = .right
+        label.text = "Community App"
+        
+        return label
     }()
     
     private lazy var signInButton: UIButton = {
@@ -68,32 +78,43 @@ class SignChoiceViewController: UIViewController {
 
 extension SignChoiceViewController {
     func configureSubViews() {
-        view.addSubview(buttonStackView)
-        buttonStackView.addArrangedSubview(signInButton)
-        buttonStackView.addArrangedSubview(signUpButton)
-        buttonStackView.addArrangedSubview(noSignJoinButton)
+        [sceneLabel, commyLabel, signInButton, signUpButton, noSignJoinButton]
+            .forEach { views in
+                view.addSubview(views)
+            }
     }
     
     func configureUI() {
         view.backgroundColor = .systemBackground
         
-        buttonStackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
+        noSignJoinButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-80)
-            
-        }
-        
-        signInButton.snp.makeConstraints { make in
-            make.trailing.leading.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(22)
+            make.height.equalTo(34)
         }
         
         signUpButton.snp.makeConstraints { make in
-            make.trailing.leading.equalToSuperview()
+            make.bottom.equalTo(noSignJoinButton.snp.top).offset(-30)
+            make.leading.trailing.equalToSuperview().inset(22)
+            make.height.equalTo(34)
         }
         
-        noSignJoinButton.snp.makeConstraints { make in
-            make.trailing.leading.equalToSuperview()
+        signInButton.snp.makeConstraints { make in
+            make.bottom.equalTo(signUpButton.snp.top).offset(-30)
+            make.leading.trailing.equalToSuperview().inset(22)
+            make.height.equalTo(34)
         }
+        
+        sceneLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-22)
+            make.centerY.equalToSuperview().offset(-120)
+        }
+        
+        commyLabel.snp.makeConstraints { make in
+            make.top.equalTo(sceneLabel.snp.bottom)
+            make.trailing.equalToSuperview().inset(22)
+        }
+        
     }
     
     func bindViewModel() {

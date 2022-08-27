@@ -50,7 +50,7 @@ class SignUpViewController: UIViewController {
         let idConstraint = UILabel()
         idConstraint.text = "5자 ~ 20자 영문, 숫자로 입력해주세요."
         idConstraint.textColor = UIColor.systemGray
-        idConstraint.font = UIFont.systemFont(ofSize: 10)
+        idConstraint.font = UIFont.systemFont(ofSize: 15)
         
         return idConstraint
     }()
@@ -76,7 +76,7 @@ class SignUpViewController: UIViewController {
         let nickNameConstraint = UILabel()
         nickNameConstraint.text = "20자 내외로 닉네임 입력해주세요! :)"
         nickNameConstraint.textColor = UIColor.systemGray
-        nickNameConstraint.font = UIFont.systemFont(ofSize: 10)
+        nickNameConstraint.font = UIFont.systemFont(ofSize: 15)
         
         return nickNameConstraint
     }()
@@ -114,7 +114,7 @@ class SignUpViewController: UIViewController {
         let passwordConstraint = UILabel()
         passwordConstraint.text = "영문, 숫자 8~20자 내외로 해주세요"
         passwordConstraint.textColor = UIColor.systemGray
-        passwordConstraint.font = UIFont.systemFont(ofSize: 10)
+        passwordConstraint.font = UIFont.systemFont(ofSize: 15)
         
         return passwordConstraint
     }()
@@ -140,7 +140,7 @@ class SignUpViewController: UIViewController {
         let emailConstraint = UILabel()
         emailConstraint.text = "이메일을 넣어주세요!"
         emailConstraint.textColor = UIColor.systemGray
-        emailConstraint.font = UIFont.systemFont(ofSize: 10)
+        emailConstraint.font = UIFont.systemFont(ofSize: 15)
         
         return emailConstraint
     }()
@@ -204,8 +204,7 @@ extension SignUpViewController {
     }
     
     private func configureSubviews() {
-        view.addSubview(directionView)
-        directionView.addSubview(backButton)
+        view.addSubview(backButton)
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -222,19 +221,15 @@ extension SignUpViewController {
     private func configureUI() {
         view.backgroundColor = .systemBackground
         
-        directionView.snp.makeConstraints {
-            $0.leading.top.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(50)
-        }
-        
         backButton.snp.makeConstraints {
-            $0.leading.top.equalToSuperview()
-            $0.width.height.equalTo(directionView.snp.height)
+            $0.leading.equalToSuperview().offset(22)
+            $0.top.equalToSuperview().offset(56)
+            $0.width.height.equalTo(45)
         }
         
         scrollView.snp.makeConstraints {
             $0.left.right.bottom.equalTo(0)
-            $0.top.equalTo(directionView.snp.bottom)
+            $0.top.equalTo(backButton.snp.bottom)
         }
         
         contentView.snp.makeConstraints {
@@ -245,72 +240,78 @@ extension SignUpViewController {
 
         idLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(40)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.leading.trailing.equalToSuperview().inset(22)
         }
         
         idTextField.snp.makeConstraints {
-            $0.top.equalTo(idLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(idLabel.snp.bottom).offset(15)
+            $0.leading.trailing.equalToSuperview().inset(22)
+            $0.height.equalTo(56)
         }
         
         idConstraint.snp.makeConstraints {
-            $0.top.equalTo(idTextField.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(idTextField.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(22)
         }
         
         nickNameLabel.snp.makeConstraints {
-            $0.top.equalTo(idConstraint.snp.bottom).offset(40)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(idConstraint.snp.bottom).offset(50)
+            $0.leading.trailing.equalToSuperview().inset(22)
         }
         
         nickNameTextField.snp.makeConstraints {
-            $0.top.equalTo(nickNameLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(nickNameLabel.snp.bottom).offset(15)
+            $0.leading.trailing.equalToSuperview().inset(22)
+            $0.height.equalTo(56)
         }
         
         nickNameConstraint.snp.makeConstraints {
-            $0.top.equalTo(nickNameTextField.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(nickNameTextField.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(22)
         }
         
         passwordLabel.snp.makeConstraints {
-            $0.top.equalTo(nickNameConstraint.snp.bottom).offset(30)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(nickNameConstraint.snp.bottom).offset(50)
+            $0.leading.trailing.equalToSuperview().inset(22)
         }
         
         passwordTextField.snp.makeConstraints {
-            $0.top.equalTo(passwordLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(passwordLabel.snp.bottom).offset(15)
+            $0.leading.trailing.equalToSuperview().inset(22)
+            $0.height.equalTo(56)
         }
         
         rePasswordTextField.snp.makeConstraints {
-            $0.top.equalTo(passwordTextField.snp.bottom).offset(5)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(22)
+            $0.height.equalTo(56)
         }
         
         passwordConstraint.snp.makeConstraints {
-            $0.top.equalTo(rePasswordTextField.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(rePasswordTextField.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(22)
         }
         
         emailLabel.snp.makeConstraints {
-            $0.top.equalTo(passwordConstraint.snp.bottom).offset(20)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(passwordConstraint.snp.bottom).offset(40)
+            $0.leading.trailing.equalToSuperview().inset(22)
         }
         
         emailTextField.snp.makeConstraints {
-            $0.top.equalTo(emailLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(emailLabel.snp.bottom).offset(15)
+            $0.leading.trailing.equalToSuperview().inset(22)
+            $0.height.equalTo(56)
         }
         
         emailConstraint.snp.makeConstraints {
-            $0.top.equalTo(emailTextField.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(emailTextField.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(22)
         }
         
         submitButton.snp.makeConstraints {
-            $0.top.equalTo(emailConstraint.snp.bottom).offset(15)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(emailConstraint.snp.bottom).offset(30)
+            $0.leading.trailing.equalToSuperview().inset(22)
+            $0.height.equalTo(56)
         }
         
     }

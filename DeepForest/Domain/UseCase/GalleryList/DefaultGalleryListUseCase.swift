@@ -7,11 +7,14 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 final class DefaultGalleryListUseCase: GalleryListUseCase {
     private let networkRepository: NetworkRepository
     
     private let menuItem: MenuTableCellViewModel
+    
+    //var title: GalleryType
     
     init(networkRepository: NetworkRepository,
          menuItem: MenuTableCellViewModel) {

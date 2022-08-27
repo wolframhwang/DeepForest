@@ -69,8 +69,7 @@ class SignInViewController: UIViewController {
     }
     
     private func configureSubviews() {
-        view.addSubview(directionView)
-        directionView.addSubview(backButton)
+        view.addSubview(backButton)
         
         [signInSceneMessage ,idTextField, pwTextField, submitButton].forEach { subview in
             view.addSubview(subview)
@@ -80,15 +79,10 @@ class SignInViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .systemBackground
         
-        directionView.snp.makeConstraints {
-            $0.leading.top.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(50)
-        }
-        
         backButton.snp.makeConstraints {
             $0.width.height.equalTo(41)
             $0.leading.equalToSuperview().offset(22)
-            $0.top.equalToSuperview().offset(18)
+            $0.top.equalToSuperview().offset(56)
         }
         
         signInSceneMessage.snp.makeConstraints { make in
