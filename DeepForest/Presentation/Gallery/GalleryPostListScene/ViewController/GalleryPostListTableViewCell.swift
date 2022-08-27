@@ -15,6 +15,10 @@ class GalleryPostListTableViewCell: UITableViewCell {
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 0.5
         view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.shadowOffset = CGSize(width: 5, height: 5)
+        view.layer.shadowOpacity = 0.3
+        view.layer.cornerRadius = 8
+        view.backgroundColor = .systemBackground
         
         return view
     }()
