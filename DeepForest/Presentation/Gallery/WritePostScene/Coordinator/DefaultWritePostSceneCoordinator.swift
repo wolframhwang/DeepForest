@@ -16,7 +16,7 @@ final class DefaultWritePostSceneCoordinator: WritePostSceneCoordinator {
     var type: CoordinatorType = .compose
     
     init(_ navigationController: UINavigationController) {
-        self.navigationController
+        self.navigationController = navigationController
         self.writePostSceneViewController = WritePostSceneViewController()
     }
     
