@@ -30,6 +30,12 @@
 		7B68BCB728B9E51F00D2C406 /* GalleryPostItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCB628B9E51F00D2C406 /* GalleryPostItemDTO.swift */; };
 		7B68BCB928B9E92100D2C406 /* GalleryPostListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCB828B9E92100D2C406 /* GalleryPostListCellViewModel.swift */; };
 		7B68BCBB28B9E94500D2C406 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCBA28B9E94500D2C406 /* Post.swift */; };
+		7B68BCC228BA721700D2C406 /* WritePostSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCC128BA721700D2C406 /* WritePostSceneViewController.swift */; };
+		7B68BCC428BA722400D2C406 /* WritePostSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCC328BA722400D2C406 /* WritePostSceneViewModel.swift */; };
+		7B68BCC628BA722E00D2C406 /* WritePostSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCC528BA722E00D2C406 /* WritePostSceneCoordinator.swift */; };
+		7B68BCC828BA723C00D2C406 /* DefaultWritePostSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCC728BA723C00D2C406 /* DefaultWritePostSceneCoordinator.swift */; };
+		7B68BCCC28BA72F400D2C406 /* WritePostSceneUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCCB28BA72F400D2C406 /* WritePostSceneUseCase.swift */; };
+		7B68BCCE28BA72FE00D2C406 /* DefaultWritePostSceneUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCCD28BA72FE00D2C406 /* DefaultWritePostSceneUseCase.swift */; };
 		7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817828AFB0CD007A3004 /* SettingViewController.swift */; };
 		7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */; };
 		7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */; };
@@ -156,6 +162,12 @@
 		7B68BCB628B9E51F00D2C406 /* GalleryPostItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostItemDTO.swift; sourceTree = "<group>"; };
 		7B68BCB828B9E92100D2C406 /* GalleryPostListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostListCellViewModel.swift; sourceTree = "<group>"; };
 		7B68BCBA28B9E94500D2C406 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		7B68BCC128BA721700D2C406 /* WritePostSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostSceneViewController.swift; sourceTree = "<group>"; };
+		7B68BCC328BA722400D2C406 /* WritePostSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostSceneViewModel.swift; sourceTree = "<group>"; };
+		7B68BCC528BA722E00D2C406 /* WritePostSceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostSceneCoordinator.swift; sourceTree = "<group>"; };
+		7B68BCC728BA723C00D2C406 /* DefaultWritePostSceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWritePostSceneCoordinator.swift; sourceTree = "<group>"; };
+		7B68BCCB28BA72F400D2C406 /* WritePostSceneUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostSceneUseCase.swift; sourceTree = "<group>"; };
+		7B68BCCD28BA72FE00D2C406 /* DefaultWritePostSceneUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWritePostSceneUseCase.swift; sourceTree = "<group>"; };
 		7B92817828AFB0CD007A3004 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
@@ -385,6 +397,7 @@
 		7B68BC8828B3AC4F00D2C406 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				7B68BCBC28BA71E300D2C406 /* WritePostScene */,
 				7B68BC8728B3AC3B00D2C406 /* GalleryPostListScene */,
 				7BE63AE928AA04350068BD67 /* GalleryListScene */,
 			);
@@ -439,6 +452,66 @@
 			isa = PBXGroup;
 			children = (
 				7B68BC9728B3ADBB00D2C406 /* GalleryPostListUseCase.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7B68BCBC28BA71E300D2C406 /* WritePostScene */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BCBF28BA71FA00D2C406 /* Coordinator */,
+				7B68BCBE28BA71F600D2C406 /* ViewModel */,
+				7B68BCBD28BA71F000D2C406 /* ViewController */,
+			);
+			path = WritePostScene;
+			sourceTree = "<group>";
+		};
+		7B68BCBD28BA71F000D2C406 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BCC128BA721700D2C406 /* WritePostSceneViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7B68BCBE28BA71F600D2C406 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BCC328BA722400D2C406 /* WritePostSceneViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B68BCBF28BA71FA00D2C406 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BCC028BA720000D2C406 /* Protocol */,
+				7B68BCC728BA723C00D2C406 /* DefaultWritePostSceneCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7B68BCC028BA720000D2C406 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BCC528BA722E00D2C406 /* WritePostSceneCoordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7B68BCC928BA72E200D2C406 /* WriePost */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BCCA28BA72EA00D2C406 /* Protocol */,
+				7B68BCCD28BA72FE00D2C406 /* DefaultWritePostSceneUseCase.swift */,
+			);
+			path = WriePost;
+			sourceTree = "<group>";
+		};
+		7B68BCCA28BA72EA00D2C406 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7B68BCCB28BA72F400D2C406 /* WritePostSceneUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1025,6 +1098,7 @@
 		7BF3FA9328901CB30072218E /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				7B68BCC928BA72E200D2C406 /* WriePost */,
 				7B68BC9528B3ADA700D2C406 /* GalleryPostList */,
 				7B92818128AFB1C3007A3004 /* Setting */,
 				7BE63AFA28AA420F0068BD67 /* GalleryList */,
@@ -1306,11 +1380,15 @@
 				7BF3FA8A288EF5B30072218E /* SignChoiceCoordinator.swift in Sources */,
 				7B92818028AFB0F0007A3004 /* DefaultSettingCoordinator.swift in Sources */,
 				7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */,
+				7B68BCC428BA722400D2C406 /* WritePostSceneViewModel.swift in Sources */,
 				7B1CCCE92892C3C5004389A8 /* DefaultSignInCoordinator.swift in Sources */,
 				7BE63AF128AA048E0068BD67 /* GalleryListViewModel.swift in Sources */,
+				7B68BCC628BA722E00D2C406 /* WritePostSceneCoordinator.swift in Sources */,
 				7BE63AB228A7CEDA0068BD67 /* SignUpUseCase.swift in Sources */,
 				7BE63ADA28A9525F0068BD67 /* Reusable.swift in Sources */,
 				7BE63A9428A74E740068BD67 /* DefaultURLSessionNetworkService.swift in Sources */,
+				7B68BCCE28BA72FE00D2C406 /* DefaultWritePostSceneUseCase.swift in Sources */,
+				7B68BCCC28BA72F400D2C406 /* WritePostSceneUseCase.swift in Sources */,
 				7BE63AD528A94C130068BD67 /* MenuTableCellViewModel.swift in Sources */,
 				7B68BCB328B9E4CE00D2C406 /* GalleryPostItem.swift in Sources */,
 				7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */,
@@ -1355,6 +1433,7 @@
 				7BE63ADE28A9EF5A0068BD67 /* UserDefaultsKey.swift in Sources */,
 				7BE63AD328A94C090068BD67 /* MenuTableViewCell.swift in Sources */,
 				7BE63AAB28A7CE8A0068BD67 /* SignUpViewModel.swift in Sources */,
+				7B68BCC228BA721700D2C406 /* WritePostSceneViewController.swift in Sources */,
 				7BE63AD728A94C8F0068BD67 /* MenuItem.swift in Sources */,
 				7B68BCBB28B9E94500D2C406 /* Post.swift in Sources */,
 				7BE63B0528AA94930068BD67 /* UseCaseError.swift in Sources */,
@@ -1395,6 +1474,7 @@
 				7BE63AF728AA41280068BD67 /* GalleryListTableViewCell.swift in Sources */,
 				7B68BC9428B3ACCB00D2C406 /* GalleryPostListCoordinator.swift in Sources */,
 				7BF3FA80288EEDD30072218E /* AppCoordinator.swift in Sources */,
+				7B68BCC828BA723C00D2C406 /* DefaultWritePostSceneCoordinator.swift in Sources */,
 				7BE63B0328AA7A7F0068BD67 /* GalleryType.swift in Sources */,
 				7BE63AE028A9F6940068BD67 /* SignChoiceUseCase.swift in Sources */,
 			);
