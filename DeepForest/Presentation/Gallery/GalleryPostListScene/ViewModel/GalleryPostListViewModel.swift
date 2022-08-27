@@ -47,7 +47,6 @@ final class GalleryPostListViewModel: ViewModelType {
         }
         .do(onNext: {[weak self] post in
             post
-            print("TEST")
         })
         
         return Output(postLists: postLists,

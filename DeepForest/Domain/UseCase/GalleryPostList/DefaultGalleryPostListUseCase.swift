@@ -25,7 +25,7 @@ final class DefaultGalleryPostListUseCase: GalleryPostListUseCase {
     
     func fetchGalleryPostList() -> Observable<[GalleryPostItem]> {
         let galleryId = galleryInfo.galleryId
-        print(galleryId)
+
         return networkRepository.fetch(urlSuffix: "/api/v1/posts", queryItems: ["galleryId": "\(galleryId)"]).map { [weak self] result in
             switch result {
             case .success(let data):
@@ -53,7 +53,6 @@ final class DefaultGalleryPostListUseCase: GalleryPostListUseCase {
                         return []
                     }
                 } catch {
-                    print("DECODE ERROR")
                     return []
                 }
             case .failure(let error):

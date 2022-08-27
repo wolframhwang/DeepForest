@@ -58,39 +58,30 @@ final class DefaultURLSessionNetworkService: URLSessionNetworkService {
         method: String
     ) -> Observable<Result<Data, URLSessionNetworkServiceError>> {
         guard let url = URL(string: URLGenerate(urlString: urlString, queryItems: queryItems)) else {
-            print("E1")
             return Observable.error(URLSessionNetworkServiceError.invalidURLError)
         }
-        print(url)
-//    http://52.78.99.238:8080/api/v1/posts?galleryId=10
-//    http://52.78.99.238:8080/api/v1/posts?galleryId=10
 
         return Observable<Result<Data, URLSessionNetworkServiceError>>.create { emitter in
             let request = self.createHTTPRequest(of: url,
                                                  with: headers,
                                                  httpMethod: method)
-            print(request)
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard let httpResponse = response as? HTTPURLResponse else {
-                    print("E2")
                     emitter.onError(URLSessionNetworkServiceError.unknownError)
                     return
                 }
                 
                 if error != nil {
-                    print("E3")
                     emitter.onError(self.configureHTTPError(errorCode: httpResponse.statusCode))
                     return
                 }
                 
                 guard 200..<300 ~= httpResponse.statusCode else {
-                    print("E4")
                     emitter.onError(self.configureHTTPError(errorCode: httpResponse.statusCode))
                     return
                 }
                 
                 guard let data = data else {
-                    print("E5")
                     emitter.onNext(.failure(.emptyDataError))
                     return
                 }
