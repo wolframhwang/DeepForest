@@ -27,7 +27,7 @@ final class DefaultGalleryListUseCase: GalleryListUseCase {
         guard let type = GalleryType.init(rawValue: menuItem.title) else {
             return Observable.error(UseCaseError.optionalBindingFail)
         }
-        
+
         return networkRepository.fetch(urlSuffix: "/api/v1/galleries", queryItems: ["type": type.galleryType]).map { [weak self] result in
             switch result {
             case .success(let data):

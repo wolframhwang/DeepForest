@@ -25,6 +25,11 @@
 		7B68BC9828B3ADBB00D2C406 /* GalleryPostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC9728B3ADBB00D2C406 /* GalleryPostListUseCase.swift */; };
 		7B68BC9A28B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC9928B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift */; };
 		7B68BC9C28B3B18C00D2C406 /* GalleryPostListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC9B28B3B18C00D2C406 /* GalleryPostListTableViewCell.swift */; };
+		7B68BCB328B9E4CE00D2C406 /* GalleryPostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCB228B9E4CE00D2C406 /* GalleryPostItem.swift */; };
+		7B68BCB528B9E4E100D2C406 /* GalleryPostItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCB428B9E4E100D2C406 /* GalleryPostItemsDTO.swift */; };
+		7B68BCB728B9E51F00D2C406 /* GalleryPostItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCB628B9E51F00D2C406 /* GalleryPostItemDTO.swift */; };
+		7B68BCB928B9E92100D2C406 /* GalleryPostListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCB828B9E92100D2C406 /* GalleryPostListCellViewModel.swift */; };
+		7B68BCBB28B9E94500D2C406 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCBA28B9E94500D2C406 /* Post.swift */; };
 		7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817828AFB0CD007A3004 /* SettingViewController.swift */; };
 		7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */; };
 		7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */; };
@@ -146,6 +151,11 @@
 		7B68BC9728B3ADBB00D2C406 /* GalleryPostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostListUseCase.swift; sourceTree = "<group>"; };
 		7B68BC9928B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGalleryPostListUseCase.swift; sourceTree = "<group>"; };
 		7B68BC9B28B3B18C00D2C406 /* GalleryPostListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostListTableViewCell.swift; sourceTree = "<group>"; };
+		7B68BCB228B9E4CE00D2C406 /* GalleryPostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostItem.swift; sourceTree = "<group>"; };
+		7B68BCB428B9E4E100D2C406 /* GalleryPostItemsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostItemsDTO.swift; sourceTree = "<group>"; };
+		7B68BCB628B9E51F00D2C406 /* GalleryPostItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostItemDTO.swift; sourceTree = "<group>"; };
+		7B68BCB828B9E92100D2C406 /* GalleryPostListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPostListCellViewModel.swift; sourceTree = "<group>"; };
+		7B68BCBA28B9E94500D2C406 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		7B92817828AFB0CD007A3004 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
@@ -394,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				7B68BC8E28B3ACA000D2C406 /* GalleryPostListViewModel.swift */,
+				7B68BCB828B9E92100D2C406 /* GalleryPostListCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -547,6 +558,8 @@
 				7BE63A9928A792150068BD67 /* TokenResultDTO.swift */,
 				7BE63AB728A7FC190068BD67 /* SignUpResponseDTO.swift */,
 				7BE63AE528A9FB260068BD67 /* RefreshTokenResponseDTO.swift */,
+				7B68BCB428B9E4E100D2C406 /* GalleryPostItemsDTO.swift */,
+				7B68BCB628B9E51F00D2C406 /* GalleryPostItemDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -1003,6 +1016,8 @@
 				7BE63AD628A94C8F0068BD67 /* MenuItem.swift */,
 				7BE63AE328A9F7A00068BD67 /* TokenItem.swift */,
 				7BE63B0028AA79D90068BD67 /* Gallery.swift */,
+				7B68BCB228B9E4CE00D2C406 /* GalleryPostItem.swift */,
+				7B68BCBA28B9E94500D2C406 /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1297,6 +1312,7 @@
 				7BE63ADA28A9525F0068BD67 /* Reusable.swift in Sources */,
 				7BE63A9428A74E740068BD67 /* DefaultURLSessionNetworkService.swift in Sources */,
 				7BE63AD528A94C130068BD67 /* MenuTableCellViewModel.swift in Sources */,
+				7B68BCB328B9E4CE00D2C406 /* GalleryPostItem.swift in Sources */,
 				7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */,
 				7BE63AFF28AA42350068BD67 /* GalleryListUseCase.swift in Sources */,
 				7BE63A9828A791F20068BD67 /* SignInResponseDTO.swift in Sources */,
@@ -1310,11 +1326,13 @@
 				7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */,
 				7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */,
 				7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */,
+				7B68BCB728B9E51F00D2C406 /* GalleryPostItemDTO.swift in Sources */,
 				7BE63AF928AA41370068BD67 /* GalleryListCellViewModel.swift in Sources */,
 				7BE63ACF28A91DD80068BD67 /* MenuCoordinator.swift in Sources */,
 				7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */,
 				7B1CCCDE28916A3C004389A8 /* SignChoiceViewModel.swift in Sources */,
 				7B9356EA2898147800406022 /* URLSessionNetworkService.swift in Sources */,
+				7B68BCB928B9E92100D2C406 /* GalleryPostListCellViewModel.swift in Sources */,
 				7BE63AE228A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift in Sources */,
 				7B68BC7C28B0F66C00D2C406 /* SignInfoViewController.swift in Sources */,
 				7BE63A9D28A792570068BD67 /* RESTError.swift in Sources */,
@@ -1338,6 +1356,7 @@
 				7BE63AD328A94C090068BD67 /* MenuTableViewCell.swift in Sources */,
 				7BE63AAB28A7CE8A0068BD67 /* SignUpViewModel.swift in Sources */,
 				7BE63AD728A94C8F0068BD67 /* MenuItem.swift in Sources */,
+				7B68BCBB28B9E94500D2C406 /* Post.swift in Sources */,
 				7BE63B0528AA94930068BD67 /* UseCaseError.swift in Sources */,
 				7BE63AB828A7FC190068BD67 /* SignUpResponseDTO.swift in Sources */,
 				7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */,
@@ -1346,6 +1365,7 @@
 				7B68BC7E28B0F67400D2C406 /* SignInfoViewModel.swift in Sources */,
 				7B68BC8228B0F68900D2C406 /* DefaultSignInfoCoordinator.swift in Sources */,
 				7BF3FA7B288EE37D0072218E /* CoordinatorFinishDelegate.swift in Sources */,
+				7B68BCB528B9E4E100D2C406 /* GalleryPostItemsDTO.swift in Sources */,
 				7BE63AC928A91DAA0068BD67 /* MenuViewModel.swift in Sources */,
 				7BD5BECC28A2947200330F96 /* UserRepository.swift in Sources */,
 				7BF3FA78288EE34B0072218E /* Coordinator.swift in Sources */,
