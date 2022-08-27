@@ -56,6 +56,7 @@ extension MenuViewController {
         let output = viewModel?.transform(from: input)
         output?.menus.drive(tableView.rx.items(cellIdentifier: MenuTableViewCell.reuseID, cellType: MenuTableViewCell.self)) { tv, viewModel, cell in
             cell.bind(viewModel)
+            cell.accessoryType = .disclosureIndicator
         }.disposed(by: disposeBag)
         
         output?.selectedMenu.drive()

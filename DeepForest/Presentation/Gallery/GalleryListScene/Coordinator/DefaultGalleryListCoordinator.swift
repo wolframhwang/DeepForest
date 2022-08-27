@@ -29,4 +29,7 @@ final class DefaultGalleryListCoordinator: GalleryListCoordinator {
         self.navigationController.pushViewController(self.galleryListViewController, animated: true)
     }
     
+    func pushGalleryPostList(GalleryInfo: Gallery) {
+        print("GALLERYPOST LISt")
+    }
 }

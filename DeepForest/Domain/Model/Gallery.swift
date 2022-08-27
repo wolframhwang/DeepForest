@@ -11,4 +11,14 @@ struct Gallery: Codable {
     let galleryId: Int
     let galleryName: String
     let type: GalleryType
+    init(viewModel: GalleryListCellViewModel) {
+        galleryId = viewModel.id
+        galleryName = viewModel.name
+        type = viewModel.type
+    }
+    init(galleryId: Int, galleryName: String, type: GalleryType) {
+        self.galleryId = galleryId
+        self.galleryName = galleryName
+        self.type = type
+    }
 }

@@ -20,7 +20,7 @@ final class GalleryListViewModel: ViewModelType {
     }
     struct Output {
         let galleryLists: Driver<[GalleryListCellViewModel]>
-        let selectedGallery: Driver<GalleryListCellViewModel>
+        let selectedGallery: Driver<Gallery>
         let title: Driver<String>
     }
     
@@ -39,12 +39,14 @@ final class GalleryListViewModel: ViewModelType {
                 }
             }
         
-        let selectedGallery = input.selection.withLatestFrom(galleryList) { (indexPath, galleryList) -> GalleryListCellViewModel in
-            return galleryList[indexPath.row]
-        }.do(onNext: { [weak self] viewModel in
-                print("SELECTED", viewModel)
-            })
-        
+        let selectedGallery = input.selection.withLatestFrom(galleryList) { (indexPath, gallerys) -> GalleryListCellViewModel in
+            return gallerys[indexPath.row]
+        }.map { viewModel -> Gallery in
+            Gallery(viewModel: viewModel)
+        }.do(onNext: { [weak self] gallery in
+            self?.coordinator?.pushGalleryPostList(GalleryInfo: gallery)
+        })
+            
         let title = galleryListUseCase.title.asDriver(onErrorJustReturn: "")
         
         return Output(galleryLists: galleryList,

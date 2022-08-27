@@ -9,4 +9,5 @@ import Foundation
 
 protocol GalleryListCoordinator: Coordinator {
     func pushGalleryListViewController(menuTableCellViewModel: MenuTableCellViewModel)
+    func pushGalleryPostList(GalleryInfo: Gallery)
 }
