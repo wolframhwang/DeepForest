@@ -68,7 +68,7 @@ final class SignUpViewModel: ViewModelType {
                     .observe(on: MainScheduler.instance)
                     .subscribe(onNext: { response in
                         guard let response = response else {
-                            self?.coordinator?.finish()
+                            self?.coordinator?.popScene()
                             return
                         }
                         self?.coordinator?.showAlert(response)
