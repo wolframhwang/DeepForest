@@ -48,7 +48,7 @@ extension GalleryPostListViewController {
             .map { _ -> Void in return Void() }
             .asDriver(onErrorDriveWith: .empty())
         
-        let input = GalleryPostListViewModel.Input(trigger: viewWillAppear, selection: tableView.rx.itemSelected.asDriver())
+        let input = GalleryPostListViewModel.Input(trigger: viewWillAppear, selection: tableView.rx.itemSelected.asDriver(), didTappWritePostButton: writePostButton.rx.tap.asDriver().throttle(.seconds(1), latest: true))        
         
         let output = viewModel?.transform(from: input)
         

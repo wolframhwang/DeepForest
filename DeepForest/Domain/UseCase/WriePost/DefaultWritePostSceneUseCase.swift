@@ -10,5 +10,9 @@ import RxCocoa
 import RxSwift
 
 final class DefaultWritePostSceneUseCase: WritePostSceneUseCase {
+    private let galleryType: GalleryType
     
+    init(gallerType: GalleryType) {
+        self.galleryType = gallerType
+    }
 }

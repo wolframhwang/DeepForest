@@ -28,4 +28,25 @@ final class DefaultGalleryPostListCoordinator: GalleryPostListCoordinator {
         self.galleryPostListViewController.viewModel = GalleryPostListViewModel(coordinator: self, galleryPostListUseCase: DefaultGalleryPostListUseCase(networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService()), galleryInfo: GalleryInfo))
         self.navigationController.pushViewController(galleryPostListViewController, animated: true)
     }
+    
+    func presentWritePostScene(galleryType: GalleryType) {
+        let writePostSceneCoordinator = DefaultWritePostSceneCoordinator(self.navigationController)
+        writePostSceneCoordinator.finishDelegate = self
+        self.childCoordinators.append( writePostSceneCoordinator)
+        writePostSceneCoordinator.presentWritePostScene(galleryType: galleryType)
+    }
+}
+
+extension DefaultGalleryPostListCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        
+    }
+    
+    func finish() {
+        
+    }
+    
+    func popChildScene(childCoordinator: Coordinator) {
+        
+    }
 }

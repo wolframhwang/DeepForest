@@ -17,6 +17,7 @@ final class GalleryPostListViewModel: ViewModelType {
     struct Input {
         let trigger: Driver<Void>
         let selection: Driver<IndexPath>
+        let didTappWritePostButton: Driver<Void>
     }
     
     struct Output {
@@ -32,6 +33,13 @@ final class GalleryPostListViewModel: ViewModelType {
     }
     
     func transform(from input: Input) -> Output {
+        input.didTappWritePostButton.withLatestFrom(galleryPostListUseCase.galleryType.asDriver(onErrorDriveWith: .empty())) { (_, type) in
+            return type
+        }.drive(onNext: { [weak self] type in
+            self?.coordinator?.presentWritePostScene(galleryType: type)
+        })
+        .disposed(by: disposeBag)
+        
         let postLists = galleryPostListUseCase.fetchGalleryPostList().asDriver(onErrorJustReturn: [])
             .map { posts in
                 return posts.map { item in

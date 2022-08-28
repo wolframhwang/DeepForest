@@ -23,4 +23,8 @@ final class DefaultWritePostSceneCoordinator: WritePostSceneCoordinator {
     func start() {
         
     }
+    func presentWritePostScene(galleryType: GalleryType) {
+        self.writePostSceneViewController.viewModel = WritePostSceneViewModel(coordinator: self, writePostSceneUseCase: DefaultWritePostSceneUseCase(gallerType: galleryType))
+        self.navigationController.pushViewController(self.writePostSceneViewController, animated: true)
+    }
 }
