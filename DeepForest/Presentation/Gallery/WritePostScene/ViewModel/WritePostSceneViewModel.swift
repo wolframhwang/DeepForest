@@ -15,11 +15,10 @@ final class WritePostSceneViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
     struct Input {
-        
+
     }
     
     struct Output {
-        
     }
     
     init(coordinator: WritePostSceneCoordinator?,
@@ -29,6 +28,7 @@ final class WritePostSceneViewModel: ViewModelType {
     }
     
     func transform(from input: Input) -> Output {
+        
         return Output()
     }
 }
