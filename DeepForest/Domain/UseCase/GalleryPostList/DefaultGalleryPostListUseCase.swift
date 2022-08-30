@@ -15,14 +15,14 @@ final class DefaultGalleryPostListUseCase: GalleryPostListUseCase {
     private let galleryInfo: Gallery
     
     var title: Observable<String>
-    var galleryType: Observable<GalleryType>
+    var galleryId: Observable<Int>
     
     init(networkRepository: NetworkRepository,
          galleryInfo: Gallery) {
         self.networkRepository = networkRepository
         self.galleryInfo = galleryInfo
         self.title = Observable.just(galleryInfo.galleryName)
-        self.galleryType = Observable.just(galleryInfo.type)
+        self.galleryId = Observable.just(galleryInfo.galleryId)
     }
     
     func fetchGalleryPostList() -> Observable<[GalleryPostItem]> {

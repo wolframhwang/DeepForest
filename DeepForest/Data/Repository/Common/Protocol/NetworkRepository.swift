@@ -13,4 +13,5 @@ protocol NetworkRepository {
     func post(accountInfo: AccountForSignUp) -> Observable<Result<Data, URLSessionNetworkServiceError>>
     func post(tokenItem: TokenItem) -> Observable<Result<Data, URLSessionNetworkServiceError>>
     func fetch(urlSuffix: String, queryItems: [String: String]?) -> Observable<Result<Data, URLSessionNetworkServiceError>>
+    func postWithToken<T: Codable>(item: T, to: String, token: String) -> Observable<Result<Data, URLSessionNetworkServiceError>>
 }

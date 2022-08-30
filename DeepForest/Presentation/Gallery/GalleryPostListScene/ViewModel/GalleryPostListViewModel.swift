@@ -33,19 +33,22 @@ final class GalleryPostListViewModel: ViewModelType {
     }
     
     func transform(from input: Input) -> Output {
-        input.didTappWritePostButton.withLatestFrom(galleryPostListUseCase.galleryType.asDriver(onErrorDriveWith: .empty())) { (_, type) in
+        input.didTappWritePostButton.withLatestFrom(galleryPostListUseCase.galleryId.asDriver(onErrorDriveWith: .empty())) { (_, type) in
             return type
-        }.drive(onNext: { [weak self] type in
-            self?.coordinator?.presentWritePostScene(galleryType: type)
+        }.drive(onNext: { [weak self] galleryId in
+            self?.coordinator?.presentWritePostScene(galleryId: galleryId)
         })
         .disposed(by: disposeBag)
         
-        let postLists = galleryPostListUseCase.fetchGalleryPostList().asDriver(onErrorJustReturn: [])
-            .map { posts in
-                return posts.map { item in
-                    GalleryPostListCellViewModel(with: item)
+        let postLists = input.trigger.flatMapLatest {
+            return self.galleryPostListUseCase.fetchGalleryPostList().asDriver(onErrorJustReturn: [])
+                .map { posts in
+                    return posts.map { item in
+                        GalleryPostListCellViewModel(with: item)
+                    }
                 }
-            }
+        }
+        
         let title = galleryPostListUseCase.title.asDriver(onErrorJustReturn: "")
         
         let selectedPost = input.selection.withLatestFrom(postLists) { (indexPath, posts) -> GalleryPostListCellViewModel in

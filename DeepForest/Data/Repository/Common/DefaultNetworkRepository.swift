@@ -18,6 +18,16 @@ final class DefaultNetworkRepository: NetworkRepository {
         self.network = network
     }
     
+    func postWithToken<T: Codable>(item: T, to: String, token: String) -> Observable<Result<Data, URLSessionNetworkServiceError>> {
+        var header = HTTPHeaders
+        header.updateValue("Bearer \(token)", forKey: "Authorization")
+    
+        return network
+            .post(item,
+                  url: baseURL + to,
+                  headers: header)
+    }
+    
     func post(accountInfo: AccountForSignIn) -> Observable<Result<Data, URLSessionNetworkServiceError>> {
         return network
             .post(accountInfo,

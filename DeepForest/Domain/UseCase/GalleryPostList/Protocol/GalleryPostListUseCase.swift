@@ -12,5 +12,5 @@ import RxCocoa
 protocol GalleryPostListUseCase {
     func fetchGalleryPostList() -> Observable<[GalleryPostItem]>
     var title: Observable<String> { get }
-    var galleryType: Observable<GalleryType> { get }
+    var galleryId: Observable<Int> { get }
 }

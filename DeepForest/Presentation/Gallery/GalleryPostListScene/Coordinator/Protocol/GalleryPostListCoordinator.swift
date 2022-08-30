@@ -9,6 +9,5 @@ import Foundation
 
 protocol GalleryPostListCoordinator: Coordinator {
     func pushGalleryPostList(GalleryInfo: Gallery)
-    func presentWritePostScene(galleryType: GalleryType)
-
+    func presentWritePostScene(galleryId: Int)
 }

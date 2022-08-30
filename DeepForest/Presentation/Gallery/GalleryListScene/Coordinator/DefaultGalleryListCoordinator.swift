@@ -33,7 +33,6 @@ final class DefaultGalleryListCoordinator: GalleryListCoordinator {
         let galleryPostListCoordinator = DefaultGalleryPostListCoordinator(self.navigationController)
         galleryPostListCoordinator.finishDelegate = self
         self.childCoordinators.append(galleryPostListCoordinator)
-        
         galleryPostListCoordinator.pushGalleryPostList(GalleryInfo: GalleryInfo)
     }
 }

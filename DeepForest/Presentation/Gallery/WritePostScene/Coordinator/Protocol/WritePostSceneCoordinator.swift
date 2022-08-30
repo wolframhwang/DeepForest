@@ -10,5 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol WritePostSceneCoordinator: Coordinator {
-    func presentWritePostScene(galleryType: GalleryType)
+    func presentWritePostScene(galleryId: Int)
+    func popScene()
+    func showAlert(_ error: Error)
 }

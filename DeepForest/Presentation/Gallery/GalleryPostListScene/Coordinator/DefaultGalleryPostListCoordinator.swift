@@ -29,11 +29,11 @@ final class DefaultGalleryPostListCoordinator: GalleryPostListCoordinator {
         self.navigationController.pushViewController(galleryPostListViewController, animated: true)
     }
     
-    func presentWritePostScene(galleryType: GalleryType) {
+    func presentWritePostScene(galleryId: Int) {
         let writePostSceneCoordinator = DefaultWritePostSceneCoordinator(self.navigationController)
         writePostSceneCoordinator.finishDelegate = self
         self.childCoordinators.append( writePostSceneCoordinator)
-        writePostSceneCoordinator.presentWritePostScene(galleryType: galleryType)
+        writePostSceneCoordinator.presentWritePostScene(galleryId: galleryId)
     }
 }
 
@@ -47,6 +47,7 @@ extension DefaultGalleryPostListCoordinator: CoordinatorFinishDelegate {
     }
     
     func popChildScene(childCoordinator: Coordinator) {
-        
+        navigationController.popViewController(animated: true)
+        self.childCoordinators.removeLast()
     }
 }

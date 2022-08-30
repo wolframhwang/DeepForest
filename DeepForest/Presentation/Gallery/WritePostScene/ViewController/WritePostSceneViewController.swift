@@ -52,6 +52,17 @@ class WritePostSceneViewController: UIViewController {
         return tv
     }()
     
+    private lazy var postButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        let font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        let color = UIColor.systemRed
+        button.title = "등록"
+        button.style = .plain
+        button.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: font], for: .normal)
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubviews()
@@ -67,11 +78,13 @@ class WritePostSceneViewController: UIViewController {
 
 extension WritePostSceneViewController {
     func bindViewModel() {
+        let titleIsOK = BehaviorSubject<Bool>(value: false)
         titleTextView.rx.didEndEditing.subscribe(onNext: { [weak self] in
             guard let text = self?.titleTextView.text else { return }
             if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 self?.titleTextView.text = titleTextViewPlaceHolder
                 self?.titleTextView.textColor = .lightGray
+                titleIsOK.onNext(false)
             }
         })
         .disposed(by: disposeBag)
@@ -83,15 +96,18 @@ extension WritePostSceneViewController {
             if text == titleTextViewPlaceHolder {
                 self?.titleTextView.text = nil
                 self?.titleTextView.textColor = UIColor.label
+                titleIsOK.onNext(true)
             }
         })
         .disposed(by: disposeBag)
-        
+                
+        let contentIsOK = BehaviorSubject<Bool>(value: false)
         contentTextView.rx.didEndEditing.subscribe(onNext: { [weak self] in
             guard let text = self?.contentTextView.text else { return }
             if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 self?.contentTextView.text = contentTextViewPlaceHolder
                 self?.contentTextView.textColor = .lightGray
+                contentIsOK.onNext(false)
             }
         })
         .disposed(by: disposeBag)
@@ -103,6 +119,7 @@ extension WritePostSceneViewController {
             if text == contentTextViewPlaceHolder {
                 self?.contentTextView.text = nil
                 self?.contentTextView.textColor = UIColor.label
+                contentIsOK.onNext(true)
             }
         })
         .disposed(by: disposeBag)
@@ -127,14 +144,26 @@ extension WritePostSceneViewController {
                 })
             })
             .disposed(by: disposeBag)
-
         
-        let input = WritePostSceneViewModel.Input()
+        let input = WritePostSceneViewModel
+            .Input(title: titleTextView.rx.text.asObservable(),
+                   titleIsOK: titleIsOK.asObservable(),
+                   content: contentTextView.rx.text.asObservable(),
+                   contentIsOK: contentIsOK.asObservable(),
+                   didTappedPostButton: postButton.rx.tap
+                .throttle(.seconds(1), scheduler: MainScheduler.asyncInstance)
+                .asDriver(onErrorDriveWith: .empty()))
+        
         let output = viewModel?.transform(from: input)
         
+        output?.viewTitle.drive(onNext: { [weak self] text in
+            self?.title = text
+        }).disposed(by: disposeBag)        
     }
     
     func configureSubviews() {
+        navigationItem.rightBarButtonItem = postButton
+        
         view.addSubview(scrollView)
         
         scrollView.addSubview(containerView)
@@ -178,5 +207,6 @@ extension WritePostSceneViewController {
         singleTapGestureRecognizer.isEnabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+        
     }
 }

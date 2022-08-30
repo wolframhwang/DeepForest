@@ -10,4 +10,11 @@ import RxSwift
 import RxCocoa
 
 protocol WritePostSceneUseCase {
+    var titleObservable: BehaviorSubject<String> { get }
+    
+    var title: BehaviorSubject<String?> { get }
+    var content: BehaviorSubject<String?> { get }
+    
+    func refreshToken() -> Observable<Bool>
+    func postingMyContent() -> Observable<String?>
 }

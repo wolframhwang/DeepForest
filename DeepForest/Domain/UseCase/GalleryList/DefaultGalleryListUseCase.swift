@@ -39,9 +39,9 @@ final class DefaultGalleryListUseCase: GalleryListUseCase {
                         }
                         
                         return fetchResponse.map { dto ->Gallery in
-                            Gallery(galleryId: dto.id,
+                            return Gallery(galleryId: dto.id,
                                     galleryName: dto.name,
-                                    type: GalleryType.major)
+                                           type: dto.type.isGalleryType)
                         }
                     } else {
                         return []

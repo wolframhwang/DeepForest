@@ -23,8 +23,21 @@ final class DefaultWritePostSceneCoordinator: WritePostSceneCoordinator {
     func start() {
         
     }
-    func presentWritePostScene(galleryType: GalleryType) {
-        self.writePostSceneViewController.viewModel = WritePostSceneViewModel(coordinator: self, writePostSceneUseCase: DefaultWritePostSceneUseCase(gallerType: galleryType))
+    func presentWritePostScene(galleryId: Int) {
+        self.writePostSceneViewController.viewModel = WritePostSceneViewModel(coordinator: self, writePostSceneUseCase: DefaultWritePostSceneUseCase(galleryId: galleryId, userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService())))
         self.navigationController.pushViewController(self.writePostSceneViewController, animated: true)
+    }
+    
+    func popScene() {
+        self.finishDelegate?.popChildScene(childCoordinator: self)
+    }
+    
+    func showAlert(_ error: Error) {
+        let alertView = UIAlertController(title: "포스트 실패",
+                                          message: error.localizedDescription,
+                                          preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alertView.addAction(action)
+        writePostSceneViewController.present(alertView, animated: true)
     }
 }

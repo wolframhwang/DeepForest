@@ -88,6 +88,7 @@ class GalleryPostListTableViewCell: UITableViewCell {
             return
         }
         let attributedString = NSMutableAttributedString(string: countLabelText)
+        
         attributedString.addAttribute(.font, value: font, range: (countLabelText as NSString).range(of: "추천"))
         attributedString.addAttribute(.foregroundColor,
                                       value: UIColor.gray,

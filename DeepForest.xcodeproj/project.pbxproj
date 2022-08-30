@@ -36,6 +36,9 @@
 		7B68BCC828BA723C00D2C406 /* DefaultWritePostSceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCC728BA723C00D2C406 /* DefaultWritePostSceneCoordinator.swift */; };
 		7B68BCCC28BA72F400D2C406 /* WritePostSceneUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCCB28BA72F400D2C406 /* WritePostSceneUseCase.swift */; };
 		7B68BCCE28BA72FE00D2C406 /* DefaultWritePostSceneUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCCD28BA72FE00D2C406 /* DefaultWritePostSceneUseCase.swift */; };
+		7B68BCD428BE286E00D2C406 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCD328BE286E00D2C406 /* String+.swift */; };
+		7B68BCD628BE422500D2C406 /* ContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCD528BE422500D2C406 /* ContentItem.swift */; };
+		7B68BCD828BE491500D2C406 /* PostResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCD728BE491500D2C406 /* PostResponseDTO.swift */; };
 		7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817828AFB0CD007A3004 /* SettingViewController.swift */; };
 		7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */; };
 		7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */; };
@@ -168,6 +171,9 @@
 		7B68BCC728BA723C00D2C406 /* DefaultWritePostSceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWritePostSceneCoordinator.swift; sourceTree = "<group>"; };
 		7B68BCCB28BA72F400D2C406 /* WritePostSceneUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostSceneUseCase.swift; sourceTree = "<group>"; };
 		7B68BCCD28BA72FE00D2C406 /* DefaultWritePostSceneUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWritePostSceneUseCase.swift; sourceTree = "<group>"; };
+		7B68BCD328BE286E00D2C406 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		7B68BCD528BE422500D2C406 /* ContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItem.swift; sourceTree = "<group>"; };
+		7B68BCD728BE491500D2C406 /* PostResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponseDTO.swift; sourceTree = "<group>"; };
 		7B92817828AFB0CD007A3004 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
@@ -633,6 +639,7 @@
 				7BE63AE528A9FB260068BD67 /* RefreshTokenResponseDTO.swift */,
 				7B68BCB428B9E4E100D2C406 /* GalleryPostItemsDTO.swift */,
 				7B68BCB628B9E51F00D2C406 /* GalleryPostItemDTO.swift */,
+				7B68BCD728BE491500D2C406 /* PostResponseDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -780,6 +787,7 @@
 			isa = PBXGroup;
 			children = (
 				7BE63AD928A9525F0068BD67 /* Reusable.swift */,
+				7B68BCD328BE286E00D2C406 /* String+.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -1091,6 +1099,7 @@
 				7BE63B0028AA79D90068BD67 /* Gallery.swift */,
 				7B68BCB228B9E4CE00D2C406 /* GalleryPostItem.swift */,
 				7B68BCBA28B9E94500D2C406 /* Post.swift */,
+				7B68BCD528BE422500D2C406 /* ContentItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1405,10 +1414,12 @@
 				7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */,
 				7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */,
 				7B68BCB728B9E51F00D2C406 /* GalleryPostItemDTO.swift in Sources */,
+				7B68BCD828BE491500D2C406 /* PostResponseDTO.swift in Sources */,
 				7BE63AF928AA41370068BD67 /* GalleryListCellViewModel.swift in Sources */,
 				7BE63ACF28A91DD80068BD67 /* MenuCoordinator.swift in Sources */,
 				7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */,
 				7B1CCCDE28916A3C004389A8 /* SignChoiceViewModel.swift in Sources */,
+				7B68BCD428BE286E00D2C406 /* String+.swift in Sources */,
 				7B9356EA2898147800406022 /* URLSessionNetworkService.swift in Sources */,
 				7B68BCB928B9E92100D2C406 /* GalleryPostListCellViewModel.swift in Sources */,
 				7BE63AE228A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift in Sources */,
@@ -1450,6 +1461,7 @@
 				7BF3FA78288EE34B0072218E /* Coordinator.swift in Sources */,
 				7BE63AE428A9F7A00068BD67 /* TokenItem.swift in Sources */,
 				7BE63AF528AA04AB0068BD67 /* GalleryListCoordinator.swift in Sources */,
+				7B68BCD628BE422500D2C406 /* ContentItem.swift in Sources */,
 				7B68BC9A28B3ADCF00D2C406 /* DefaultGalleryPostListUseCase.swift in Sources */,
 				7BE63AC728A91DA00068BD67 /* MenuViewController.swift in Sources */,
 				7BF3FA7E288EE3FB0072218E /* CoordinatorType.swift in Sources */,
