@@ -42,6 +42,8 @@ class WritePostSceneViewController: UIViewController {
         return tv
     }()
     
+    private lazy var lineView = UIView()
+    
     private lazy var contentTextView: UITextView = {
         let tv = UITextView()
         tv.isScrollEnabled = false
@@ -167,7 +169,7 @@ extension WritePostSceneViewController {
         view.addSubview(scrollView)
         
         scrollView.addSubview(containerView)
-        [titleTextView, contentTextView]
+        [titleTextView, lineView, contentTextView]
             .forEach { subview in
                 //containerView.addSubview(subview)
                 containerView.addArrangedSubview(subview)
@@ -192,8 +194,12 @@ extension WritePostSceneViewController {
             make.height.equalTo(40)
         }
         
+        lineView.snp.makeConstraints { make in
+            make.height.equalTo(2)
+        }
+        
         contentTextView.snp.makeConstraints { make in
-            make.height.equalTo(60)
+            make.height.equalTo(100)
         }
     }
     
@@ -208,5 +214,6 @@ extension WritePostSceneViewController {
         singleTapGestureRecognizer.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
         
+        lineView.backgroundColor = .label
     }
 }
