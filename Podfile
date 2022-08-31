@@ -12,6 +12,7 @@ target 'DeepForest' do
   pod 'RxDataSources'
   pod 'RxKeyboard'
   pod 'SnapKit'
+  pod 'IQKeyboardManagerSwift'
 
   target 'DeepForestTests' do
     inherit! :search_paths
