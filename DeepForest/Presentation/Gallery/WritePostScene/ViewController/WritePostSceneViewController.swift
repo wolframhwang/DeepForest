@@ -54,6 +54,13 @@ class WritePostSceneViewController: UIViewController {
         return tv
     }()
     
+    private lazy var cancelButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(systemName: "arrow.left")
+        
+        return button
+    }()
+    
     private lazy var postButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         let font = UIFont.systemFont(ofSize: 18, weight: .regular)
@@ -163,6 +170,9 @@ extension WritePostSceneViewController {
                    contentIsOK: contentIsOK.asObservable(),
                    didTappedPostButton: postButton.rx.tap
                 .throttle(.seconds(1), scheduler: MainScheduler.asyncInstance)
+                .asDriver(onErrorDriveWith: .empty()),
+                   didTappedCancelButton: cancelButton.rx.tap
+                .throttle(.seconds(1), scheduler: MainScheduler.asyncInstance)
                 .asDriver(onErrorDriveWith: .empty()))
         
         let output = viewModel?.transform(from: input)
@@ -170,14 +180,10 @@ extension WritePostSceneViewController {
         output?.viewTitle.drive(onNext: { [weak self] text in
             self?.title = text
         }).disposed(by: disposeBag)
-        
-        pictureButton.rx.tap.subscribe(onNext: {
-            print("TAPPEd")
-        })
-        .disposed(by: disposeBag)
     }
     
     func configureSubviews() {
+        navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = postButton
         
         view.addSubview(scrollView)
@@ -220,15 +226,14 @@ extension WritePostSceneViewController {
         }
         
         pickContainerView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-5)
+            make.bottom.equalToSuperview().offset(-20)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(50)
+            make.height.equalTo(45)
         }
         
         pictureButton.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.bottom.equalToSuperview().inset(5)
             make.leading.equalToSuperview().offset(10)
-            make.height.width.equalTo(pickContainerView.snp.height).inset(5)
         }
         
     }
@@ -258,6 +263,8 @@ extension WritePostSceneViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+        
+        pickContainerView.backgroundColor = .systemBackground
     }
     
     @objc private func keyboardWillShow(_ notification: Notification) {
@@ -279,9 +286,9 @@ extension WritePostSceneViewController {
     @objc private func keyboardWillHide(_ notification: Notification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = scrollView.contentInset
-
+        
         self.pickContainerView.snp.updateConstraints { make in
-            make.bottom.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
 }

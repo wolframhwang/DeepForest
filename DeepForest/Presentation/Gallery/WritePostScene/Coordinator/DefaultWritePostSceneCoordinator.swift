@@ -14,6 +14,7 @@ final class DefaultWritePostSceneCoordinator: WritePostSceneCoordinator {
     var writePostSceneViewController: WritePostSceneViewController
     var childCoordinators: [Coordinator] = []
     var type: CoordinatorType = .compose
+    var navVC: UINavigationController = UINavigationController()
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -25,11 +26,9 @@ final class DefaultWritePostSceneCoordinator: WritePostSceneCoordinator {
     }
     func presentWritePostScene(galleryId: Int) {
         self.writePostSceneViewController.viewModel = WritePostSceneViewModel(coordinator: self, writePostSceneUseCase: DefaultWritePostSceneUseCase(galleryId: galleryId, userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService())))
-        self.navigationController.present(self.writePostSceneViewController, animated: true)
-    }
-    
-    func popScene() {
-        self.finishDelegate?.popChildScene(childCoordinator: self)
+        navVC = UINavigationController(rootViewController: self.writePostSceneViewController)
+        navVC.modalPresentationStyle = .fullScreen
+        self.navigationController.present(navVC, animated: true)
     }
     
     func showAlert(_ error: Error) {
@@ -39,5 +38,9 @@ final class DefaultWritePostSceneCoordinator: WritePostSceneCoordinator {
         let action = UIAlertAction(title: "확인", style: .default)
         alertView.addAction(action)
         writePostSceneViewController.present(alertView, animated: true)
+    }
+    
+    func dismissScene() {
+        navVC.dismiss(animated: true)
     }
 }

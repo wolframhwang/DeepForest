@@ -19,6 +19,7 @@ final class WritePostSceneViewModel: ViewModelType {
         let content: Observable<String?>
         let contentIsOK: Observable<Bool>
         let didTappedPostButton: Driver<Void>
+        let didTappedCancelButton: Driver<Void>
     }
     
     struct Output {
@@ -54,7 +55,7 @@ final class WritePostSceneViewModel: ViewModelType {
                 if $0 {
                     self?.writePostSceneUseCase.postingMyContent().observe(on: MainScheduler.asyncInstance)
                         .subscribe(onNext: { [weak self] response in
-                            self?.coordinator?.popScene()
+                            self?.coordinator?.dismissScene()
                         }, onError: { error in
                             self?.coordinator?.showAlert(error)
                         })
@@ -62,6 +63,12 @@ final class WritePostSceneViewModel: ViewModelType {
                 }
             })
             .disposed(by: disposeBag)
+        })
+        .disposed(by: disposeBag)
+        
+        input.didTappedCancelButton.drive(onNext: { [weak self] _ in
+            self?.coordinator?.dismissScene()
+            print("CANCEL")
         })
         .disposed(by: disposeBag)
         

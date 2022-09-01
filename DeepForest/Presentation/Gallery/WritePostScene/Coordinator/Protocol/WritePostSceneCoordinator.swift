@@ -11,6 +11,6 @@ import RxCocoa
 
 protocol WritePostSceneCoordinator: Coordinator {
     func presentWritePostScene(galleryId: Int)
-    func popScene()
     func showAlert(_ error: Error)
+    func dismissScene()
 }
