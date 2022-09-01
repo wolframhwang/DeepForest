@@ -65,6 +65,15 @@ class WritePostSceneViewController: UIViewController {
         return button
     }()
     
+    private lazy var pickContainerView = UIView()
+    
+    private lazy var pictureButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "camera"), for: .normal)
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubviews()
@@ -102,7 +111,7 @@ extension WritePostSceneViewController {
             }
         })
         .disposed(by: disposeBag)
-                
+        
         let contentIsOK = BehaviorSubject<Bool>(value: false)
         contentTextView.rx.didEndEditing.subscribe(onNext: { [weak self] in
             guard let text = self?.contentTextView.text else { return }
@@ -132,7 +141,7 @@ extension WritePostSceneViewController {
                 guard let width = self?.contentTextView.frame.width else {
                     return
                 }
-
+                
                 let size = CGSize(width: width, height: .infinity)
                 guard let estimateSize = self?.contentTextView.sizeThatFits(size) else {
                     return
@@ -160,13 +169,19 @@ extension WritePostSceneViewController {
         
         output?.viewTitle.drive(onNext: { [weak self] text in
             self?.title = text
-        }).disposed(by: disposeBag)        
+        }).disposed(by: disposeBag)
+        
+        pictureButton.rx.tap.subscribe(onNext: {
+            print("TAPPEd")
+        })
+        .disposed(by: disposeBag)
     }
     
     func configureSubviews() {
         navigationItem.rightBarButtonItem = postButton
         
         view.addSubview(scrollView)
+        view.addSubview(pickContainerView)
         
         scrollView.addSubview(containerView)
         [titleTextView, lineView, contentTextView]
@@ -174,6 +189,8 @@ extension WritePostSceneViewController {
                 //containerView.addSubview(subview)
                 containerView.addArrangedSubview(subview)
             }
+        
+        pickContainerView.addSubview(pictureButton)
     }
     
     func configureUI() {
@@ -201,6 +218,19 @@ extension WritePostSceneViewController {
         contentTextView.snp.makeConstraints { make in
             make.height.equalTo(100)
         }
+        
+        pickContainerView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-5)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(50)
+        }
+        
+        pictureButton.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(10)
+            make.height.width.equalTo(pickContainerView.snp.height).inset(5)
+        }
+        
     }
     
     func setAttribute() {
@@ -215,5 +245,43 @@ extension WritePostSceneViewController {
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
         
         lineView.backgroundColor = .label
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo as NSDictionary?,
+              var keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        keyboardFrame = view.convert(keyboardFrame, from: nil)
+        var contentInset = scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
+        
+        self.pickContainerView.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().offset(-contentInset.bottom)
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
+
+        self.pickContainerView.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().offset(-10)
+        }
     }
 }

@@ -25,7 +25,7 @@ final class DefaultWritePostSceneCoordinator: WritePostSceneCoordinator {
     }
     func presentWritePostScene(galleryId: Int) {
         self.writePostSceneViewController.viewModel = WritePostSceneViewModel(coordinator: self, writePostSceneUseCase: DefaultWritePostSceneUseCase(galleryId: galleryId, userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService())))
-        self.navigationController.pushViewController(self.writePostSceneViewController, animated: true)
+        self.navigationController.present(self.writePostSceneViewController, animated: true)
     }
     
     func popScene() {
