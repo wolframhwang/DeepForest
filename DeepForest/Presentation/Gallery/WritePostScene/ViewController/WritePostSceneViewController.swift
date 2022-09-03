@@ -227,7 +227,7 @@ extension WritePostSceneViewController {
             
             if let position = self?.contentTextView.endOfDocument {
                 self?.contentTextView.selectedTextRange = self?.contentTextView.textRange(from:position, to:position)
-            }            
+            }
             
             contentDidChagne.onNext(Void())
             contentEndEdit.onNext(Void())
