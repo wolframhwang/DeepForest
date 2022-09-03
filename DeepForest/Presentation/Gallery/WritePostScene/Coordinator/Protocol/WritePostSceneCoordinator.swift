@@ -12,5 +12,6 @@ import RxCocoa
 protocol WritePostSceneCoordinator: Coordinator {
     func presentWritePostScene(galleryId: Int)
     func showAlert(_ error: Error)
+    func selectPictureToAlbum(imagePickerController: UIImagePickerController?)
     func dismissScene()
 }

@@ -120,46 +120,70 @@ extension WritePostSceneViewController {
         .disposed(by: disposeBag)
         
         let contentIsOK = BehaviorSubject<Bool>(value: false)
-        contentTextView.rx.didEndEditing.subscribe(onNext: { [weak self] in
-            guard let text = self?.contentTextView.text else { return }
-            if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                self?.contentTextView.text = contentTextViewPlaceHolder
-                self?.contentTextView.textColor = .lightGray
-                contentIsOK.onNext(false)
-            }
+        
+        let contentEndEdit = PublishSubject<Void>()
+        
+        contentTextView.rx.didEndEditing.subscribe(onNext: { _ in
+            contentEndEdit.onNext(Void())
         })
         .disposed(by: disposeBag)
         
-        contentTextView.rx.didBeginEditing.subscribe(onNext: { [weak self] in
+        contentEndEdit.asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: {[weak self] in
+                guard let text = self?.contentTextView.text else { return }
+                if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    self?.contentTextView.text = contentTextViewPlaceHolder
+                    self?.contentTextView.textColor = .lightGray
+                    contentIsOK.onNext(false)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        let contentBeginEdit = PublishSubject<Void>()
+        
+        contentTextView.rx.didBeginEditing.subscribe(onNext: { _ in
+            contentBeginEdit.onNext(Void())
+        })
+        .disposed(by: disposeBag)
+        
+        contentBeginEdit.asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] in
             guard let text = self?.contentTextView.text else {
                 return
             }
+            self?.contentTextView.textColor = UIColor.label
+            self?.contentTextView.font = UIFont.systemFont(ofSize: 18)
             if text == contentTextViewPlaceHolder {
                 self?.contentTextView.text = nil
-                self?.contentTextView.textColor = UIColor.label
                 contentIsOK.onNext(true)
             }
         })
         .disposed(by: disposeBag)
         
+        let contentDidChagne = PublishSubject<Void>()
+        
+        contentDidChagne.subscribe(onNext: { [weak self] in
+            guard let width = self?.contentTextView.frame.width else {
+                return
+            }
+            
+            let size = CGSize(width: width, height: .infinity)
+            guard let estimateSize = self?.contentTextView.sizeThatFits(size) else {
+                return
+            }
+            self?.contentTextView.constraints.forEach({ constraint in
+                if estimateSize.height > 60 {
+                    if constraint.firstAttribute == .height {
+                        constraint.constant = estimateSize.height
+                    }
+                }
+            })
+        })
+        .disposed(by: disposeBag)
+        
         contentTextView.rx.didChange
             .asDriver()
-            .drive(onNext: { [weak self] in
-                guard let width = self?.contentTextView.frame.width else {
-                    return
-                }
-                
-                let size = CGSize(width: width, height: .infinity)
-                guard let estimateSize = self?.contentTextView.sizeThatFits(size) else {
-                    return
-                }
-                self?.contentTextView.constraints.forEach({ constraint in
-                    if estimateSize.height > 60 {
-                        if constraint.firstAttribute == .height {
-                            constraint.constant = estimateSize.height
-                        }
-                    }
-                })
+            .drive(onNext: { _ in
+                contentDidChagne.onNext(Void())
             })
             .disposed(by: disposeBag)
         
@@ -173,6 +197,9 @@ extension WritePostSceneViewController {
                 .asDriver(onErrorDriveWith: .empty()),
                    didTappedCancelButton: cancelButton.rx.tap
                 .throttle(.seconds(1), scheduler: MainScheduler.asyncInstance)
+                .asDriver(onErrorDriveWith: .empty()),
+                   didTappedAddPictueButton: pictureButton.rx.tap
+                .throttle(.seconds(1), scheduler: MainScheduler.asyncInstance)
                 .asDriver(onErrorDriveWith: .empty()))
         
         let output = viewModel?.transform(from: input)
@@ -180,6 +207,26 @@ extension WritePostSceneViewController {
         output?.viewTitle.drive(onNext: { [weak self] text in
             self?.title = text
         }).disposed(by: disposeBag)
+        
+        output?.selectedImage.drive(onNext : { [weak self] image in
+            contentBeginEdit.onNext(Void())
+            let attachement = NSTextAttachment()
+            attachement.image = image
+            let size = attachement.image?.size
+            guard let width = size?.width else { return }
+            guard let height = size?.height else { return }
+            guard let tWidth = self?.contentTextView.frame.width else {
+                return
+            }
+            if width > tWidth {
+                attachement.bounds.size = CGSize(width: tWidth, height: height * (tWidth / width))
+            }
+            let attachmentString = NSAttributedString(attachment: attachement)
+            self?.contentTextView.textStorage.insert(attachmentString, at: self?.contentTextView.text.count ?? 0)
+            contentDidChagne.onNext(Void())
+            contentEndEdit.onNext(Void())
+        })
+        .disposed(by: disposeBag)
     }
     
     func configureSubviews() {
@@ -222,7 +269,7 @@ extension WritePostSceneViewController {
         }
         
         contentTextView.snp.makeConstraints { make in
-            make.height.equalTo(100)
+            make.height.equalTo(view.frame.height - 82)
         }
         
         pickContainerView.snp.makeConstraints { make in

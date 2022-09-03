@@ -39,6 +39,7 @@
 		7B68BCD428BE286E00D2C406 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCD328BE286E00D2C406 /* String+.swift */; };
 		7B68BCD628BE422500D2C406 /* ContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCD528BE422500D2C406 /* ContentItem.swift */; };
 		7B68BCD828BE491500D2C406 /* PostResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCD728BE491500D2C406 /* PostResponseDTO.swift */; };
+		7B68BCDD28C0F7BF00D2C406 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCDC28C0F7BF00D2C406 /* PhotoCollectionViewCell.swift */; };
 		7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817828AFB0CD007A3004 /* SettingViewController.swift */; };
 		7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */; };
 		7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */; };
@@ -174,6 +175,7 @@
 		7B68BCD328BE286E00D2C406 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		7B68BCD528BE422500D2C406 /* ContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItem.swift; sourceTree = "<group>"; };
 		7B68BCD728BE491500D2C406 /* PostResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponseDTO.swift; sourceTree = "<group>"; };
+		7B68BCDC28C0F7BF00D2C406 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B92817828AFB0CD007A3004 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				7B68BCC128BA721700D2C406 /* WritePostSceneViewController.swift */,
+				7B68BCDC28C0F7BF00D2C406 /* PhotoCollectionViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1387,6 +1390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BF3FA8A288EF5B30072218E /* SignChoiceCoordinator.swift in Sources */,
+				7B68BCDD28C0F7BF00D2C406 /* PhotoCollectionViewCell.swift in Sources */,
 				7B92818028AFB0F0007A3004 /* DefaultSettingCoordinator.swift in Sources */,
 				7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */,
 				7B68BCC428BA722400D2C406 /* WritePostSceneViewModel.swift in Sources */,
@@ -1669,6 +1673,7 @@
 				DEVELOPMENT_TEAM = QA36XKL5W8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DeepForest/Resource/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "\"사진 접근 권한이 필요합니다\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1698,6 +1703,7 @@
 				DEVELOPMENT_TEAM = QA36XKL5W8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DeepForest/Resource/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "\"사진 접근 권한이 필요합니다\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

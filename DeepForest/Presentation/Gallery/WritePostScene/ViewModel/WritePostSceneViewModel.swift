@@ -8,10 +8,21 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import UIKit
 
-final class WritePostSceneViewModel: ViewModelType {
+final class WritePostSceneViewModel: NSObject, ViewModelType {
     private weak var coordinator: WritePostSceneCoordinator?
     private let writePostSceneUseCase: WritePostSceneUseCase
+    
+    private lazy var imagePickerController: UIImagePickerController = {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.allowsEditing = true
+        imagePickerController.delegate = self
+        
+        return imagePickerController
+    }()
+    private let imageSubject = PublishSubject<UIImage?>()
     
     struct Input {
         let title: Observable<String?>
@@ -20,10 +31,12 @@ final class WritePostSceneViewModel: ViewModelType {
         let contentIsOK: Observable<Bool>
         let didTappedPostButton: Driver<Void>
         let didTappedCancelButton: Driver<Void>
+        let didTappedAddPictueButton: Driver<Void>
     }
     
     struct Output {
         let viewTitle: Driver<String>
+        let selectedImage: Driver<UIImage?>
     }
     
     init(coordinator: WritePostSceneCoordinator?,
@@ -68,10 +81,31 @@ final class WritePostSceneViewModel: ViewModelType {
         
         input.didTappedCancelButton.drive(onNext: { [weak self] _ in
             self?.coordinator?.dismissScene()
-            print("CANCEL")
         })
         .disposed(by: disposeBag)
         
-        return Output(viewTitle: writePostSceneUseCase.titleObservable.asDriver(onErrorJustReturn: "게시판"))
+        input.didTappedAddPictueButton.drive(onNext: { [weak self] _ in
+            self?.coordinator?.selectPictureToAlbum(imagePickerController: self?.imagePickerController)
+        })
+        .disposed(by: disposeBag)
+        
+        return Output(viewTitle: writePostSceneUseCase.titleObservable.asDriver(onErrorJustReturn: "게시판"),
+                      selectedImage: imageSubject.asDriver(onErrorDriveWith: .empty())
+        )
+    }
+}
+
+extension WritePostSceneViewModel: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var selectImage: UIImage?
+        
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectImage = editedImage
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectImage = originalImage
+        }
+        
+        imageSubject.onNext(selectImage)
+        picker.dismiss(animated: true)
     }
 }

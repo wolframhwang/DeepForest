@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+
 final class DefaultWritePostSceneCoordinator: WritePostSceneCoordinator {
     var finishDelegate: CoordinatorFinishDelegate?
     var navigationController: UINavigationController
@@ -22,8 +23,8 @@ final class DefaultWritePostSceneCoordinator: WritePostSceneCoordinator {
     }
     
     func start() {
-        
     }
+    
     func presentWritePostScene(galleryId: Int) {
         self.writePostSceneViewController.viewModel = WritePostSceneViewModel(coordinator: self, writePostSceneUseCase: DefaultWritePostSceneUseCase(galleryId: galleryId, userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService())))
         navVC = UINavigationController(rootViewController: self.writePostSceneViewController)
@@ -38,6 +39,11 @@ final class DefaultWritePostSceneCoordinator: WritePostSceneCoordinator {
         let action = UIAlertAction(title: "확인", style: .default)
         alertView.addAction(action)
         writePostSceneViewController.present(alertView, animated: true)
+    }
+    
+    func selectPictureToAlbum(imagePickerController: UIImagePickerController?) {
+        
+        writePostSceneViewController.present(imagePickerController ?? UIImagePickerController(), animated: true)
     }
     
     func dismissScene() {

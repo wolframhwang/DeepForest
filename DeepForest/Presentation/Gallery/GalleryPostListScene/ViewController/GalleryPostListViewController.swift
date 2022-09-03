@@ -24,7 +24,7 @@ class GalleryPostListViewController: UIViewController {
     
     private lazy var writePostButton: UIButton = {
         let button = UIButton()
-        button.setTitle(" ✏️ 글 쓰기 ", for: .normal)
+        button.setTitle(" ✏️ 글쓰기 ", for: .normal)
         button.setTitleColor(UIColor.tintColor, for: .normal)
         button.backgroundColor = .systemBackground
         button.layer.cornerRadius = 8
