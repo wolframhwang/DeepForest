@@ -27,7 +27,7 @@ final class WritePostSceneViewModel: NSObject, ViewModelType {
     struct Input {
         let title: Observable<String?>
         let titleIsOK: Observable<Bool>
-        let content: Observable<String?>
+        let content: Observable<NSAttributedString?>
         let contentIsOK: Observable<Bool>
         let didTappedPostButton: Driver<Void>
         let didTappedCancelButton: Driver<Void>
@@ -55,7 +55,8 @@ final class WritePostSceneViewModel: NSObject, ViewModelType {
         .disposed(by: disposeBag)
         
         input.content.withLatestFrom(input.contentIsOK) {
-            (content, isOK) -> String? in
+            (content, isOK) -> NSAttributedString? in
+            
             if isOK { return content }
             return nil
         }

@@ -190,7 +190,8 @@ extension WritePostSceneViewController {
         let input = WritePostSceneViewModel
             .Input(title: titleTextView.rx.text.asObservable(),
                    titleIsOK: titleIsOK.asObservable(),
-                   content: contentTextView.rx.text.asObservable(),
+                   content: contentTextView.rx
+                .attributedText.asObservable(),
                    contentIsOK: contentIsOK.asObservable(),
                    didTappedPostButton: postButton.rx.tap
                 .throttle(.seconds(1), scheduler: MainScheduler.asyncInstance)
@@ -231,6 +232,29 @@ extension WritePostSceneViewController {
             
             contentDidChagne.onNext(Void())
             contentEndEdit.onNext(Void())
+        })
+        .disposed(by: disposeBag)
+        
+        contentTextView.rx.attributedText.subscribe(onNext: {
+            guard let attrStr = $0 else { return }
+            var images = [Any]()
+            attrStr.enumerateAttribute(.attachment, in: NSRange(location: 0, length: attrStr.length)) { (value, range, stop) -> Void in
+                if value is NSTextAttachment {
+                    let attachment: NSTextAttachment? = (value as? NSTextAttachment)
+                    var image: UIImage? = nil
+                    if ((attachment?.image) != nil) {
+                        image = attachment?.image
+                    } else {
+                        image = attachment?.image(forBounds: (attachment?.bounds)!, textContainer: nil, characterIndex: range.location)
+                    }
+                    
+                    if image != nil {
+                        images.append(image)
+                    }
+                }
+            }
+            print(images)
+            
         })
         .disposed(by: disposeBag)
     }

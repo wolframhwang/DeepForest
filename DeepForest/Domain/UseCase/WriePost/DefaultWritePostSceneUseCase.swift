@@ -24,7 +24,7 @@ final class DefaultWritePostSceneUseCase: WritePostSceneUseCase {
     
     var titleObservable = BehaviorSubject<String>(value: "글쓰기")
     var title = BehaviorSubject<String?>(value: nil)
-    var content = BehaviorSubject<String?>(value: nil)
+    var content = BehaviorSubject<NSAttributedString?>(value: nil)
     
     init(galleryId: Int, userRepository: UserRepository, networkRepository: NetworkRepository) {
         self.galleryId = galleryId
@@ -73,12 +73,13 @@ final class DefaultWritePostSceneUseCase: WritePostSceneUseCase {
         guard let content = try? content.value() else {
             return Observable.error(PostFail.contentNil)
         }
-        if title.count == 0 || content.count == 0 {
+        if title.count == 0 || content.length == 0 {
             return Observable.error(PostFail.emptyError)
         }
+        
         let item = ContentItem(galleryId: galleryId,
                                title: title,
-                               content: content)
+                               content: content.string)
         guard let token = userRepository.fetchToken() else {
             return Observable.error(PostFail.tokenFetchError)
         }
