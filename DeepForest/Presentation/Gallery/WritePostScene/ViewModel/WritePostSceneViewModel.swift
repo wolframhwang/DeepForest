@@ -67,9 +67,27 @@ final class WritePostSceneViewModel: NSObject, ViewModelType {
         input.didTappedPostButton.drive(onNext: { [weak self] _ in
             self?.writePostSceneUseCase.refreshToken().subscribe(onNext: { [weak self] in
                 if $0 {
-                    self?.writePostSceneUseCase.postingMyContent().observe(on: MainScheduler.asyncInstance)
-                        .subscribe(onNext: { [weak self] response in
-                            self?.coordinator?.dismissScene()
+//                    self?.writePostSceneUseCase.postingMyContent().observe(on: MainScheduler.asyncInstance)
+//                        .subscribe(onNext: { [weak self] response in
+//                            self?.coordinator?.dismissScene()
+//                        }, onError: { error in
+//                            self?.coordinator?.showAlert(error)
+//                        })
+//                        .disposed(by: disposeBag)
+//                    self?.writePostSceneUseCase.postingMyContentWithImages().observe(on: MainScheduler.asyncInstance)
+//                        .subscribe(onNext: { [weak self] response in
+//
+//                            print(response)
+//                            self?.coordinator?.dismissScene()
+//                        })
+//                        .disposed(by: disposeBag)
+                    Observable.combineLatest((self?.writePostSceneUseCase.postingMyContent())!, (self?.writePostSceneUseCase.postingMyContentWithImages())!).observe(on: MainScheduler.asyncInstance)
+                        .subscribe(onNext: { s1, s2 in
+                            if s2 != nil {
+                                self?.coordinator?.dismissScene()
+                            } else {
+                                self?.coordinator?.showAlert(AlamofireImageUploadServiceError.unknownError)
+                            }
                         }, onError: { error in
                             self?.coordinator?.showAlert(error)
                         })

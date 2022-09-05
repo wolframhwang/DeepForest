@@ -247,6 +247,7 @@ extension WritePostSceneViewController {
                     } else {
                         image = attachment?.image(forBounds: (attachment?.bounds)!, textContainer: nil, characterIndex: range.location)
                     }
+                    print(range.location)
                     
                     if image != nil {
                         images.append(image)

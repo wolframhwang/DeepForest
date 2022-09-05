@@ -26,7 +26,7 @@ final class DefaultWritePostSceneCoordinator: WritePostSceneCoordinator {
     }
     
     func presentWritePostScene(galleryId: Int) {
-        self.writePostSceneViewController.viewModel = WritePostSceneViewModel(coordinator: self, writePostSceneUseCase: DefaultWritePostSceneUseCase(galleryId: galleryId, userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService())))
+        self.writePostSceneViewController.viewModel = WritePostSceneViewModel(coordinator: self, writePostSceneUseCase: DefaultWritePostSceneUseCase(galleryId: galleryId, userRepository: DefaultUserRepository(), networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService(), alamofire: DefaultAlamofireImageUploadService())))
         navVC = UINavigationController(rootViewController: self.writePostSceneViewController)
         navVC.modalPresentationStyle = .fullScreen
         self.navigationController.present(navVC, animated: true)

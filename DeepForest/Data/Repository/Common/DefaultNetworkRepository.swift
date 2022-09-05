@@ -13,9 +13,27 @@ let HTTPHeaders = ["Content-Type": "application/json"]
 
 final class DefaultNetworkRepository: NetworkRepository {
     private let network: DefaultURLSessionNetworkService
-    
+    private let alamofire: DefaultAlamofireImageUploadService?
     init(network : DefaultURLSessionNetworkService) {
         self.network = network
+        self.alamofire = nil
+    }
+    
+    init(network : DefaultURLSessionNetworkService,
+         alamofire: DefaultAlamofireImageUploadService) {
+        self.network = network
+        self.alamofire = alamofire
+    }
+    func postWithImage(item: ImageItems, to: String, token: String) -> Observable<Result<Data, AlamofireImageUploadServiceError>> {
+        var header = ["Content-Type": "multipart/form-data"]
+        header.updateValue("Bearer \(token)", forKey: "Authorization")
+        
+        guard let result = alamofire?.upload(with: item,
+                                 url: baseURL + to,
+                                             headers: header) else {
+            return Observable.error(AlamofireImageUploadServiceError.unknownError)
+        }
+        return result
     }
     
     func postWithToken<T: Codable>(item: T, to: String, token: String) -> Observable<Result<Data, URLSessionNetworkServiceError>> {

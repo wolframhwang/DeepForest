@@ -17,4 +17,5 @@ protocol WritePostSceneUseCase {
     
     func refreshToken() -> Observable<Bool>
     func postingMyContent() -> Observable<String?>
+    func postingMyContentWithImages() -> Observable<String?>
 }
