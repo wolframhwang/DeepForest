@@ -53,6 +53,7 @@ extension GalleryPostListViewController {
         let output = viewModel?.transform(from: input)
         
         output?.postLists.drive(tableView.rx.items(cellIdentifier: GalleryPostListTableViewCell.reuseID, cellType: GalleryPostListTableViewCell.self)) { tv, viewModel, cell in
+            cell.selectionStyle = .none
             cell.bind(viewModel)
         }
         .disposed(by: disposeBag)
