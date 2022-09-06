@@ -31,7 +31,7 @@ extension AlamofireImageUploadServiceError: LocalizedError {
 protocol AlamofireImageUploadService {
     func upload(with data: ImageItems,
                 url urlString: String,
-                headers: [String: String]?) -> Observable<Result<Data, AlamofireImageUploadServiceError>>
+                headers: [String: String]?) -> Observable<Result<Data?, AlamofireImageUploadServiceError>>
     
     
 }

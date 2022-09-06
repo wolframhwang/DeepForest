@@ -24,7 +24,7 @@ final class DefaultNetworkRepository: NetworkRepository {
         self.network = network
         self.alamofire = alamofire
     }
-    func postWithImage(item: ImageItems, to: String, token: String) -> Observable<Result<Data, AlamofireImageUploadServiceError>> {
+    func postWithImage(item: ImageItems, to: String, token: String) -> Observable<Result<Data?, AlamofireImageUploadServiceError>> {
         var header = ["Content-Type": "multipart/form-data"]
         header.updateValue("Bearer \(token)", forKey: "Authorization")
         

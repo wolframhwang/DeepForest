@@ -7,9 +7,14 @@
 
 import Foundation
 
+struct ContentImages: Codable {
+    let number: Int
+    let url: String
+}
+
 struct ContentItem: Codable {
     let galleryId: Int
     let title: String
     let content: String
-    
+    let images: [ContentImages]?
 }

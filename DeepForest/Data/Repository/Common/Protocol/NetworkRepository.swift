@@ -14,5 +14,5 @@ protocol NetworkRepository {
     func post(tokenItem: TokenItem) -> Observable<Result<Data, URLSessionNetworkServiceError>>
     func fetch(urlSuffix: String, queryItems: [String: String]?) -> Observable<Result<Data, URLSessionNetworkServiceError>>
     func postWithToken<T: Codable>(item: T, to: String, token: String) -> Observable<Result<Data, URLSessionNetworkServiceError>>
-    func postWithImage(item: ImageItems, to: String, token: String) -> Observable<Result<Data, AlamofireImageUploadServiceError>>
+    func postWithImage(item: ImageItems, to: String, token: String) -> Observable<Result<Data?, AlamofireImageUploadServiceError>>
 }

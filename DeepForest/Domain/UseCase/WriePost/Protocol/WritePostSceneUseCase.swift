@@ -17,5 +17,6 @@ protocol WritePostSceneUseCase {
     
     func refreshToken() -> Observable<Bool>
     func postingMyContent() -> Observable<String?>
-    func postingMyContentWithImages() -> Observable<String?>
+    func postingMyContentWithImages() -> Observable<Result<Data?, AlamofireImageUploadServiceError>>
+    func postingContent(imageURL: [String]?) -> Observable<String?>
 }

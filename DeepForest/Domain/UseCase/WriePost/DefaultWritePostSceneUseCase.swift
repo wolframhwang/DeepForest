@@ -79,7 +79,8 @@ final class DefaultWritePostSceneUseCase: WritePostSceneUseCase {
         
         let item = ContentItem(galleryId: galleryId,
                                title: title,
-                               content: content.string)
+                               content: content.string,
+                               images: nil)
         guard let token = userRepository.fetchToken() else {
             return Observable.error(PostFail.tokenFetchError)
         }
@@ -115,7 +116,7 @@ final class DefaultWritePostSceneUseCase: WritePostSceneUseCase {
                 } else {
                     image = attachment?.image(forBounds: (attachment?.bounds)!, textContainer: nil, characterIndex: range.location)
                 }
-                
+
                 if image != nil {
                     if let data = image?.jpegData(compressionQuality: 0.9) {
                         images.append(data)
@@ -126,8 +127,37 @@ final class DefaultWritePostSceneUseCase: WritePostSceneUseCase {
         return images
     }
     
+    func makeIndexWithImage(_ attrStr: NSAttributedString, _ imageURL: [String]?) -> [ContentImages]? {
+        var images = [ContentImages]()
+        var indexs = [Int]()
+        guard let imageURL = imageURL else {
+            return nil
+        }
+
+        attrStr.enumerateAttribute(.attachment, in: NSRange(location: 0, length: attrStr.length)) { (value, range, stop) -> Void in
+            if value is NSTextAttachment {
+                let attachment: NSTextAttachment? = (value as? NSTextAttachment)
+                var image: UIImage? = nil
+                if ((attachment?.image) != nil) {
+                    image = attachment?.image
+                } else {
+                    image = attachment?.image(forBounds: (attachment?.bounds)!, textContainer: nil, characterIndex: range.location)
+                }
+
+                if image != nil {
+                    indexs.append(range.location)
+                }
+            }
+        }
+        let limit = min(indexs.count, imageURL.count)
+        for i in 0..<limit {
+            images.append(ContentImages(number: indexs[i], url: imageURL[i]))
+        }
+        
+        return images
+    }
     
-    func postingMyContentWithImages() -> Observable<String?> {
+    func postingMyContentWithImages() -> Observable<Result<Data?, AlamofireImageUploadServiceError>> {
         guard let title = try? title.value() else {
             return Observable.error(PostFail.titleNil)
         }
@@ -137,7 +167,16 @@ final class DefaultWritePostSceneUseCase: WritePostSceneUseCase {
         if title.count == 0 || content.length == 0 {
             return Observable.error(PostFail.emptyError)
         }
+        
         let imageArray = imageToDataArray(content)
+        if imageArray.isEmpty {
+            return Observable.create { observe in
+                observe.onNext(.success(nil))
+                observe.onCompleted()
+                
+                return Disposables.create()
+            }
+        }
         
         let item = ImageItems(images: imageArray)
         
@@ -145,33 +184,47 @@ final class DefaultWritePostSceneUseCase: WritePostSceneUseCase {
             return Observable.error(PostFail.tokenFetchError)
         }
         
-        return networkRepository.postWithImage(item: item, to: "/api/v1/image/list/MEMBER", token: token)
-            .map { [weak self] result in
-                switch result {
-                case .success(let data):
-                    return "UPLoaded"
-                case .failure(let error):
-                    return error.localizedDescription
+        return networkRepository.postWithImage(item: item, to: "/api/v1/images/MEMBER", token: token)
+    }
+    
+    func postingContent(imageURL: [String]?) -> Observable<String?> {
+        guard let title = try? title.value() else {
+            return Observable.error(PostFail.titleNil)
+        }
+        guard let content = try? content.value() else {
+            return Observable.error(PostFail.contentNil)
+        }
+        if title.count == 0 || content.length == 0 {
+            return Observable.error(PostFail.emptyError)
+        }
+        
+        let item = ContentItem(galleryId: galleryId,
+                               title: title,
+                               content: content.string,
+                               images: self.makeIndexWithImage(content, imageURL))
+        
+        
+        guard let token = userRepository.fetchToken() else {
+            return Observable.error(PostFail.tokenFetchError)
+        }
+        return networkRepository.postWithToken(item: item,
+                                               to: "/api/v1/posts",
+                                               token: token)
+        .map { [weak self] result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(PostResponseDTO.self, from: data)
+                    if response.success {
+                        return nil
+                    } else {
+                        return response.error?.message
+                    }
                 }
+            case .failure(let error):
+                return error.localizedDescription
             }
-//        return networkRepository.postWithToken(item: item,
-//                                               to: "/api/v1/posts",
-//                                               token: token)
-//        .map { [weak self] result in
-//            switch result {
-//            case .success(let data):
-//                do {
-//                    let response = try JSONDecoder().decode(PostResponseDTO.self, from: data)
-//                    if response.success {
-//                        return nil
-//                    } else {
-//                        return response.error?.message
-//                    }
-//                }
-//            case .failure(let error):
-//                return error.localizedDescription
-//            }
-//
-//        }
+            
+        }
     }
 }

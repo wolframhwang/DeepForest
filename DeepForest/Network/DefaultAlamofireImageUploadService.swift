@@ -16,23 +16,21 @@ final class DefaultAlamofireImageUploadService: AlamofireImageUploadService {
         static let delete = "DELETE"
     }
     
-    func upload(with data: ImageItems, url urlString: String, headers: [String : String]?) -> Observable<Result<Data, AlamofireImageUploadServiceError>> {
+    func upload(with data: ImageItems, url urlString: String, headers: [String : String]?) -> Observable<Result<Data?, AlamofireImageUploadServiceError>> {
         return request(with: data, url: urlString, headers: headers, method: HTTPMethod.post)
     }
     
     func request(with data: ImageItems,
                     url urlString: String,
                     headers: [String: String]? = nil,
-                    method: String) -> Observable<Result<Data, AlamofireImageUploadServiceError>> {
+                    method: String) -> Observable<Result<Data?, AlamofireImageUploadServiceError>> {
         guard let url = URL(string: urlString) else {
             return Observable.error(AlamofireImageUploadServiceError.unknownURL)
         }
-        print(url)
-        print(self.createHeaders(headers: headers))
 //http://52.78.99.238:8080/api/v1/image/list/MEMBER
 //http://52.78.99.238:8080/api/v1/image/list/MEMBER
 
-        return Observable<Result<Data, AlamofireImageUploadServiceError>>.create { emitter in
+        return Observable<Result<Data?, AlamofireImageUploadServiceError>>.create { emitter in
             AF.upload(multipartFormData: { multiData in
                 if let imageArray = data.images {
                     for image in imageArray {
@@ -48,10 +46,8 @@ final class DefaultAlamofireImageUploadService: AlamofireImageUploadService {
                     emitter.onError(AlamofireImageUploadServiceError.unknownError)
                     return
                 }
-                print(statusCode, "STATUSCODE")
                 switch statusCode {
                 case 200..<300:
-                    print("SUCCESS")
                     guard let data = response.data else {
                         emitter.onNext(.failure(AlamofireImageUploadServiceError.emptyData))
                         return

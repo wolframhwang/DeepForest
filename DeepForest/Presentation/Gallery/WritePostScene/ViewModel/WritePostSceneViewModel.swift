@@ -67,31 +67,54 @@ final class WritePostSceneViewModel: NSObject, ViewModelType {
         input.didTappedPostButton.drive(onNext: { [weak self] _ in
             self?.writePostSceneUseCase.refreshToken().subscribe(onNext: { [weak self] in
                 if $0 {
-//                    self?.writePostSceneUseCase.postingMyContent().observe(on: MainScheduler.asyncInstance)
-//                        .subscribe(onNext: { [weak self] response in
-//                            self?.coordinator?.dismissScene()
+                    guard let postingWithImage = self?.writePostSceneUseCase.postingMyContentWithImages() else {
+                        return
+                    }
+                    
+                    postingWithImage.observe(on: MainScheduler.asyncInstance).subscribe(onNext: { result in
+                        result
+                        switch result {
+                        case .success(let data):
+                            guard let data = data else { return }
+                            do {
+                                let response = try JSONDecoder().decode(ImageListResponseDTO.self, from: data)
+                                if response.success {
+                                    self?.writePostSceneUseCase.postingContent(imageURL: response.result).observe(on: MainScheduler.asyncInstance).subscribe(onNext: { success in
+                                        if success != nil {
+                                            self?.coordinator?.showAlert(AlamofireImageUploadServiceError.unknownError)
+                                        } else {
+                                            self?.coordinator?.dismissScene()
+                                        }
+                                    }, onError: { error in
+                                        self?.coordinator?.showAlert(error)
+                                    })
+                                    .disposed(by: disposeBag)
+                                } else {
+                                    self?.coordinator?.showAlert(AlamofireImageUploadServiceError.unknownError)
+                                }
+                            } catch(let error) {
+                                self?.coordinator?.showAlert(error)
+                            }
+                        case .failure(let error):
+                            self?.coordinator?.showAlert(error)
+                        }
+                    }, onError: { error in
+                        self?.coordinator?.showAlert(error)
+                    })
+                    .disposed(by: disposeBag)
+                    
+//                    Observable.combineLatest((self?.writePostSceneUseCase.postingMyContent())!, (self?.writePostSceneUseCase.postingMyContentWithImages())!).observe(on: MainScheduler.asyncInstance)
+//                        .subscribe(onNext: { s1, s2 in
+//                            if s2 != nil {
+//                                self?.coordinator?.dismissScene()
+//                            } else {
+//                                self?.coordinator?.showAlert(AlamofireImageUploadServiceError.unknownError)
+//                            }
 //                        }, onError: { error in
 //                            self?.coordinator?.showAlert(error)
 //                        })
 //                        .disposed(by: disposeBag)
-//                    self?.writePostSceneUseCase.postingMyContentWithImages().observe(on: MainScheduler.asyncInstance)
-//                        .subscribe(onNext: { [weak self] response in
-//
-//                            print(response)
-//                            self?.coordinator?.dismissScene()
-//                        })
-//                        .disposed(by: disposeBag)
-                    Observable.combineLatest((self?.writePostSceneUseCase.postingMyContent())!, (self?.writePostSceneUseCase.postingMyContentWithImages())!).observe(on: MainScheduler.asyncInstance)
-                        .subscribe(onNext: { s1, s2 in
-                            if s2 != nil {
-                                self?.coordinator?.dismissScene()
-                            } else {
-                                self?.coordinator?.showAlert(AlamofireImageUploadServiceError.unknownError)
-                            }
-                        }, onError: { error in
-                            self?.coordinator?.showAlert(error)
-                        })
-                        .disposed(by: disposeBag)
+                        
                 }
             })
             .disposed(by: disposeBag)
