@@ -144,9 +144,10 @@ extension PostViewController {
             .bind(to: date.rx.text)
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(output.content, output.imageArrays).asDriver(onErrorDriveWith: .empty())
-            .drive(onNext: { [weak self] content, imageArray in
+        Observable.combineLatest(output.imageArrays, output.content).asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: { [weak self] imageArray, content in
                 self?.generateImages(imageArray, content: content).asDriver(onErrorDriveWith: .empty()).drive((self?.contentLabel.rx.attributedText)!)
+                    .disposed(by: self?.disposeBag ?? DisposeBag())
                 
                 self?.makeSeparator()
             })
