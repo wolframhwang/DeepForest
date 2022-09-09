@@ -222,9 +222,14 @@ extension WritePostSceneViewController {
             if width > tWidth {
                 attachement.bounds.size = CGSize(width: tWidth, height: height * (tWidth / width))
             }
+            let slash = NSAttributedString(string: "\n")
             let attachmentString = NSAttributedString(attachment: attachement)
             
+            self?.contentTextView.textStorage
+                .insert(slash, at: self?.contentTextView.text.count ?? 0)
             self?.contentTextView.textStorage.insert(attachmentString, at: self?.contentTextView.text.count ?? 0)
+            self?.contentTextView.textStorage
+                .insert(slash, at: self?.contentTextView.text.count ?? 0)
             
             if let position = self?.contentTextView.endOfDocument {
                 self?.contentTextView.selectedTextRange = self?.contentTextView.textRange(from:position, to:position)

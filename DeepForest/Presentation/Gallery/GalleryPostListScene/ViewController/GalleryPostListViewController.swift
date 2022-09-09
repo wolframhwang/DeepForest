@@ -57,9 +57,7 @@ extension GalleryPostListViewController {
             cell.bind(viewModel)
         }
         .disposed(by: disposeBag)
-        
-        output?.selectedPost.drive()
-            .disposed(by: disposeBag)
+                
         output?.title.drive(onNext: { [weak self] title in
             self?.title = title
         })

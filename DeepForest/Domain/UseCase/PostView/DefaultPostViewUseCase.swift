@@ -10,11 +10,19 @@ import RxCocoa
 import RxSwift
 
 final class DefaultPostViewUseCase: PostViewUseCase {
+
+    
     private let postId: Int
     private let networkRepository: NetworkRepository
     private let userRepository: UserRepository
     
+    var navigationTitleObservable = BehaviorSubject<String>(value: "DeepForest")
     var titleObservable = BehaviorSubject<String>(value: "")
+    var contentObservable = PublishSubject<String>()
+    var writerObservable = PublishSubject<String>()
+    var dateObservable = PublishSubject<String>()
+    
+    var imageArray = PublishSubject<[ImageArrayResponseDTO]?>()
     
     init(postId: Int,
          userRepository: UserRepository,
@@ -25,6 +33,29 @@ final class DefaultPostViewUseCase: PostViewUseCase {
     }
     
     func fetchPost() -> Observable<String?> {
-        return networkRepository.fetch(urlSuffix: <#T##String#>, queryItems: <#T##[String : String]?#>)
+        return networkRepository.fetch(urlSuffix: "/api/v1/posts/\(postId)", queryItems: nil).map { [weak self] result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(SinglePostResponseDTO.self, from: data)
+                    if response.success {
+                        guard let res = response.result else { return URLSessionNetworkServiceError.unknownError.localizedDescription }
+                        
+                        self?.titleObservable.onNext(res.title)
+                        self?.contentObservable.onNext(res.content)
+                        self?.imageArray.onNext(res.images)
+                        self?.writerObservable.onNext(res.nickname)
+                        self?.dateObservable.onNext(res.createdAt)
+
+                        return nil
+                    } else {
+                        return response.error?.message
+                    }
+                }
+            case .failure(let error):
+                return error.localizedDescription
+            }
+        }
     }
+    
 }

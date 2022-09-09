@@ -70,5 +70,9 @@ final class DefaultNetworkRepository: NetworkRepository {
     func fetch(urlSuffix: String, queryItems: [String: String]?) -> Observable<Result<Data, URLSessionNetworkServiceError>> {
         return network.fetch(url: baseURL + urlSuffix, queryItems: queryItems, header: HTTPHeaders)
     }
+    
+    func fetch(url: String, queryItems: [String: String]? = nil) -> Observable<Result<Data, URLSessionNetworkServiceError>> {
+        return network.fetch(url: url, queryItems: queryItems, header: HTTPHeaders)
+    }
 
 }

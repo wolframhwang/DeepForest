@@ -9,5 +9,15 @@ import Foundation
 import RxSwift
 
 protocol PostViewUseCase {
+    var navigationTitleObservable: BehaviorSubject<String> { get }
+    
+    var titleObservable: BehaviorSubject<String> { get }
+    var contentObservable: PublishSubject<String> { get }
+    var writerObservable: PublishSubject<String> { get }
+    var dateObservable: PublishSubject<String> { get }
+    
+    var imageArray: PublishSubject<[ImageArrayResponseDTO]?> { get }
+    //
+        
     func fetchPost() -> Observable<String?>
 }

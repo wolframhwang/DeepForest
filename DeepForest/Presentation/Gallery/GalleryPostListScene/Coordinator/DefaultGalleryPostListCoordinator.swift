@@ -29,6 +29,14 @@ final class DefaultGalleryPostListCoordinator: GalleryPostListCoordinator {
         self.navigationController.pushViewController(galleryPostListViewController, animated: true)
     }
     
+    func pushPostViewScene(postId: Int) {
+        let postViewSceneCoordinator = DefaultPostViewCoordinator(self.navigationController)
+        postViewSceneCoordinator.finishDelegate = self
+        self.childCoordinators.append(postViewSceneCoordinator)
+        postViewSceneCoordinator.pushPostViewScene(postId: postId)
+        
+    }
+    
     func presentWritePostScene(galleryId: Int) {
         let writePostSceneCoordinator = DefaultWritePostSceneCoordinator(self.navigationController)
         writePostSceneCoordinator.finishDelegate = self

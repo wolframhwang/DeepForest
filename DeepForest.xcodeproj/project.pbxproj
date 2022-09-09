@@ -50,6 +50,8 @@
 		7B68BCF628C7805700D2C406 /* DefaultPostViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCF528C7805700D2C406 /* DefaultPostViewCoordinator.swift */; };
 		7B68BCF828C7806200D2C406 /* PostViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCF728C7806200D2C406 /* PostViewUseCase.swift */; };
 		7B68BCFA28C7806C00D2C406 /* DefaultPostViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCF928C7806C00D2C406 /* DefaultPostViewUseCase.swift */; };
+		7B68BCFC28C7876A00D2C406 /* SinglePostResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCFB28C7876A00D2C406 /* SinglePostResponseDTO.swift */; };
+		7B68BCFE28C9B19A00D2C406 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCFD28C9B19A00D2C406 /* UIImage+.swift */; };
 		7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817828AFB0CD007A3004 /* SettingViewController.swift */; };
 		7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */; };
 		7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */; };
@@ -196,6 +198,8 @@
 		7B68BCF528C7805700D2C406 /* DefaultPostViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostViewCoordinator.swift; sourceTree = "<group>"; };
 		7B68BCF728C7806200D2C406 /* PostViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewUseCase.swift; sourceTree = "<group>"; };
 		7B68BCF928C7806C00D2C406 /* DefaultPostViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostViewUseCase.swift; sourceTree = "<group>"; };
+		7B68BCFB28C7876A00D2C406 /* SinglePostResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostResponseDTO.swift; sourceTree = "<group>"; };
+		7B68BCFD28C9B19A00D2C406 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		7B92817828AFB0CD007A3004 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
@@ -726,6 +730,7 @@
 				7B68BCB628B9E51F00D2C406 /* GalleryPostItemDTO.swift */,
 				7B68BCD728BE491500D2C406 /* PostResponseDTO.swift */,
 				7B68BCE628C6384A00D2C406 /* ImageListResponseDTO.swift */,
+				7B68BCFB28C7876A00D2C406 /* SinglePostResponseDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -874,6 +879,7 @@
 			children = (
 				7BE63AD928A9525F0068BD67 /* Reusable.swift */,
 				7B68BCD328BE286E00D2C406 /* String+.swift */,
+				7B68BCFD28C9B19A00D2C406 /* UIImage+.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -1480,6 +1486,7 @@
 				7B68BCDD28C0F7BF00D2C406 /* PhotoCollectionViewCell.swift in Sources */,
 				7B92818028AFB0F0007A3004 /* DefaultSettingCoordinator.swift in Sources */,
 				7B9356E62898144000406022 /* DefaultURLSessionNetworkServiceError.swift in Sources */,
+				7B68BCFE28C9B19A00D2C406 /* UIImage+.swift in Sources */,
 				7B68BCC428BA722400D2C406 /* WritePostSceneViewModel.swift in Sources */,
 				7B68BCE728C6384A00D2C406 /* ImageListResponseDTO.swift in Sources */,
 				7B1CCCE92892C3C5004389A8 /* DefaultSignInCoordinator.swift in Sources */,
@@ -1569,6 +1576,7 @@
 				7BF3FA8C288EF60F0072218E /* DefaultSignChoiceCoordinator.swift in Sources */,
 				7B68BC9228B3ACC400D2C406 /* DefaultGalleryPostListCoordinator.swift in Sources */,
 				7B92818A28AFD057007A3004 /* SettingListCell.swift in Sources */,
+				7B68BCFC28C7876A00D2C406 /* SinglePostResponseDTO.swift in Sources */,
 				7BE63A9A28A792150068BD67 /* TokenResultDTO.swift in Sources */,
 				7BE63AEF28AA04850068BD67 /* GalleryListViewController.swift in Sources */,
 				7BF3FA91289018FB0072218E /* ViewModelType.swift in Sources */,

@@ -8,5 +8,6 @@
 import Foundation
 
 protocol PostViewCoordinator: Coordinator {
-    
+    func pushPostViewScene(postId: Int)
+    func showAlert(_ error: Error)
 }

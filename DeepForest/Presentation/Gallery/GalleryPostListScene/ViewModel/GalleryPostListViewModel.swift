@@ -22,7 +22,6 @@ final class GalleryPostListViewModel: ViewModelType {
     
     struct Output {
         let postLists: Driver<[GalleryPostListCellViewModel]>
-        let selectedPost: Driver<Post>
         let title: Driver<String>
     }
     
@@ -49,19 +48,17 @@ final class GalleryPostListViewModel: ViewModelType {
                 }
         }
         
+        
         let title = galleryPostListUseCase.title.asDriver(onErrorJustReturn: "")
         
-        let selectedPost = input.selection.withLatestFrom(postLists) { (indexPath, posts) -> GalleryPostListCellViewModel in
+        input.selection.withLatestFrom(postLists) { (indexPath, posts) -> GalleryPostListCellViewModel in
             return posts[indexPath.row]
-        }.map { model -> Post in
-            Post(viewModel: model)
-        }
-        .do(onNext: {[weak self] post in
-            post
+        }.drive(onNext: {[weak self] model in
+            self?.coordinator?.pushPostViewScene(postId: model.postId)
         })
+        .disposed(by: disposeBag)        
         
         return Output(postLists: postLists,
-                      selectedPost: selectedPost,
                       title: title)
     }
 }

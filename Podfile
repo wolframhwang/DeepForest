@@ -6,6 +6,7 @@ target 'DeepForest' do
   use_frameworks!
 
   # Pods for DeepForest
+  pod 'Kingfisher'
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxAlamofire'
