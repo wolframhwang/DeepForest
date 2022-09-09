@@ -65,11 +65,9 @@ class PostViewController: UIViewController {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         
-        
-        
         return label
     }()
-        
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubviews()
@@ -119,7 +117,6 @@ extension PostViewController {
         contentCommentSeparator.snp.makeConstraints { make in
             make.height.equalTo(2)
         }
-    
     }
     
     func setAttribute() {
@@ -139,10 +136,6 @@ extension PostViewController {
             .bind(to: titleLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output.content.observe(on: MainScheduler.asyncInstance)
-            .bind(to: contentLabel.rx.text)
-            .disposed(by: disposeBag)
-        
         output.writer.observe(on: MainScheduler.asyncInstance)
             .bind(to: write.rx.text)
             .disposed(by: disposeBag)
@@ -151,51 +144,50 @@ extension PostViewController {
             .bind(to: date.rx.text)
             .disposed(by: disposeBag)
         
-        Driver.combineLatest(output.content.asDriver(onErrorDriveWith: .empty()), output.imageArrays.asDriver(onErrorDriveWith: .empty())).drive(onNext: { [weak self] content, imageArray in
-            self?.contentLabel.attributedText = NSAttributedString(string: content)
-            self?.generateImages(imageArray)
-            [self?.titleContentSeparator, self?.contentCommentSeparator].forEach { subview in
-                subview?.backgroundColor = .label
-            }
-        })
-        .disposed(by: disposeBag)
+        Observable.combineLatest(output.content, output.imageArrays).asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: { [weak self] content, imageArray in
+                self?.generateImages(imageArray, content: content).asDriver(onErrorDriveWith: .empty()).drive((self?.contentLabel.rx.attributedText)!)
+                
+                self?.makeSeparator()
+            })
+            .disposed(by: disposeBag)
         
         output.navigationTitle
             .bind(to: self.rx.title)
             .disposed(by: disposeBag)
     }
     
-    private func width() -> Observable<CGFloat> {
-        return Observable.create { [weak self] emitter in
-            emitter.onNext(self?.stackView.frame.width ?? 0)
-            emitter.onCompleted()
-            
-            return Disposables.create()
+    func makeSeparator() {
+        [self.titleContentSeparator, self.contentCommentSeparator].forEach { subview in
+            subview?.backgroundColor = .label
         }
     }
     
-    func generateImages(_ images: [ImageArrayResponseDTO]?) {
+    func generateImages(_ images: [ImageArrayResponseDTO]?,
+                        content: String) -> Observable<NSAttributedString> {
         guard let images = images else {
-            return
+            return Observable.error(CovertError.decodeFail)
         }
-        if images.count == 0 { return }
-        var offset = 0
-        for image in images {
-            DispatchQueue.main.async { [weak self] in
+        let tWidth = self.stackView.frame.size.width
+        return Observable<NSAttributedString>.create { emitter in
+            if images.count == 0 {
+                emitter.onNext(NSAttributedString(string: content))
+                emitter.onCompleted()
+            }
+            var offset = 0
+            let attr: NSMutableAttributedString = NSMutableAttributedString(string: content)
+            for image in images {
                 var img: UIImage?
                 let url = URL(string: image.url)
                 let data = try? Data(contentsOf: url!)
                 img = UIImage(data: data!)
-            
-                
-                let tWidth = self?.contentLabel.frame.width ?? 0
+                                
                 if let width = img?.size.width, let height = img?.size.height {
                     if width > tWidth {
                         img = img?.resized(to: CGSize(width: tWidth, height: height * (tWidth / width)))
                     }
                 }
                 
-                let attr: NSMutableAttributedString = NSMutableAttributedString(attributedString: self?.contentLabel.attributedText ?? NSAttributedString(string: ""))
                 let slash: NSMutableAttributedString = NSMutableAttributedString(string: "\n")
                 let attachment = NSTextAttachment()
                 attachment.image = img
@@ -206,12 +198,15 @@ extension PostViewController {
                 offset += 1
                 attr.insert(slash, at: image.number + offset)
                 offset += 1
-                self?.contentLabel.attributedText = attr
-                self?.contentLabel.font = .systemFont(ofSize: 18)
-                self?.contentLabel.sizeToFit()
             }
+            emitter.onNext(attr)
+            emitter.onCompleted()
             
+            return Disposables.create()
         }
-        
     }
+}
+
+enum CovertError: Error {
+    case decodeFail
 }
