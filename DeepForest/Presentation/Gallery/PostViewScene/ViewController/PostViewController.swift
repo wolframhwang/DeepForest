@@ -10,64 +10,14 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import Kingfisher
+import FlexLayout
 
 class PostViewController: UIViewController {
     var disposeBag = DisposeBag()
     var viewModel: PostViewModel?
-    private lazy var titleContentSeparator = UIView()
-    private lazy var contentCommentSeparator = UIView()
     
-    private lazy var scrollView = UIScrollView()
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        return stackView
-    }()
+    private var mainView = PostContentview()
     
-    private lazy var writeInfoStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 5
-        
-        return stackView
-    }()
-    
-    private lazy var write: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
-        label.textColor = .systemGray
-        
-        return label
-    }()
-    
-    private lazy var date: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
-        label.textColor = .systemGray
-        
-        return label
-    }()
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 1
-        label.textColor = .label
-        label.font = .systemFont(ofSize: 25)
-        return label
-    }()
-    
-    private lazy var contentLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textColor = .label
-        label.font = .systemFont(ofSize: 18)
-        label.sizeToFit()
-        label.lineBreakMode = .byWordWrapping
-        
-        return label
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubviews()
@@ -75,48 +25,19 @@ class PostViewController: UIViewController {
         setAttribute()
         bindViewModel()
     }
+    
+    override func loadView() {
+        view = mainView
+    }
 }
 
 extension PostViewController {
     func configureSubviews() {
-        view.addSubview(scrollView)
         
-        scrollView.addSubview(stackView)
-        
-        [writeInfoStackView, titleContentSeparator, contentLabel, contentCommentSeparator].forEach { subView in
-            stackView.addArrangedSubview(subView)
-        }
-        
-        [titleLabel, write, date].forEach { subview in
-            writeInfoStackView.addArrangedSubview(subview)
-        }
     }
     
     func configureUI() {
-        view.backgroundColor = .systemBackground
         
-        let safeArea = view.safeAreaLayoutGuide
-        
-        scrollView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.top.equalTo(safeArea)
-        }
-        
-        stackView.snp.makeConstraints { make in
-            make.width.equalTo(scrollView.snp.width).inset(10)
-            make.leading.trailing.top.bottom.equalToSuperview().inset(10)
-        }
-        
-        titleLabel.snp.makeConstraints { make in
-            make.height.equalTo(40)
-        }
-        
-        titleContentSeparator.snp.makeConstraints { make in
-            make.height.equalTo(2)
-        }
-        
-        contentCommentSeparator.snp.makeConstraints { make in
-            make.height.equalTo(2)
-        }
     }
     
     func setAttribute() {
@@ -133,23 +54,35 @@ extension PostViewController {
         
         
         output.title.observe(on: MainScheduler.asyncInstance)
-            .bind(to: titleLabel.rx.text)
+            .subscribe(onNext: { [weak self] title in
+                self?.mainView.titleLabel.text = title
+                self?.mainView.titleLabel.flex.markDirty()
+            })
             .disposed(by: disposeBag)
         
         output.writer.observe(on: MainScheduler.asyncInstance)
-            .bind(to: write.rx.text)
+            .subscribe(onNext: { [weak self] writer in
+                self?.mainView.write.text = writer
+                self?.mainView.write.flex.markDirty()
+            })
             .disposed(by: disposeBag)
         
         output.date.observe(on: MainScheduler.asyncInstance)
-            .bind(to: date.rx.text)
+            .subscribe(onNext: { [weak self] date in
+                self?.mainView.date.text = date
+                self?.mainView.date.flex.markDirty()
+            })
             .disposed(by: disposeBag)
         
         Observable.combineLatest(output.imageArrays, output.content).asDriver(onErrorDriveWith: .empty())
             .drive(onNext: { [weak self] imageArray, content in
-                self?.generateImages(imageArray, content: content).asDriver(onErrorDriveWith: .empty()).drive((self?.contentLabel.rx.attributedText)!)
+                self?.generateImages(imageArray, content: content).asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] content in
+                    self?.mainView.contentLabel.attributedText = content
+                    self?.mainView.contentLabel.flex.markDirty()
+                    self?.mainView.setLayout()
+                })
                     .disposed(by: self?.disposeBag ?? DisposeBag())
-                
-                self?.makeSeparator()
+                self?.mainView.setLayout()
             })
             .disposed(by: disposeBag)
         
@@ -158,18 +91,12 @@ extension PostViewController {
             .disposed(by: disposeBag)
     }
     
-    func makeSeparator() {
-        [self.titleContentSeparator, self.contentCommentSeparator].forEach { subview in
-            subview?.backgroundColor = .label
-        }
-    }
-    
     func generateImages(_ images: [ImageArrayResponseDTO]?,
                         content: String) -> Observable<NSAttributedString> {
         guard let images = images else {
             return Observable.error(CovertError.decodeFail)
         }
-        let tWidth = self.stackView.frame.size.width
+        let tWidth = self.mainView.contentLabel.frame.size.width
         return Observable<NSAttributedString>.create { emitter in
             if images.count == 0 {
                 emitter.onNext(NSAttributedString(string: content))
