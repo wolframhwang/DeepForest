@@ -11,6 +11,7 @@ import RxCocoa
 import SnapKit
 import Kingfisher
 import FlexLayout
+import PinLayout
 import Lottie
 
 class PostViewController: UIViewController {
@@ -19,7 +20,6 @@ class PostViewController: UIViewController {
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         
         return activityIndicator
     }()
@@ -29,17 +29,10 @@ class PostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(activityIndicator)
-        activityIndicator.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-        }
-        activityIndicator.startAnimating()
+        
         configureSubviews()
         configureUI()
         setAttribute()
-        DispatchQueue.main.async { [weak self] in
-            self?.contentWidth = self?.mainView.contentLabel.frame.width ?? 0
-        }
         bindViewModel()
     }
     
@@ -50,7 +43,15 @@ class PostViewController: UIViewController {
 
 extension PostViewController {
     func configureSubviews() {
-        
+        self.view.addSubview(activityIndicator)
+        DispatchQueue.main.async { [weak self] in
+            self?.contentWidth = self?.mainView.contentLabel.frame.width ?? 0
+            self?.activityIndicator.pin
+                .width(80).height(80)
+                .vCenter()
+                .hCenter()
+            self?.activityIndicator.startAnimating()
+        }
     }
     
     func configureUI() {
