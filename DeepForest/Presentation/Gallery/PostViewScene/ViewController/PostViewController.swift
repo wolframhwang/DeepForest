@@ -11,18 +11,35 @@ import RxCocoa
 import SnapKit
 import Kingfisher
 import FlexLayout
+import Lottie
 
 class PostViewController: UIViewController {
     var disposeBag = DisposeBag()
     var viewModel: PostViewModel?
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        
+        return activityIndicator
+    }()
+    
+    private var contentWidth: CGFloat = 0
     private var mainView = PostContentview()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+        }
+        activityIndicator.startAnimating()
         configureSubviews()
         configureUI()
         setAttribute()
+        DispatchQueue.main.async { [weak self] in
+            self?.contentWidth = self?.mainView.contentLabel.frame.width ?? 0
+        }
         bindViewModel()
     }
     
@@ -52,86 +69,69 @@ extension PostViewController {
             return
         }
         
+        let contents = Observable<NSAttributedString>.combineLatest(output.content, output.imageArrays) { [weak self] content, imageArrays -> NSAttributedString in
+            return self?.generateImages(imageArrays, content: content) ?? NSAttributedString(string: "")
+        }
         
-        output.title.observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] title in
-                self?.mainView.titleLabel.text = title
-                self?.mainView.titleLabel.flex.markDirty()
-            })
-            .disposed(by: disposeBag)
+        let activityIndicator = ActivityIndicator()
         
-        output.writer.observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] writer in
-                self?.mainView.write.text = writer
-                self?.mainView.write.flex.markDirty()
-            })
-            .disposed(by: disposeBag)
+        let postContents = Driver.combineLatest(output.date.asDriver(onErrorDriveWith: .empty()),
+                             output.writer.asDriver(onErrorDriveWith: .empty()),
+                             output.title.asDriver(onErrorDriveWith: .empty()),
+                             contents.asDriver(onErrorDriveWith: .empty()))
+            .trackActivity(activityIndicator)
+            .asDriver(onErrorDriveWith: .empty())
         
-        output.date.observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] date in
-                self?.mainView.date.text = date
-                self?.mainView.date.flex.markDirty()
-            })
-            .disposed(by: disposeBag)
+        postContents.drive { [weak self] date, writer, title, contents in
+            self?.mainView.date.text = date
+            self?.mainView.date.flex.markDirty()
+            self?.mainView.titleLabel.text = title
+            self?.mainView.titleLabel.flex.markDirty()
+            self?.mainView.contentLabel.attributedText = contents
+            self?.mainView.contentLabel.flex.markDirty()
+            self?.mainView.write.text = writer
+            self?.mainView.write.flex.markDirty()
+            self?.mainView.setLayout()
+            self?.mainView.titleContentSeparator.backgroundColor = .label
+            self?.mainView.contentCommentSeparator.backgroundColor = .label
+            self?.activityIndicator.stopAnimating()
+        }
+        .disposed(by: disposeBag)
         
-        Observable.combineLatest(output.imageArrays, output.content).asDriver(onErrorDriveWith: .empty())
-            .drive(onNext: { [weak self] imageArray, content in
-                self?.generateImages(imageArray, content: content).asDriver(onErrorDriveWith: .empty()).drive(onNext: { [weak self] content in
-                    self?.mainView.contentLabel.attributedText = content
-                    self?.mainView.contentLabel.flex.markDirty()
-                    self?.mainView.setLayout()
-                })
-                    .disposed(by: self?.disposeBag ?? DisposeBag())
-                self?.mainView.setLayout()
-            })
-            .disposed(by: disposeBag)
         
         output.navigationTitle
             .bind(to: self.rx.title)
             .disposed(by: disposeBag)
     }
     
-    func generateImages(_ images: [ImageArrayResponseDTO]?,
-                        content: String) -> Observable<NSAttributedString> {
-        guard let images = images else {
-            return Observable.error(CovertError.decodeFail)
+    func generateImages(_ images: [(image: UIImage?, number: Int)],
+                        content: String) -> NSAttributedString {
+        if images.count == 0 {
+            return NSAttributedString(string: content)
         }
-        let tWidth = self.mainView.contentLabel.frame.size.width
-        return Observable<NSAttributedString>.create { emitter in
-            if images.count == 0 {
-                emitter.onNext(NSAttributedString(string: content))
-                emitter.onCompleted()
-            }
-            var offset = 0
-            let attr: NSMutableAttributedString = NSMutableAttributedString(string: content)
-            for image in images {
-                var img: UIImage?
-                let url = URL(string: image.url)
-                let data = try? Data(contentsOf: url!)
-                img = UIImage(data: data!)
-                                
-                if let width = img?.size.width, let height = img?.size.height {
-                    if width > tWidth {
-                        img = img?.resized(to: CGSize(width: tWidth, height: height * (tWidth / width)))
-                    }
-                }
-                
-                let slash: NSMutableAttributedString = NSMutableAttributedString(string: "\n")
-                let attachment = NSTextAttachment()
-                attachment.image = img
-                let attachString = NSAttributedString(attachment: attachment)
-                attr.insert(slash, at: image.number + offset)
-                offset += 1
-                attr.insert(attachString, at: image.number + offset)
-                offset += 1
-                attr.insert(slash, at: image.number + offset)
-                offset += 1
-            }
-            emitter.onNext(attr)
-            emitter.onCompleted()
+        var offset = 0
+        let attr: NSMutableAttributedString = NSMutableAttributedString(string: content)
+        let slash: NSMutableAttributedString = NSMutableAttributedString(string: "\n")
+        for image in images {
+            var img = image.image ?? UIImage(named: "placeHolder")
             
-            return Disposables.create()
+            if let width = img?.size.width, let height = img?.size.height {
+                if width > contentWidth {
+                    img = img?.resized(to: CGSize(width: contentWidth, height: height * (contentWidth / width)))
+                }
+            }
+            
+            let attachment = NSTextAttachment()
+            attachment.image = img
+            let attachString = NSAttributedString(attachment: attachment)
+            attr.insert(slash, at: image.number + offset)
+            offset += 1
+            attr.insert(attachString, at: image.number + offset)
+            offset += 1
+            attr.insert(slash, at: image.number + offset)
+            offset += 1
         }
+        return attr
     }
 }
 

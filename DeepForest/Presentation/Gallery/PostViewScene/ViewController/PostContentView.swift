@@ -21,13 +21,13 @@ class PostContentview: UIView {
     
     let titleContentSeparator: UIView = {
         let view = UIView()
-        view.backgroundColor = .label
+        view.backgroundColor = .systemBackground
         
         return view
     }()
     let contentCommentSeparator: UIView = {
         let view = UIView()
-        view.backgroundColor = .label
+        view.backgroundColor = .systemBackground
         
         return view
     }()
@@ -110,11 +110,13 @@ extension PostContentview {
                 subflex.addItem(write)
                 subflex.addItem(date)
             }.marginLeft(10).marginRight(10)
+                .marginBottom(10)
                 .markDirty()
             
             flex.addItem(titleContentSeparator)
                 .marginLeft(10)
                 .marginRight(10)
+                .marginBottom(10)
                 .height(3)
             
             flex.addItem(contentLabel)

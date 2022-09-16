@@ -21,7 +21,7 @@ final class PostViewModel: ViewModelType {
         let navigationTitle = BehaviorRelay<String>(value: "")
         let title = PublishRelay<String>()
         let content = PublishRelay<String>()
-        let imageArrays = PublishRelay<[ImageArrayResponseDTO]?>()
+        let imageArrays = PublishRelay<[(image: UIImage?, number: Int)]>()
         let writer = PublishRelay<String>()
         let date = PublishRelay<String>()
     }
@@ -61,6 +61,14 @@ final class PostViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         self.postViewUseCase.imageArray
+            .map { imageArray -> [(image: UIImage?, number: Int)] in
+                guard let imageArray = imageArray else { return [] }
+                return imageArray.map { image in
+                    let url = URL(string: image.url)
+                    let data = try? Data(contentsOf: url!)
+                    return (UIImage(data: data!), image.number)
+                }
+            }
             .bind(to: output.imageArrays)
             .disposed(by: disposeBag)
         
@@ -71,23 +79,8 @@ final class PostViewModel: ViewModelType {
         self.postViewUseCase.dateObservable
             .bind(to: output.date)
             .disposed(by: disposeBag)
+        
                         
         return output
-                      //imageArray: observable)
-    }
-    
-    func convertImages(_ images: [ImageArrayResponseDTO]?) -> [(image: UIImage?, index: Int)]{
-        
-        guard let images = images else {
-            return []
-        }
-
-        return images.map { imageInfo in
-            var image: UIImage?
-            let url = URL(string: imageInfo.url)
-            let data = try? Data(contentsOf: url!)
-            image = UIImage(data: data!)
-            return (image, imageInfo.number)
-        }
     }
 }
