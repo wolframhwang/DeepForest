@@ -20,4 +20,5 @@ protocol PostViewUseCase {
     //
         
     func fetchPost() -> Observable<String?>
+    func fetchComments() -> Observable<[CommentItem]>
 }

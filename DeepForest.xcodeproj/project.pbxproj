@@ -67,6 +67,8 @@
 		7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356EC2899661600406022 /* SignInViewModel.swift */; };
 		7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356EE28996AD600406022 /* SignInUseCase.swift */; };
 		7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356F028996AE200406022 /* DefaultSignInUseCase.swift */; };
+		7BAB688D28D585C800B36ED5 /* CommentsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB688C28D585C800B36ED5 /* CommentsResponseDTO.swift */; };
+		7BAB688F28D5863F00B36ED5 /* CommentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB688E28D5863F00B36ED5 /* CommentItem.swift */; };
 		7BD5BEC528A280AD00330F96 /* AccountForSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */; };
 		7BD5BECA28A2946A00330F96 /* DefaultUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BEC928A2946A00330F96 /* DefaultUserRepository.swift */; };
 		7BD5BECC28A2947200330F96 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BECB28A2947200330F96 /* UserRepository.swift */; };
@@ -217,6 +219,8 @@
 		7B9356EC2899661600406022 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		7B9356EE28996AD600406022 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		7B9356F028996AE200406022 /* DefaultSignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInUseCase.swift; sourceTree = "<group>"; };
+		7BAB688C28D585C800B36ED5 /* CommentsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsResponseDTO.swift; sourceTree = "<group>"; };
+		7BAB688E28D5863F00B36ED5 /* CommentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItem.swift; sourceTree = "<group>"; };
 		7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountForSignIn.swift; sourceTree = "<group>"; };
 		7BD5BEC928A2946A00330F96 /* DefaultUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserRepository.swift; sourceTree = "<group>"; };
 		7BD5BECB28A2947200330F96 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -736,6 +740,7 @@
 				7B68BCD728BE491500D2C406 /* PostResponseDTO.swift */,
 				7B68BCE628C6384A00D2C406 /* ImageListResponseDTO.swift */,
 				7B68BCFB28C7876A00D2C406 /* SinglePostResponseDTO.swift */,
+				7BAB688C28D585C800B36ED5 /* CommentsResponseDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -1200,6 +1205,7 @@
 				7B68BCBA28B9E94500D2C406 /* Post.swift */,
 				7B68BCD528BE422500D2C406 /* ContentItem.swift */,
 				7B68BCE428C60AE700D2C406 /* ImageItems.swift */,
+				7BAB688E28D5863F00B36ED5 /* CommentItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1546,6 +1552,7 @@
 				7BE63AFD28AA422C0068BD67 /* DefaultGalleryListUseCase.swift in Sources */,
 				7B68BCE128C6054100D2C406 /* AlamofireImageUploadService.swift in Sources */,
 				7B92818428AFB1DA007A3004 /* SettingUseCase.swift in Sources */,
+				7BAB688D28D585C800B36ED5 /* CommentsResponseDTO.swift in Sources */,
 				7B68BC9828B3ADBB00D2C406 /* GalleryPostListUseCase.swift in Sources */,
 				7BE63AA928A7CE7C0068BD67 /* SignUpViewController.swift in Sources */,
 				7BF3FA82288EEEE10072218E /* DefaultAppCoordinator.swift in Sources */,
@@ -1557,6 +1564,7 @@
 				7BE63AD328A94C090068BD67 /* MenuTableViewCell.swift in Sources */,
 				7BE63AAB28A7CE8A0068BD67 /* SignUpViewModel.swift in Sources */,
 				7B68BCC228BA721700D2C406 /* WritePostSceneViewController.swift in Sources */,
+				7BAB688F28D5863F00B36ED5 /* CommentItem.swift in Sources */,
 				7B68BD0428CCF91900D2C406 /* PostContentView.swift in Sources */,
 				7B68BCFA28C7806C00D2C406 /* DefaultPostViewUseCase.swift in Sources */,
 				7BE63AD728A94C8F0068BD67 /* MenuItem.swift in Sources */,
