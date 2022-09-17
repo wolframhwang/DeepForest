@@ -77,13 +77,14 @@ extension PostViewController {
         let activityIndicator = ActivityIndicator()
         
         let postContents = Driver.combineLatest(output.date.asDriver(onErrorDriveWith: .empty()),
-                             output.writer.asDriver(onErrorDriveWith: .empty()),
-                             output.title.asDriver(onErrorDriveWith: .empty()),
-                             contents.asDriver(onErrorDriveWith: .empty()))
+                                                output.writer.asDriver(onErrorDriveWith: .empty()),
+                                                output.title.asDriver(onErrorDriveWith: .empty()),
+                                                contents.asDriver(onErrorDriveWith: .empty()),
+                                                output.comments.asDriver(onErrorDriveWith: .empty()))
             .trackActivity(activityIndicator)
             .asDriver(onErrorDriveWith: .empty())
         
-        postContents.drive { [weak self] date, writer, title, contents in
+        postContents.drive { [weak self] date, writer, title, contents, comments in
             self?.mainView.date.text = date
             self?.mainView.date.flex.markDirty()
             self?.mainView.titleLabel.text = title
@@ -92,13 +93,16 @@ extension PostViewController {
             self?.mainView.contentLabel.flex.markDirty()
             self?.mainView.write.text = writer
             self?.mainView.write.flex.markDirty()
-            self?.mainView.setLayout()
+            self?.mainView.commentLabel.text = "  댓글(\(comments.count))"
+            self?.mainView.commentLabel.flex.markDirty()
+            
             self?.mainView.titleContentSeparator.backgroundColor = .label
             self?.mainView.contentCommentSeparator.backgroundColor = .label
+            self?.mainView.makeComment(comments)
+            self?.mainView.setLayout()
             self?.activityIndicator.stopAnimating()
         }
         .disposed(by: disposeBag)
-        
         
         output.navigationTitle
             .bind(to: self.rx.title)

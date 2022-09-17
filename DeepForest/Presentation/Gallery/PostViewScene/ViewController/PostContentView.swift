@@ -69,11 +69,20 @@ class PostContentview: UIView {
         label.numberOfLines = 0
         label.textColor = .label
         label.font = .systemFont(ofSize: 18)
-        label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
+        label.sizeToFit()
         
         return label
     }()
+    
+    let commentLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.sizeToFit()
+        
+        return label
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -102,7 +111,23 @@ class PostContentview: UIView {
 extension PostContentview {
     func setLayout() {
         setNeedsLayout()
+        
     }
+    
+    func makeComment(_ comments: [CommentItem]) {
+        rootFlexView.flex.addItem(BorderLineView())
+            .height(1)
+        comments.forEach { item in
+            rootFlexView
+                .flex
+                .addItem(PostCommentView(commentItem: item))
+            rootFlexView
+                .flex
+                .addItem(BorderLineView())
+                .height(1)
+        }
+    }
+    
     func configureLayout() {
         rootFlexView.flex.define { flex in
             flex.addItem().define { subflex in
@@ -114,19 +139,21 @@ extension PostContentview {
                 .markDirty()
             
             flex.addItem(titleContentSeparator)
-                .marginLeft(10)
-                .marginRight(10)
                 .marginBottom(10)
-                .height(3)
+                .height(1)
             
             flex.addItem(contentLabel)
                 .marginLeft(10)
                 .marginRight(10)
+                .marginTop(10)
+                .marginBottom(20)
             
             flex.addItem(contentCommentSeparator)
-                .marginLeft(10)
-                .marginRight(10)
-                .height(3)
+                .height(1)
+            
+            flex.addItem(commentLabel)
+                .paddingTop(10)
+                .paddingBottom(10)
         }
         
         scrollView.addSubview(rootFlexView)

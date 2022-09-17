@@ -24,6 +24,7 @@ final class PostViewModel: ViewModelType {
         let imageArrays = PublishRelay<[(image: UIImage?, number: Int)]>()
         let writer = PublishRelay<String>()
         let date = PublishRelay<String>()
+        let comments = PublishRelay<[CommentItem]>()
     }
     
     init(coordinator: PostViewCoordinator?,
@@ -80,7 +81,10 @@ final class PostViewModel: ViewModelType {
             .bind(to: output.date)
             .disposed(by: disposeBag)
         
-                        
+        self.postViewUseCase.fetchComments()
+            .bind(to: output.comments)
+            .disposed(by: disposeBag)
+
         return output
     }
 }

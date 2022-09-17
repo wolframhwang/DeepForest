@@ -58,4 +58,22 @@ final class DefaultPostViewUseCase: PostViewUseCase {
         }
     }
     
+    func fetchComments() -> Observable<[CommentItem]> {
+        return networkRepository.fetch(urlSuffix: "/api/v1/posts/\(postId)/comments", queryItems: nil).map { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(CommentsResponseDTO.self, from: data)
+                    if response.success {
+                        guard let res = response.result else { return [] }
+                        return res.map { CommentItem(with: $0) }
+                    } else { return [] }
+                } catch {
+                    return []
+                }
+            case .failure(let error):
+                return []
+            }
+        }
+    }
 }
