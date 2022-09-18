@@ -15,6 +15,8 @@ final class PostViewModel: ViewModelType {
     private let postViewUseCase: PostViewUseCase
     
     struct Input {
+        let commentContent: Driver<String?>
+        let tappedCommentSubmitButton: Driver<Void>
     }
     
     struct Output {
@@ -25,6 +27,7 @@ final class PostViewModel: ViewModelType {
         let writer = PublishRelay<String>()
         let date = PublishRelay<String>()
         let comments = PublishRelay<[CommentItem]>()
+        let commentTextView = PublishSubject<Void>()
     }
     
     init(coordinator: PostViewCoordinator?,
@@ -84,7 +87,43 @@ final class PostViewModel: ViewModelType {
         self.postViewUseCase.fetchComments()
             .bind(to: output.comments)
             .disposed(by: disposeBag)
+        
+        input.tappedCommentSubmitButton.withLatestFrom(input.commentContent) { (_, content) -> String in
+            guard let content = content else { return "" }
+            return content
+        }
+        .filter { content -> Bool in
+            return !content.isEmpty
+        }.drive(onNext: { content in
+            self.postViewUseCase.postComment(content)
+                .subscribe(onNext: { result in
+                    if result != nil {
+                        self.coordinator?.showAlert(CommentPostError.postError)
+                    } else {
+                        self.postViewUseCase.fetchComments()
+                            .bind(to: output.comments)
+                            .disposed(by: disposeBag)
+                        output.commentTextView
+                            .onNext(Void())
+                    }
+                })
+                .disposed(by: disposeBag)
+        })
+        .disposed(by: disposeBag)
 
         return output
+    }
+}
+
+enum CommentPostError: Error {
+    case postError
+}
+
+extension CommentPostError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .postError:
+            return "댓글 작성에러!"
+        }
     }
 }

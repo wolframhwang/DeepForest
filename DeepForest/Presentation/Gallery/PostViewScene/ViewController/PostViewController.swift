@@ -97,9 +97,9 @@ extension PostViewController {
                                                object: nil)
     }
     
-    func bindViewModel() {
-        
-        let input = PostViewModel.Input()
+    func bindViewModel() {        
+        let input = PostViewModel.Input(commentContent: containerView.commentTextView.rx.text.asDriver(onErrorDriveWith: .empty()),
+                                        tappedCommentSubmitButton: containerView.submitButton.rx.tap.asDriver(onErrorDriveWith: .empty()))
         
         guard let output = viewModel?.transformed(from: input, disposeBag: disposeBag) else {
             return
@@ -141,6 +141,12 @@ extension PostViewController {
         
         output.navigationTitle
             .bind(to: self.rx.title)
+            .disposed(by: disposeBag)
+        output.commentTextView
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: {
+                self.containerView.commentTextView.text = ""
+            })
             .disposed(by: disposeBag)
     }
     

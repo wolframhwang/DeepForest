@@ -32,6 +32,31 @@ final class DefaultPostViewUseCase: PostViewUseCase {
         self.networkRepository = networkRepository
     }
     
+    func postComment(_ content: String) -> Observable<String?> {
+        let commentItem = CommentPostItem(content: content)
+        guard let token = userRepository.fetchToken() else {
+            return Observable.error(PostFail.tokenFetchError)
+        }
+        return networkRepository.postWithToken(item: commentItem,
+                                               to: "/api/v1/posts/\(postId)/comments",
+                                               token: token).map { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(CommentResponseDTO.self, from: data)
+                    if response.success {
+                        return nil
+                    } else {
+                        return response.error?.message
+                    }
+                }
+            case .failure(let error):
+                return error.localizedDescription
+            }
+            
+        }
+    }
+    
     func fetchPost() -> Observable<String?> {
         return networkRepository.fetch(urlSuffix: "/api/v1/posts/\(postId)", queryItems: nil).map { [weak self] result in
             switch result {

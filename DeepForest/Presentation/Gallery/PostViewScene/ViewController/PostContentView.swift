@@ -83,6 +83,8 @@ class PostContentview: UIView {
         return label
     }()
     
+    let commentView = UIView()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -115,13 +117,18 @@ extension PostContentview {
     }
     
     func makeComment(_ comments: [CommentItem]) {
-        rootFlexView.flex.addItem(BorderLineView())
-            .height(1)
+        for subview in commentView.subviews {
+            subview.removeFromSuperview()
+        }
         comments.forEach { item in
-            rootFlexView
+            commentView
+                .flex
+                .addItem(BorderLineView())
+                .height(1)
+            commentView
                 .flex
                 .addItem(PostCommentView(commentItem: item))
-            rootFlexView
+            commentView
                 .flex
                 .addItem(BorderLineView())
                 .height(1)
@@ -154,6 +161,8 @@ extension PostContentview {
             flex.addItem(commentLabel)
                 .paddingTop(10)
                 .paddingBottom(10)
+            
+            flex.addItem(commentView)
         }
         
         scrollView.addSubview(rootFlexView)

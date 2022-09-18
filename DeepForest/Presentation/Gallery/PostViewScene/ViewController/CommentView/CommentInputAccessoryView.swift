@@ -9,7 +9,7 @@ import UIKit
 
 class CommentInputAccessoryView: UIView {
     
-    private let commentTextView: CommentInputTextView = {
+    let commentTextView: CommentInputTextView = {
         let tv = CommentInputTextView()
         tv.isScrollEnabled = false
         tv.layer.cornerRadius = 12
@@ -17,7 +17,7 @@ class CommentInputAccessoryView: UIView {
         return tv
     }()
     
-    private let submitButton: UIButton = {
+    let submitButton: UIButton = {
         let sb = UIButton(type: .system)
         sb.setTitle("등록", for: .normal)
         sb.setTitleColor(.label, for: .normal)
