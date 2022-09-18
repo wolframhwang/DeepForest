@@ -39,8 +39,8 @@ iOS Native 커뮤니티 앱
 
 
 | GalleryScene1 | GalleryScene2 |
-| ------------- | ------------- |
-| https://user-images.githubusercontent.com/29563788/190918410-f8ba77bf-8ea3-4892-8aff-561b769a0203.mp4 | https://user-images.githubusercontent.com/29563788/190918464-bb9572da-3d8b-428b-b8d2-85961d69d018.mp4 |
+------------- | ------------- |
+| ![Simulator Screen Recording - iPhone 12 Pro - 2022-09-19 at 01 38 01 mp4](https://user-images.githubusercontent.com/29563788/190918871-4853b3ec-4826-4aca-a1ea-86a1632f4c29.gif) | ![Simulator Screen Recording - iPhone 12 Pro - 2022-09-19 at 01 42 05 mp4](https://user-images.githubusercontent.com/29563788/190918843-98d965d2-d98a-4775-a4ac-f092aa2a91df.gif) |
 
 
 
