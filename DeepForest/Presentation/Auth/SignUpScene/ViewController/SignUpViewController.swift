@@ -15,12 +15,20 @@ class SignUpViewController: UIViewController {
     var viewModel: SignUpViewModel?
     
     private let scrollView = UIScrollView()
-    private let contentView = UIView()
+    private let contentView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        
+        return stackView
+    }()
     private lazy var directionView = UIView()
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        button.contentMode = .scaleToFill
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         return button
     }()
@@ -156,6 +164,11 @@ class SignUpViewController: UIViewController {
         
         return signUpButton
     }()
+    
+    private lazy var separator1 = UIView()
+    private lazy var separator2 = UIView()
+    private lazy var separator3 = UIView()
+    private lazy var separator4 = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,6 +186,19 @@ extension SignUpViewController {
         singleTapGestureRecognizer.isEnabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )                
     }
     
     private func bindViewModel() {
@@ -209,12 +235,12 @@ extension SignUpViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        [idLabel, idTextField, idConstraint,
-         nickNameLabel, nickNameTextField, nickNameConstraint,
-         passwordLabel ,passwordTextField, rePasswordTextField, passwordConstraint,
-         emailLabel ,emailTextField, emailConstraint,
+        [idLabel, idTextField, idConstraint, separator1,
+         nickNameLabel, nickNameTextField, nickNameConstraint, separator2,
+         passwordLabel ,passwordTextField, rePasswordTextField, passwordConstraint, separator3,
+         emailLabel ,emailTextField, emailConstraint, separator4,
          submitButton].forEach {
-            contentView.addSubview($0)
+            contentView.addArrangedSubview($0)
         }
     }
     
@@ -222,95 +248,58 @@ extension SignUpViewController {
         view.backgroundColor = .systemBackground
         
         backButton.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(22)
+            $0.leading.equalToSuperview()
             $0.top.equalToSuperview().offset(56)
             $0.width.height.equalTo(45)
         }
-        
+
         scrollView.snp.makeConstraints {
-            $0.left.right.bottom.equalTo(0)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.top.equalTo(backButton.snp.bottom)
         }
         
         contentView.snp.makeConstraints {
-            $0.edges.equalTo(0)
-            $0.width.equalTo(view.frame.width)
-            $0.height.equalTo(view.frame.height + 300)
+            $0.width.equalTo(scrollView.snp.width).inset(10)
+            $0.leading.trailing.top.bottom.equalToSuperview()            .inset(10)
         }
 
-        idLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(40)
-            $0.leading.trailing.equalToSuperview().inset(22)
+        separator1.snp.makeConstraints { make in
+            make.height.equalTo(20)
+        }
+        
+        separator2.snp.makeConstraints { make in
+            make.height.equalTo(20)
+        }
+        
+        separator3.snp.makeConstraints { make in
+            make.height.equalTo(20)
+        }
+        
+        separator4.snp.makeConstraints { make in
+            make.height.equalTo(20)
         }
         
         idTextField.snp.makeConstraints {
-            $0.top.equalTo(idLabel.snp.bottom).offset(15)
-            $0.leading.trailing.equalToSuperview().inset(22)
             $0.height.equalTo(56)
         }
-        
-        idConstraint.snp.makeConstraints {
-            $0.top.equalTo(idTextField.snp.bottom).offset(12)
-            $0.leading.trailing.equalToSuperview().inset(22)
-        }
-        
-        nickNameLabel.snp.makeConstraints {
-            $0.top.equalTo(idConstraint.snp.bottom).offset(50)
-            $0.leading.trailing.equalToSuperview().inset(22)
-        }
-        
+                
         nickNameTextField.snp.makeConstraints {
-            $0.top.equalTo(nickNameLabel.snp.bottom).offset(15)
-            $0.leading.trailing.equalToSuperview().inset(22)
             $0.height.equalTo(56)
-        }
-        
-        nickNameConstraint.snp.makeConstraints {
-            $0.top.equalTo(nickNameTextField.snp.bottom).offset(12)
-            $0.leading.trailing.equalToSuperview().inset(22)
-        }
-        
-        passwordLabel.snp.makeConstraints {
-            $0.top.equalTo(nickNameConstraint.snp.bottom).offset(50)
-            $0.leading.trailing.equalToSuperview().inset(22)
         }
         
         passwordTextField.snp.makeConstraints {
-            $0.top.equalTo(passwordLabel.snp.bottom).offset(15)
-            $0.leading.trailing.equalToSuperview().inset(22)
             $0.height.equalTo(56)
         }
         
         rePasswordTextField.snp.makeConstraints {
-            $0.top.equalTo(passwordTextField.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(22)
             $0.height.equalTo(56)
-        }
-        
-        passwordConstraint.snp.makeConstraints {
-            $0.top.equalTo(rePasswordTextField.snp.bottom).offset(12)
-            $0.leading.trailing.equalToSuperview().inset(22)
-        }
-        
-        emailLabel.snp.makeConstraints {
-            $0.top.equalTo(passwordConstraint.snp.bottom).offset(40)
-            $0.leading.trailing.equalToSuperview().inset(22)
         }
         
         emailTextField.snp.makeConstraints {
-            $0.top.equalTo(emailLabel.snp.bottom).offset(15)
-            $0.leading.trailing.equalToSuperview().inset(22)
             $0.height.equalTo(56)
         }
         
-        emailConstraint.snp.makeConstraints {
-            $0.top.equalTo(emailTextField.snp.bottom).offset(12)
-            $0.leading.trailing.equalToSuperview().inset(22)
-        }
-        
         submitButton.snp.makeConstraints {
-            $0.top.equalTo(emailConstraint.snp.bottom).offset(30)
-            $0.leading.trailing.equalToSuperview().inset(22)
             $0.height.equalTo(56)
         }
         
@@ -321,5 +310,22 @@ extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo as NSDictionary?,
+              var keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        keyboardFrame = view.convert(keyboardFrame, from: nil)
+        var contentInset = scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
 }
