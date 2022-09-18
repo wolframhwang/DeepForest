@@ -51,6 +51,10 @@ iOS Native 커뮤니티 앱
 
 ## PostViewScene
 
+| PostViewGeneral | PostViewWithComment | PostViewManySize1 | PostViewManySize2 |
+| --------------- | ------------------- | ----------------- | ----------------- |
+| ![Simulator Screen Recording - iPhone 12 Pro - 2022-09-19 at 02 06 04 mp4](https://user-images.githubusercontent.com/29563788/190919642-3a3e7c5d-2d89-40ee-b512-195ec7f2bf42.gif) | ![Simulator Screen Recording - iPhone 12 Pro - 2022-09-19 at 02 09 07 mp4](https://user-images.githubusercontent.com/29563788/190919664-fad0a355-32ea-4534-a736-8d12a7d738ba.gif) | ![Simulator Screen Recording - iPhone 12 Pro - 2022-09-19 at 02 10 50 mp4](https://user-images.githubusercontent.com/29563788/190919786-708189f6-e193-4830-b9ca-c8698f1339d2.gif) | ![Simulator Screen Recording - iPhone 12 Pro - 2022-09-19 at 02 11 45 mp4](https://user-images.githubusercontent.com/29563788/190919796-41248cbc-70bb-4fc1-8a2e-c76a077bb446.gif) |
+
 
 
 
