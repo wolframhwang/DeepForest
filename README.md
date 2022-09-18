@@ -11,6 +11,9 @@ iOS Native 커뮤니티 앱
 - Alamofire
 - RxDataSources
 
+최대한 Clean Architecture 에서 지향하는 디자인 패턴을 유지하려고 노력했다
+하지만 때때로, 비즈니스로직을 사용하기 위해서, UseCase를 따로 만드는것이 Cost가 더 들겠다고 판단되는 부분들은 과감히 생략하였다.
+
 ## Auth
 
 | Choice | SignIn | SignUp |
