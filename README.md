@@ -33,7 +33,7 @@ iOS Native 커뮤니티 앱
 
 | Home Scene To Other |
 | -------------------- |
-| https://user-images.githubusercontent.com/29563788/190918237-7f3fcccb-a61c-4557-9007-154911286eea.mp4 |
+|  ![6ttrvf](https://user-images.githubusercontent.com/29563788/190918553-a7c94aad-b8d0-4031-8137-d4466b3290d9.gif) |
 
 ## In-GalleryScene
 
