@@ -13,7 +13,9 @@ target 'DeepForest' do
   pod 'RxDataSources'
   pod 'RxKeyboard'
   pod 'SnapKit'
-  pod 'IQKeyboardManagerSwift'
+  pod 'FlexLayout'
+  pod 'PinLayout'
+  pod 'lottie-ios'
 
   target 'DeepForestTests' do
     inherit! :search_paths

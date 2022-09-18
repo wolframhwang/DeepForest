@@ -11,3 +11,8 @@ struct SignUpResponseDTO: Codable {
     let success: Bool
     let error: RESTError?
 }
+
+struct CommentResponseDTO: Codable {
+    let success: Bool
+    let error: RESTError?
+}

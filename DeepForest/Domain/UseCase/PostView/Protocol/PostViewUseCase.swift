@@ -18,6 +18,7 @@ protocol PostViewUseCase {
     
     var imageArray: PublishSubject<[ImageArrayResponseDTO]?> { get }
     //
-        
+    func postComment(_ content: String) -> Observable<String?>
     func fetchPost() -> Observable<String?>
+    func fetchComments() -> Observable<[CommentItem]>
 }

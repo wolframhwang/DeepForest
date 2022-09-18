@@ -53,6 +53,7 @@
 		7B68BCFC28C7876A00D2C406 /* SinglePostResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCFB28C7876A00D2C406 /* SinglePostResponseDTO.swift */; };
 		7B68BCFE28C9B19A00D2C406 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BCFD28C9B19A00D2C406 /* UIImage+.swift */; };
 		7B68BD0228CBACBA00D2C406 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BD0128CBACBA00D2C406 /* ActivityIndicator.swift */; };
+		7B68BD0428CCF91900D2C406 /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BD0328CCF91900D2C406 /* PostContentView.swift */; };
 		7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817828AFB0CD007A3004 /* SettingViewController.swift */; };
 		7B92817B28AFB0D4007A3004 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */; };
 		7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */; };
@@ -66,6 +67,14 @@
 		7B9356ED2899661600406022 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356EC2899661600406022 /* SignInViewModel.swift */; };
 		7B9356EF28996AD600406022 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356EE28996AD600406022 /* SignInUseCase.swift */; };
 		7B9356F128996AE200406022 /* DefaultSignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9356F028996AE200406022 /* DefaultSignInUseCase.swift */; };
+		7BAB688D28D585C800B36ED5 /* CommentsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB688C28D585C800B36ED5 /* CommentsResponseDTO.swift */; };
+		7BAB688F28D5863F00B36ED5 /* CommentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB688E28D5863F00B36ED5 /* CommentItem.swift */; };
+		7BAB689128D58C7800B36ED5 /* PostCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689028D58C7800B36ED5 /* PostCommentView.swift */; };
+		7BAB689328D5ABB600B36ED5 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689228D5ABB600B36ED5 /* CALayer+.swift */; };
+		7BAB689528D5C68D00B36ED5 /* BorderLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689428D5C68D00B36ED5 /* BorderLineView.swift */; };
+		7BAB689828D6BCA000B36ED5 /* CommentInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689728D6BCA000B36ED5 /* CommentInputTextView.swift */; };
+		7BAB689A28D6BE4600B36ED5 /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689928D6BE4600B36ED5 /* CommentInputAccessoryView.swift */; };
+		7BB1F95128D6FD5400AF409B /* CommentPostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1F95028D6FD5400AF409B /* CommentPostItem.swift */; };
 		7BD5BEC528A280AD00330F96 /* AccountForSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */; };
 		7BD5BECA28A2946A00330F96 /* DefaultUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BEC928A2946A00330F96 /* DefaultUserRepository.swift */; };
 		7BD5BECC28A2947200330F96 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BECB28A2947200330F96 /* UserRepository.swift */; };
@@ -202,6 +211,7 @@
 		7B68BCFB28C7876A00D2C406 /* SinglePostResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePostResponseDTO.swift; sourceTree = "<group>"; };
 		7B68BCFD28C9B19A00D2C406 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		7B68BD0128CBACBA00D2C406 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		7B68BD0328CCF91900D2C406 /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
 		7B92817828AFB0CD007A3004 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7B92817A28AFB0D4007A3004 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7B92817D28AFB0E6007A3004 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
@@ -215,6 +225,14 @@
 		7B9356EC2899661600406022 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		7B9356EE28996AD600406022 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		7B9356F028996AE200406022 /* DefaultSignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignInUseCase.swift; sourceTree = "<group>"; };
+		7BAB688C28D585C800B36ED5 /* CommentsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsResponseDTO.swift; sourceTree = "<group>"; };
+		7BAB688E28D5863F00B36ED5 /* CommentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItem.swift; sourceTree = "<group>"; };
+		7BAB689028D58C7800B36ED5 /* PostCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentView.swift; sourceTree = "<group>"; };
+		7BAB689228D5ABB600B36ED5 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
+		7BAB689428D5C68D00B36ED5 /* BorderLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderLineView.swift; sourceTree = "<group>"; };
+		7BAB689728D6BCA000B36ED5 /* CommentInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputTextView.swift; sourceTree = "<group>"; };
+		7BAB689928D6BE4600B36ED5 /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
+		7BB1F95028D6FD5400AF409B /* CommentPostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPostItem.swift; sourceTree = "<group>"; };
 		7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountForSignIn.swift; sourceTree = "<group>"; };
 		7BD5BEC928A2946A00330F96 /* DefaultUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserRepository.swift; sourceTree = "<group>"; };
 		7BD5BECB28A2947200330F96 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -565,7 +583,11 @@
 		7B68BCE928C77FF500D2C406 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7BAB689628D6BC8F00B36ED5 /* CommentView */,
 				7B68BCEF28C7803900D2C406 /* PostViewController.swift */,
+				7B68BD0328CCF91900D2C406 /* PostContentView.swift */,
+				7BAB689028D58C7800B36ED5 /* PostCommentView.swift */,
+				7BAB689428D5C68D00B36ED5 /* BorderLineView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -692,6 +714,15 @@
 			path = NetworkTest;
 			sourceTree = "<group>";
 		};
+		7BAB689628D6BC8F00B36ED5 /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				7BAB689728D6BCA000B36ED5 /* CommentInputTextView.swift */,
+				7BAB689928D6BE4600B36ED5 /* CommentInputAccessoryView.swift */,
+			);
+			path = CommentView;
+			sourceTree = "<group>";
+		};
 		7BD5BEC628A2944500330F96 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -733,6 +764,7 @@
 				7B68BCD728BE491500D2C406 /* PostResponseDTO.swift */,
 				7B68BCE628C6384A00D2C406 /* ImageListResponseDTO.swift */,
 				7B68BCFB28C7876A00D2C406 /* SinglePostResponseDTO.swift */,
+				7BAB688C28D585C800B36ED5 /* CommentsResponseDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -882,6 +914,7 @@
 				7BE63AD928A9525F0068BD67 /* Reusable.swift */,
 				7B68BCD328BE286E00D2C406 /* String+.swift */,
 				7B68BCFD28C9B19A00D2C406 /* UIImage+.swift */,
+				7BAB689228D5ABB600B36ED5 /* CALayer+.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -1197,6 +1230,8 @@
 				7B68BCBA28B9E94500D2C406 /* Post.swift */,
 				7B68BCD528BE422500D2C406 /* ContentItem.swift */,
 				7B68BCE428C60AE700D2C406 /* ImageItems.swift */,
+				7BAB688E28D5863F00B36ED5 /* CommentItem.swift */,
+				7BB1F95028D6FD5400AF409B /* CommentPostItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1501,12 +1536,14 @@
 				7B68BCCE28BA72FE00D2C406 /* DefaultWritePostSceneUseCase.swift in Sources */,
 				7B68BCCC28BA72F400D2C406 /* WritePostSceneUseCase.swift in Sources */,
 				7BE63AD528A94C130068BD67 /* MenuTableCellViewModel.swift in Sources */,
+				7BB1F95128D6FD5400AF409B /* CommentPostItem.swift in Sources */,
 				7B68BCB328B9E4CE00D2C406 /* GalleryPostItem.swift in Sources */,
 				7B92817E28AFB0E6007A3004 /* SettingCoordinator.swift in Sources */,
 				7BE63AFF28AA42350068BD67 /* GalleryListUseCase.swift in Sources */,
 				7BE63A9828A791F20068BD67 /* SignInResponseDTO.swift in Sources */,
 				7BD5BED028A2BCDC00330F96 /* NetworkRepository.swift in Sources */,
 				7B92818C28AFD063007A3004 /* SettingListCellViewModel.swift in Sources */,
+				7BAB689128D58C7800B36ED5 /* PostCommentView.swift in Sources */,
 				7BD5BEC528A280AD00330F96 /* AccountForSignIn.swift in Sources */,
 				7B68BC8F28B3ACA000D2C406 /* GalleryPostListViewModel.swift in Sources */,
 				7BE63AC128A80FAF0068BD67 /* HomeSceneViewController.swift in Sources */,
@@ -1531,6 +1568,7 @@
 				7BE63AE228A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift in Sources */,
 				7B68BC7C28B0F66C00D2C406 /* SignInfoViewController.swift in Sources */,
 				7BE63A9D28A792570068BD67 /* RESTError.swift in Sources */,
+				7BAB689828D6BCA000B36ED5 /* CommentInputTextView.swift in Sources */,
 				7BE63A9228A74D120068BD67 /* DefaultNetworkRepository.swift in Sources */,
 				7BE63AE628A9FB260068BD67 /* RefreshTokenResponseDTO.swift in Sources */,
 				7BE63AF328AA049F0068BD67 /* DefaultGalleryListCoordinator.swift in Sources */,
@@ -1543,6 +1581,7 @@
 				7BE63AFD28AA422C0068BD67 /* DefaultGalleryListUseCase.swift in Sources */,
 				7B68BCE128C6054100D2C406 /* AlamofireImageUploadService.swift in Sources */,
 				7B92818428AFB1DA007A3004 /* SettingUseCase.swift in Sources */,
+				7BAB688D28D585C800B36ED5 /* CommentsResponseDTO.swift in Sources */,
 				7B68BC9828B3ADBB00D2C406 /* GalleryPostListUseCase.swift in Sources */,
 				7BE63AA928A7CE7C0068BD67 /* SignUpViewController.swift in Sources */,
 				7BF3FA82288EEEE10072218E /* DefaultAppCoordinator.swift in Sources */,
@@ -1554,9 +1593,13 @@
 				7BE63AD328A94C090068BD67 /* MenuTableViewCell.swift in Sources */,
 				7BE63AAB28A7CE8A0068BD67 /* SignUpViewModel.swift in Sources */,
 				7B68BCC228BA721700D2C406 /* WritePostSceneViewController.swift in Sources */,
+				7BAB688F28D5863F00B36ED5 /* CommentItem.swift in Sources */,
+				7B68BD0428CCF91900D2C406 /* PostContentView.swift in Sources */,
 				7B68BCFA28C7806C00D2C406 /* DefaultPostViewUseCase.swift in Sources */,
+				7BAB689A28D6BE4600B36ED5 /* CommentInputAccessoryView.swift in Sources */,
 				7BE63AD728A94C8F0068BD67 /* MenuItem.swift in Sources */,
 				7B68BCBB28B9E94500D2C406 /* Post.swift in Sources */,
+				7BAB689328D5ABB600B36ED5 /* CALayer+.swift in Sources */,
 				7BE63B0528AA94930068BD67 /* UseCaseError.swift in Sources */,
 				7BE63AB828A7FC190068BD67 /* SignUpResponseDTO.swift in Sources */,
 				7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */,
@@ -1599,6 +1642,7 @@
 				7B68BC9428B3ACCB00D2C406 /* GalleryPostListCoordinator.swift in Sources */,
 				7BF3FA80288EEDD30072218E /* AppCoordinator.swift in Sources */,
 				7B68BCC828BA723C00D2C406 /* DefaultWritePostSceneCoordinator.swift in Sources */,
+				7BAB689528D5C68D00B36ED5 /* BorderLineView.swift in Sources */,
 				7BE63B0328AA7A7F0068BD67 /* GalleryType.swift in Sources */,
 				7BE63AE028A9F6940068BD67 /* SignChoiceUseCase.swift in Sources */,
 			);
