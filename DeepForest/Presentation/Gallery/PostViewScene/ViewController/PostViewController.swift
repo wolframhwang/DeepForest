@@ -24,6 +24,16 @@ class PostViewController: UIViewController {
         return activityIndicator
     }()
     
+    private lazy var containerView: CommentInputAccessoryView = {
+        let frame = CGRect(x: 0,
+                           y: 0,
+                           width: view.frame.width,
+                           height: 50)
+        let commentInputAccessoryView = CommentInputAccessoryView(frame: frame)
+        
+        return commentInputAccessoryView
+    }()
+    
     private var contentWidth: CGFloat = 0
     private var mainView = PostContentview()
     
@@ -39,11 +49,25 @@ class PostViewController: UIViewController {
     override func loadView() {
         view = mainView
     }
+    
+    override var inputAccessoryView: UIView? {
+        get {
+            return containerView
+        }
+    }
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
 
 extension PostViewController {
     func configureSubviews() {
         self.view.addSubview(activityIndicator)
+        
         DispatchQueue.main.async { [weak self] in
             self?.contentWidth = self?.mainView.contentLabel.frame.width ?? 0
             self?.activityIndicator.pin
@@ -55,11 +79,26 @@ extension PostViewController {
     }
     
     func configureUI() {
-        
+       
     }
     
     func setAttribute() {
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(singleTapGestureCaptured))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        mainView.scrollView.keyboardDismissMode = .interactive
+        mainView.scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+//        mainView.scrollView.addGestureRecognizer(singleTapGestureRecognizer)
         
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
     
     func bindViewModel() {
@@ -137,6 +176,27 @@ extension PostViewController {
             offset += 1
         }
         return attr
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo as NSDictionary?, var keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        keyboardFrame = view.convert(keyboardFrame, from: nil)
+        var contentInset = mainView.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        mainView.scrollView.contentInset = contentInset
+        mainView.scrollView.scrollIndicatorInsets = mainView.scrollView.contentInset
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        mainView.scrollView.contentInset = UIEdgeInsets.zero
+        mainView.scrollView.scrollIndicatorInsets = mainView.scrollView.contentInset
+                
+    }
+    
+    @objc func singleTapGestureCaptured(gesture: UITapGestureRecognizer){
+        containerView.endEdit()
     }
 }
 

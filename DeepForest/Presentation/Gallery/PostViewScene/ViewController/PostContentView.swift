@@ -16,7 +16,7 @@ import RxCocoa
  
  */
 class PostContentview: UIView {
-    private lazy var scrollView = UIScrollView()
+    lazy var scrollView = UIScrollView()
     private let rootFlexView = UIView()
     
     let titleContentSeparator: UIView = {

@@ -72,6 +72,8 @@
 		7BAB689128D58C7800B36ED5 /* PostCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689028D58C7800B36ED5 /* PostCommentView.swift */; };
 		7BAB689328D5ABB600B36ED5 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689228D5ABB600B36ED5 /* CALayer+.swift */; };
 		7BAB689528D5C68D00B36ED5 /* BorderLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689428D5C68D00B36ED5 /* BorderLineView.swift */; };
+		7BAB689828D6BCA000B36ED5 /* CommentInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689728D6BCA000B36ED5 /* CommentInputTextView.swift */; };
+		7BAB689A28D6BE4600B36ED5 /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689928D6BE4600B36ED5 /* CommentInputAccessoryView.swift */; };
 		7BD5BEC528A280AD00330F96 /* AccountForSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */; };
 		7BD5BECA28A2946A00330F96 /* DefaultUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BEC928A2946A00330F96 /* DefaultUserRepository.swift */; };
 		7BD5BECC28A2947200330F96 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BECB28A2947200330F96 /* UserRepository.swift */; };
@@ -227,6 +229,8 @@
 		7BAB689028D58C7800B36ED5 /* PostCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentView.swift; sourceTree = "<group>"; };
 		7BAB689228D5ABB600B36ED5 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 		7BAB689428D5C68D00B36ED5 /* BorderLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderLineView.swift; sourceTree = "<group>"; };
+		7BAB689728D6BCA000B36ED5 /* CommentInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputTextView.swift; sourceTree = "<group>"; };
+		7BAB689928D6BE4600B36ED5 /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
 		7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountForSignIn.swift; sourceTree = "<group>"; };
 		7BD5BEC928A2946A00330F96 /* DefaultUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserRepository.swift; sourceTree = "<group>"; };
 		7BD5BECB28A2947200330F96 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -577,6 +581,7 @@
 		7B68BCE928C77FF500D2C406 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7BAB689628D6BC8F00B36ED5 /* CommentView */,
 				7B68BCEF28C7803900D2C406 /* PostViewController.swift */,
 				7B68BD0328CCF91900D2C406 /* PostContentView.swift */,
 				7BAB689028D58C7800B36ED5 /* PostCommentView.swift */,
@@ -705,6 +710,15 @@
 			children = (
 			);
 			path = NetworkTest;
+			sourceTree = "<group>";
+		};
+		7BAB689628D6BC8F00B36ED5 /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				7BAB689728D6BCA000B36ED5 /* CommentInputTextView.swift */,
+				7BAB689928D6BE4600B36ED5 /* CommentInputAccessoryView.swift */,
+			);
+			path = CommentView;
 			sourceTree = "<group>";
 		};
 		7BD5BEC628A2944500330F96 /* Repository */ = {
@@ -1550,6 +1564,7 @@
 				7BE63AE228A9F6A30068BD67 /* DefaultSignChoiceUseCase.swift in Sources */,
 				7B68BC7C28B0F66C00D2C406 /* SignInfoViewController.swift in Sources */,
 				7BE63A9D28A792570068BD67 /* RESTError.swift in Sources */,
+				7BAB689828D6BCA000B36ED5 /* CommentInputTextView.swift in Sources */,
 				7BE63A9228A74D120068BD67 /* DefaultNetworkRepository.swift in Sources */,
 				7BE63AE628A9FB260068BD67 /* RefreshTokenResponseDTO.swift in Sources */,
 				7BE63AF328AA049F0068BD67 /* DefaultGalleryListCoordinator.swift in Sources */,
@@ -1577,6 +1592,7 @@
 				7BAB688F28D5863F00B36ED5 /* CommentItem.swift in Sources */,
 				7B68BD0428CCF91900D2C406 /* PostContentView.swift in Sources */,
 				7B68BCFA28C7806C00D2C406 /* DefaultPostViewUseCase.swift in Sources */,
+				7BAB689A28D6BE4600B36ED5 /* CommentInputAccessoryView.swift in Sources */,
 				7BE63AD728A94C8F0068BD67 /* MenuItem.swift in Sources */,
 				7B68BCBB28B9E94500D2C406 /* Post.swift in Sources */,
 				7BAB689328D5ABB600B36ED5 /* CALayer+.swift in Sources */,
