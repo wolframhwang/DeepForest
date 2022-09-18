@@ -19,7 +19,7 @@ class SignInViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = UIFont.systemFont(ofSize: 30, weight: .heavy)
-        label.text = "Welcome\nSignInScene!"
+        label.text = "Hello\nDeepForest!"
         
         return label
     }()
@@ -81,7 +81,7 @@ class SignInViewController: UIViewController {
         
         backButton.snp.makeConstraints {
             $0.width.height.equalTo(41)
-            $0.leading.equalToSuperview().offset(22)
+            $0.leading.equalToSuperview().offset(12)
             $0.top.equalToSuperview().offset(56)
         }
         
