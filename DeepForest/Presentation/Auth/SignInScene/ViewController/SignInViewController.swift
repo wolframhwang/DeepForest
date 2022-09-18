@@ -36,6 +36,7 @@ class SignInViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.placeholder = "아이디"
         textField.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 25)
+        textField.autocapitalizationType = .none
         
         return textField
     }()
@@ -46,6 +47,7 @@ class SignInViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.placeholder = "비밀번호"
         textField.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 25)
+        textField.autocapitalizationType = .none
         
         return textField
     }()

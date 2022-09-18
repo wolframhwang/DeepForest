@@ -50,6 +50,7 @@ class SignUpViewController: UIViewController {
         tf.placeholder = "ID를 입력해주세요"
         tf.tag = 1
         tf.delegate = self
+        tf.autocapitalizationType = .none
         
         return tf
     }()
@@ -76,6 +77,7 @@ class SignUpViewController: UIViewController {
         tf.placeholder = "닉네임을 입력해주세요"
         tf.tag = 2
         tf.delegate = self
+        tf.autocapitalizationType = .none
         
         return tf
     }()
@@ -103,6 +105,7 @@ class SignUpViewController: UIViewController {
         tf.isSecureTextEntry = true
         tf.tag = 3
         tf.delegate = self
+        tf.autocapitalizationType = .none
         
         return tf
     }()
@@ -114,6 +117,7 @@ class SignUpViewController: UIViewController {
         tf.isSecureTextEntry = true
         tf.tag = 4
         tf.delegate = self
+        tf.autocapitalizationType = .none
         
         return tf
     }()
@@ -140,6 +144,7 @@ class SignUpViewController: UIViewController {
         tf.placeholder = "이메일을 입력해주세요."
         tf.tag = 5
         tf.delegate = self
+        tf.autocapitalizationType = .none
         
         return tf
     }()
