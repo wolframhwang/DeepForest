@@ -19,7 +19,7 @@ class SignInViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = UIFont.systemFont(ofSize: 30, weight: .heavy)
-        label.text = "Welcome\nSignInScene!"
+        label.text = "Hello\nDeepForest!"
         
         return label
     }()
@@ -36,7 +36,8 @@ class SignInViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.placeholder = "아이디"
         textField.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 25)
-        
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -46,7 +47,8 @@ class SignInViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.placeholder = "비밀번호"
         textField.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 25)
-        
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -81,7 +83,7 @@ class SignInViewController: UIViewController {
         
         backButton.snp.makeConstraints {
             $0.width.height.equalTo(41)
-            $0.leading.equalToSuperview().offset(22)
+            $0.leading.equalToSuperview().offset(12)
             $0.top.equalToSuperview().offset(56)
         }
         
