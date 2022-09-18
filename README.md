@@ -46,7 +46,7 @@ iOS Native 커뮤니티 앱
 ## WritePostScene
 
 | WritePostScene1 | WritePostScene2 |
-| -------------- | -------------- |
-| ![Simulator Screen Recording - iPhone 12 Pro - 2022-09-19 at 01 38 01 mp4](https://user-images.githubusercontent.com/29563788/190919212-537412fd-10fe-47ec-81d1-2c40a13d4ac8.gif) |  ![Simulator Screen Recording - iPhone 12 Pro - 2022-09-19 at 01 57 13 mp4](https://user-images.githubusercontent.com/29563788/190919284-0f39b8b1-f6f2-4277-b6de-1509423c699a.gif) |
+| --------------- | --------------- |
+| ![Simulator Screen Recording - iPhone 12 Pro - 2022-09-19 at 01 38 01 mp4](https://user-images.githubusercontent.com/29563788/190919316-0a3a0743-c720-48a2-9604-d41ba56ff9ae.gif) |  ![Simulator Screen Recording - iPhone 12 Pro - 2022-09-19 at 01 57 13 mp4](https://user-images.githubusercontent.com/29563788/190919284-0f39b8b1-f6f2-4277-b6de-1509423c699a.gif) |
 
 
