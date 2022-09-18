@@ -51,6 +51,7 @@ class SignUpViewController: UIViewController {
         tf.tag = 1
         tf.delegate = self
         tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
         
         return tf
     }()
@@ -78,6 +79,7 @@ class SignUpViewController: UIViewController {
         tf.tag = 2
         tf.delegate = self
         tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
         
         return tf
     }()
@@ -106,6 +108,7 @@ class SignUpViewController: UIViewController {
         tf.tag = 3
         tf.delegate = self
         tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
         
         return tf
     }()
@@ -118,6 +121,7 @@ class SignUpViewController: UIViewController {
         tf.tag = 4
         tf.delegate = self
         tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
         
         return tf
     }()
@@ -145,6 +149,7 @@ class SignUpViewController: UIViewController {
         tf.tag = 5
         tf.delegate = self
         tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
         
         return tf
     }()
