@@ -24,9 +24,15 @@ final class DefaultGalleryListCoordinator: GalleryListCoordinator {
         
     }
     
+    func removeBackButtonTitle() {
+        let backButtonItem = UIBarButtonItem(title: "", style: .plain, target: self.galleryListViewController, action: nil)
+        self.galleryListViewController.navigationItem.backBarButtonItem = backButtonItem
+    }
+    
     func pushGalleryListViewController(menuTableCellViewModel: MenuTableCellViewModel) {
         self.galleryListViewController.viewModel = GalleryListViewModel(coordinator: self, galleryListUseCase: DefaultGalleryListUseCase(networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService()), menuItem: menuTableCellViewModel))
         self.navigationController.pushViewController(self.galleryListViewController, animated: true)
+        self.removeBackButtonTitle()
     }
     
     func pushGalleryPostList(GalleryInfo: Gallery) {

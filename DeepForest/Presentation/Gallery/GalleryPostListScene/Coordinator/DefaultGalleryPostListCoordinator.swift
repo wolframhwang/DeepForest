@@ -24,17 +24,22 @@ final class DefaultGalleryPostListCoordinator: GalleryPostListCoordinator {
         
     }
     
+    func removeBackButtonTitle() {
+        let backButtonItem = UIBarButtonItem(title: "", style: .plain, target: self.galleryPostListViewController, action: nil)
+        self.galleryPostListViewController.navigationItem.backBarButtonItem = backButtonItem
+    }
+    
     func pushGalleryPostList(GalleryInfo: Gallery) {
         self.galleryPostListViewController.viewModel = GalleryPostListViewModel(coordinator: self, galleryPostListUseCase: DefaultGalleryPostListUseCase(networkRepository: DefaultNetworkRepository(network: DefaultURLSessionNetworkService()), galleryInfo: GalleryInfo))
         self.navigationController.pushViewController(galleryPostListViewController, animated: true)
+        removeBackButtonTitle()
     }
     
     func pushPostViewScene(postId: Int) {
         let postViewSceneCoordinator = DefaultPostViewCoordinator(self.navigationController)
         postViewSceneCoordinator.finishDelegate = self
-        self.childCoordinators.append(postViewSceneCoordinator)
+        self.childCoordinators.append(postViewSceneCoordinator)        
         postViewSceneCoordinator.pushPostViewScene(postId: postId)
-        
     }
     
     func presentWritePostScene(galleryId: Int) {
