@@ -63,4 +63,8 @@ extension DefaultGalleryPostListCoordinator: CoordinatorFinishDelegate {
         navigationController.popViewController(animated: true)
         self.childCoordinators.removeLast()
     }
+    
+    func finishSign(childCoordinator: Coordinator, with success: Bool) {
+        
+    }
 }

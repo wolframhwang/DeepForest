@@ -47,5 +47,9 @@ extension DefaultSettingCoordinator: CoordinatorFinishDelegate {
     func popChildScene(childCoordinator: Coordinator) {
         
     }
+    
+    func finishSign(childCoordinator: Coordinator, with success: Bool) {
+        
+    }
 }
 

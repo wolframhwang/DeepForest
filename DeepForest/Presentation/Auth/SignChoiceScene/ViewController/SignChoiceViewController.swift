@@ -19,7 +19,7 @@ class SignChoiceViewController: UIViewController {
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 50, weight: .heavy)
         label.textAlignment = .right
-        label.text = "Deep Forest"
+        label.text = "Welcome"
         
         return label
     }()
@@ -28,7 +28,7 @@ class SignChoiceViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textAlignment = .right
-        label.text = "Community App"
+        label.text = "Deep Forest"
         
         return label
     }()
@@ -61,16 +61,13 @@ class SignChoiceViewController: UIViewController {
         
         return noSignJoinButton
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
         configureSubViews()
         configureUI()
         bindViewModel()
-        //view.backgroundColor = .red
-        
-        // Do any additional setup after loading the view.
     }
     
 }
@@ -117,15 +114,11 @@ extension SignChoiceViewController {
     }
     
     func bindViewModel() {
-        let trigger = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
-            .map { _ in }.asDriver(onErrorDriveWith: .empty())
-        
-        let input = SignChoiceViewModel.Input(trigger: trigger,
-                                              signInButtonDidTapEvent: signInButton.rx.tap.asObservable(),
+        let input = SignChoiceViewModel.Input(signInButtonDidTapEvent: signInButton.rx.tap.asObservable(),
                                               signUpButtonDidTapEvent: signUpButton.rx.tap.asObservable(),
                                               noSignJoinButtonDidTapEvent: noSignJoinButton.rx.tap.asObservable())
         
-        self.viewModel?.transform(from: input)
+        self.viewModel?.transforming(from: input, disposeBag: disposeBag)
     }
     
 }

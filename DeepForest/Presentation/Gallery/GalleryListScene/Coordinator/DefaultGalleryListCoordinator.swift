@@ -53,5 +53,7 @@ extension DefaultGalleryListCoordinator: CoordinatorFinishDelegate {
         self.finishDelegate?.popChildScene(childCoordinator: self)
     }
     
-    
+    func finishSign(childCoordinator: Coordinator, with success: Bool) {
+        
+    }
 }

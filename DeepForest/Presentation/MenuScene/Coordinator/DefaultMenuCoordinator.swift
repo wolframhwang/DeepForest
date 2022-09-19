@@ -52,5 +52,9 @@ extension DefaultMenuCoordinator: CoordinatorFinishDelegate {
     
     func popChildScene(childCoordinator: Coordinator) {
         self.finishDelegate?.popChildScene(childCoordinator: self)
-    }            
+    }
+    
+    func finishSign(childCoordinator: Coordinator, with success: Bool) {
+        
+    }
 }

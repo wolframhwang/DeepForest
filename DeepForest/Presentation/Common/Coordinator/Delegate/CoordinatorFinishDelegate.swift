@@ -10,4 +10,5 @@ import Foundation
 protocol CoordinatorFinishDelegate: AnyObject {
     func coordinatorDidFinish(childCoordinator: Coordinator)
     func popChildScene(childCoordinator: Coordinator)
+    func finishSign(childCoordinator: Coordinator, with success: Bool)
 }

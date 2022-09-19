@@ -19,7 +19,15 @@ final class DefaultAppCoordinator: AppCoordinator {
     }
     
     func start() {
-        self.showSignChoiceFlow()
+        self.showAppStartSceneFlow()
+    }
+    
+    func showAppStartSceneFlow() {
+        let appStartCoordinator = DefaultAppStartCoordinator(self.navigationController)
+        appStartCoordinator.finishDelegate = self
+        navigationController.setNavigationBarHidden(true, animated: true)
+        appStartCoordinator.start()
+        childCoordinators.append(appStartCoordinator)
     }
     
     func showSignChoiceFlow() {
@@ -37,12 +45,6 @@ final class DefaultAppCoordinator: AppCoordinator {
         homeSceneCoordinator.start()
         childCoordinators.append(homeSceneCoordinator)
     }
-    
-    func showMainSceneFlow() {
-        // To-do: Network 구현 시 구현해야함
-    }
-    
-    
 }
 
 extension DefaultAppCoordinator: CoordinatorFinishDelegate {
@@ -64,5 +66,19 @@ extension DefaultAppCoordinator: CoordinatorFinishDelegate {
     
     func popChildScene(childCoordinator: Coordinator) {
         
+    }
+    
+    func finishSign(childCoordinator: Coordinator, with success: Bool) {
+        self.childCoordinators = self.childCoordinators.filter({ coord in
+            coord.type != childCoordinator.type
+        })
+        self.navigationController.view.backgroundColor = .systemBackground
+        self.navigationController.viewControllers.removeAll()
+        switch success {
+        case true:
+            self.homeSceneFlow()
+        case false:
+            self.showSignChoiceFlow()
+        }
     }
 }

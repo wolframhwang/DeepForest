@@ -9,6 +9,6 @@ import Foundation
 
 protocol AppCoordinator: Coordinator {
     func showSignChoiceFlow()
-    func showMainSceneFlow()
+    func showAppStartSceneFlow()
     func homeSceneFlow()
 }
