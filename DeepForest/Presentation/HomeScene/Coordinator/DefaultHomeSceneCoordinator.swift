@@ -20,12 +20,18 @@ final class DefaultHomeSceneCoordinator: HomeSceneCoordinator {
         self.homeSceneViewController = HomeSceneViewController()
     }
     
+    func removeBackButtonTitle() {
+        let backButtonItem = UIBarButtonItem(title: "", style: .plain, target: self.homeSceneViewController, action: nil)
+        self.homeSceneViewController.navigationItem.backBarButtonItem = backButtonItem
+    }
+    
     func start() {
         let homeSceneCoordinator = DefaultHomeSceneCoordinator(self.navigationController)
         homeSceneViewController.viewModel = HomeSceneViewModel(coordinator: self)
         homeSceneCoordinator.finishDelegate = self
         self.childCoordinators.append(homeSceneCoordinator)
         self.navigationController.pushViewController(homeSceneViewController, animated: true)
+        self.removeBackButtonTitle()
     }
     
     func showMenuScene() {

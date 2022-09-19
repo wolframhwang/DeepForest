@@ -24,9 +24,15 @@ final class DefaultMenuCoordinator: MenuCoordinator {
         
     }
     
+    func removeBackButtonTitle() {
+        let backButtonItem = UIBarButtonItem(title: "", style: .plain, target: self.menuViewController, action: nil)
+        self.menuViewController.navigationItem.backBarButtonItem = backButtonItem
+    }
+    
     func pushMenuViewController() {
         self.menuViewController.viewModel = MenuViewModel(coordinator: self)
         self.navigationController.pushViewController(self.menuViewController, animated: true)
+        self.removeBackButtonTitle()
     }
     
     func pushGalleryListViewController(menuTableCellViewModel: MenuTableCellViewModel) {
