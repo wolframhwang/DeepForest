@@ -29,7 +29,6 @@ final class AppStartViewModel: ViewModelType {
     func transforming(from input: Input,
                       disposeBag: DisposeBag) -> Output {
         input.trigger.drive(onNext: {
-            print("IS SID")
             self.appStartUseCase.refreshToken()
                 .observe(on: MainScheduler.asyncInstance)
                 .subscribe(onNext: { [weak self] isSuccess in
