@@ -123,10 +123,6 @@ extension PostContentview {
         comments.forEach { item in
             commentView
                 .flex
-                .addItem(BorderLineView())
-                .height(1)
-            commentView
-                .flex
                 .addItem(PostCommentView(commentItem: item))
             commentView
                 .flex
@@ -161,6 +157,9 @@ extension PostContentview {
             flex.addItem(commentLabel)
                 .paddingTop(10)
                 .paddingBottom(10)
+            
+            flex.addItem(BorderLineView())
+                .height(1)
             
             flex.addItem(commentView)
         }
