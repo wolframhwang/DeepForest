@@ -59,4 +59,23 @@ final class DefaultUserRepository: UserRepository {
         }
         return nickName
     }
+    func fetchUserName() -> String? {
+        guard let userName = UserDefaults.standard.string(forKey: UserDefaultsKey.username) else {
+            return nil
+        }
+        return userName
+    }
+    func fetchEmail() -> String? {
+        guard let email = UserDefaults.standard.string(forKey: UserDefaultsKey.email) else {
+            return nil
+        }
+        return email
+    }
+    
+    func fetchMemType() -> String? {
+        guard let memType = UserDefaults.standard.string(forKey: UserDefaultsKey.memberType) else {
+            return nil
+        }
+        return memType
+    }
 }

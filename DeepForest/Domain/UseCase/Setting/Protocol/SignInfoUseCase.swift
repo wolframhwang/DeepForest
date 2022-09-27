@@ -11,7 +11,9 @@ import RxCocoa
 
 protocol SignInfoUseCase {
     var titleInfo: BehaviorRelay<String> { get }
-    var idInfo: BehaviorRelay<String> { get }
-    
+    var nickNameInfo: BehaviorRelay<String> { get }
+    var emailInfo: BehaviorRelay<String> { get }
+    var userNameInfo: BehaviorRelay<String> { get }
+
     func signOff() -> Observable<Void>
 }

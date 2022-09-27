@@ -15,14 +15,18 @@ final class DefaultSignInfoUseCase: SignInfoUseCase {
     
     private let disposeBag = DisposeBag()
     
-    var idInfo = BehaviorRelay<String>(value: "")
+    var userNameInfo = BehaviorRelay<String>(value: "")
+    var nickNameInfo = BehaviorRelay<String>(value: "")
+    var emailInfo = BehaviorRelay<String>(value: "")
     var titleInfo = BehaviorRelay<String>(value: "내 정보")
     
     init(userRepository: UserRepository,
          networkRepository: NetworkRepository) {
         self.userRepository = userRepository
         self.networkRepository = networkRepository
-        idInfo.accept(userRepository.fetchNickName() ?? "아이디 로드 실패")
+        nickNameInfo.accept(userRepository.fetchNickName() ?? "닉네임 로드 실패")
+        userNameInfo.accept(userRepository.fetchUserName() ?? "유저네임 로드 실패")
+        emailInfo.accept(userRepository.fetchEmail() ?? "이메일 로드 실패")        
     }
     
     func signOff() -> Observable<Void> {

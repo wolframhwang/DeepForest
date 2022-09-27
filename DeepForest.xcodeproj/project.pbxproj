@@ -21,6 +21,7 @@
 		7B42B39C28D9A26B00A0842D /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42B39B28D9A26B00A0842D /* HomeUseCase.swift */; };
 		7B42B39E28D9A27B00A0842D /* DefaultHomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42B39D28D9A27B00A0842D /* DefaultHomeUseCase.swift */; };
 		7B508B1228E32E28007D7FF5 /* MemberInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B508B1128E32E28007D7FF5 /* MemberInfo.swift */; };
+		7B508B1428E336C7007D7FF5 /* SignInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B508B1328E336C7007D7FF5 /* SignInfoView.swift */; };
 		7B68BC7C28B0F66C00D2C406 /* SignInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC7B28B0F66C00D2C406 /* SignInfoViewController.swift */; };
 		7B68BC7E28B0F67400D2C406 /* SignInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC7D28B0F67400D2C406 /* SignInfoViewModel.swift */; };
 		7B68BC8028B0F67F00D2C406 /* SignInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC7F28B0F67F00D2C406 /* SignInfoCoordinator.swift */; };
@@ -189,6 +190,7 @@
 		7B42B39B28D9A26B00A0842D /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
 		7B42B39D28D9A27B00A0842D /* DefaultHomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeUseCase.swift; sourceTree = "<group>"; };
 		7B508B1128E32E28007D7FF5 /* MemberInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfo.swift; sourceTree = "<group>"; };
+		7B508B1328E336C7007D7FF5 /* SignInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoView.swift; sourceTree = "<group>"; };
 		7B68BC7B28B0F66C00D2C406 /* SignInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoViewController.swift; sourceTree = "<group>"; };
 		7B68BC7D28B0F67400D2C406 /* SignInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoViewModel.swift; sourceTree = "<group>"; };
 		7B68BC7F28B0F67F00D2C406 /* SignInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoCoordinator.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 			isa = PBXGroup;
 			children = (
 				7B68BC7B28B0F66C00D2C406 /* SignInfoViewController.swift */,
+				7B508B1328E336C7007D7FF5 /* SignInfoView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1721,6 +1724,7 @@
 				7BF3FA7B288EE37D0072218E /* CoordinatorFinishDelegate.swift in Sources */,
 				7B68BCB528B9E4E100D2C406 /* GalleryPostItemsDTO.swift in Sources */,
 				7BE63AC928A91DAA0068BD67 /* MenuViewModel.swift in Sources */,
+				7B508B1428E336C7007D7FF5 /* SignInfoView.swift in Sources */,
 				7BD5BECC28A2947200330F96 /* UserRepository.swift in Sources */,
 				7BF3FA78288EE34B0072218E /* Coordinator.swift in Sources */,
 				7BE63AE428A9F7A00068BD67 /* TokenItem.swift in Sources */,

@@ -17,4 +17,7 @@ protocol UserRepository {
     func fetchToken() -> String?
     func fetchRefreshToken() -> String?
     func fetchNickName() -> String?
+    func fetchUserName() -> String?
+    func fetchEmail() -> String?
+    func fetchMemType() -> String?
 }

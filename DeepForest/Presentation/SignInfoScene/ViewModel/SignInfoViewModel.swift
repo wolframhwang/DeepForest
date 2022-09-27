@@ -18,7 +18,10 @@ final class SignInfoViewModel: ViewModelType {
     }
     
     struct Output {
-        let idText: Driver<String>
+        let userName: Driver<String>
+        let nickName: Driver<String>
+        let email: Driver<String>
+        
         let titleContent: Driver<String>
     }
     
@@ -26,6 +29,23 @@ final class SignInfoViewModel: ViewModelType {
          signInfoUseCase: SignInfoUseCase) {
         self.coordinator = coordinator
         self.signInfoUseCase = signInfoUseCase
+    }
+    
+    func transform(from input: Input, disposeBag: DisposeBag) -> Output {
+        input.tapSignOffbutton.subscribe(onNext: { [weak self] in
+            self?.signInfoUseCase.signOff()
+                .observe(on: MainScheduler.instance)
+                .subscribe(onNext: {
+                self?.coordinator?.finish()
+            })
+            .disposed(by: disposeBag)
+        })
+        .disposed(by: disposeBag)
+        
+        return Output(userName: self.signInfoUseCase.userNameInfo.asDriver(),
+                      nickName: self.signInfoUseCase.nickNameInfo.asDriver(),
+                      email: self.signInfoUseCase.emailInfo.asDriver(),
+                      titleContent: self.signInfoUseCase.titleInfo.asDriver())
     }
     
     func transform(from input: Input) -> Output {
@@ -40,7 +60,9 @@ final class SignInfoViewModel: ViewModelType {
         })
         .disposed(by: disposeBag)
         
-        return Output(idText: signInfoUseCase.idInfo.asDriver(),
-                      titleContent: signInfoUseCase.titleInfo.asDriver())
+        return Output(userName: self.signInfoUseCase.userNameInfo.asDriver(),
+                      nickName: self.signInfoUseCase.nickNameInfo.asDriver(),
+                      email: self.signInfoUseCase.emailInfo.asDriver(),
+                      titleContent: self.signInfoUseCase.titleInfo.asDriver())
     }
 }
