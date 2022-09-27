@@ -75,6 +75,13 @@ class PostContentview: UIView {
         return label
     }()
     
+    let spaceView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemBackground
+        
+        return view
+    }()
+    
     let commentLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
@@ -150,6 +157,9 @@ extension PostContentview {
                 .marginRight(10)
                 .marginTop(10)
                 .marginBottom(20)
+            
+            flex.addItem(spaceView)
+                .height(80)
             
             flex.addItem(contentCommentSeparator)
                 .height(1)
