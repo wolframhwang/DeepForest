@@ -33,7 +33,6 @@ final class DefaultAppStartUseCase: AppStartUseCase {
                         guard let res = response.result else {
                             return response.error?.message ?? ""
                         }
-                        print(res)
                         self?.userRepository.saveUserInfo(userInfo: res)
                         return nil
                     } else {
