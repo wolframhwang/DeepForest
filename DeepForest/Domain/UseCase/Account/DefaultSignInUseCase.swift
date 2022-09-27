@@ -56,7 +56,6 @@ final class DefaultSignInUseCase: SignInUseCase {
                         }
                         self?.userRepository.saveToken(token: signInResponse.accessToken,
                                                  refreshToken: signInResponse.refreshToken)
-                        self?.userRepository.saveNickName(nickName: signIn.id)
                         return nil
                     } else {
                         return ("로그인에 실패했습니다!")

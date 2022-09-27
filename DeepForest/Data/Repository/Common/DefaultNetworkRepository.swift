@@ -71,6 +71,12 @@ final class DefaultNetworkRepository: NetworkRepository {
         return network.fetch(url: baseURL + urlSuffix, queryItems: queryItems, header: HTTPHeaders)
     }
     
+    func fetch(urlSuffix: String, queryItems: [String: String]?,  token: String) -> Observable<Result<Data, URLSessionNetworkServiceError>> {
+        var header = HTTPHeaders
+        header.updateValue("Bearer \(token)", forKey: "Authorization")
+        return network.fetch(url: baseURL + urlSuffix, queryItems: queryItems, header: header)
+    }
+    
     func fetch(url: String, queryItems: [String: String]? = nil) -> Observable<Result<Data, URLSessionNetworkServiceError>> {
         return network.fetch(url: url, queryItems: queryItems, header: HTTPHeaders)
     }

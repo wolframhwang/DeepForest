@@ -8,6 +8,13 @@
 import Foundation
 
 final class DefaultUserRepository: UserRepository {
+    func saveUserInfo(userInfo: MemberInfo) {
+        UserDefaults.standard.set(userInfo.nickname, forKey: UserDefaultsKey.nickname)
+        UserDefaults.standard.set(userInfo.username, forKey: UserDefaultsKey.username)
+        UserDefaults.standard.set(userInfo.email, forKey: UserDefaultsKey.email)
+        UserDefaults.standard.set(userInfo.memberType, forKey: UserDefaultsKey.memberType)
+    }
+    
     func saveNickName(nickName: String) {
         UserDefaults.standard.set(nickName, forKey: UserDefaultsKey.nickname)
     }
@@ -23,6 +30,16 @@ final class DefaultUserRepository: UserRepository {
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.token)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.refreshToken)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKey.nickname)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.username)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.email)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.memberType)
+    }
+    
+    func deleteMyInfo() {
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.nickname)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.username)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.email)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.memberType)
     }
     func fetchToken() -> String? {
         guard let token = UserDefaults.standard.string(forKey: UserDefaultsKey.token) else {

@@ -14,7 +14,7 @@ final class AppStartViewModel: ViewModelType {
     private let appStartUseCase: AppStartUseCase
     
     struct Input {
-        let trigger: Driver<Void>
+        let trigger: Observable<Void>
     }
     
     struct Output {
@@ -28,12 +28,22 @@ final class AppStartViewModel: ViewModelType {
     
     func transforming(from input: Input,
                       disposeBag: DisposeBag) -> Output {
-        input.trigger.drive(onNext: {
-            self.appStartUseCase.refreshToken()
-                .observe(on: MainScheduler.asyncInstance)
-                .subscribe(onNext: { [weak self] isSuccess in
-                    self?.coordinator?
-                        .finishWithSign(with: isSuccess)
+        input.trigger.subscribe(onNext: { [weak self] in
+            self?.appStartUseCase.refreshToken()
+                .subscribe(onNext: { isSuccess in
+                    self?.appStartUseCase.fetchMyInfo()
+                        .observe(on: MainScheduler.asyncInstance)
+                        .subscribe(onNext: { result in
+                            if result == nil {
+                                self?.coordinator?
+                                    .finishWithSign(with: isSuccess)
+                            } else {
+                                self?.coordinator?.finishWithSign(with: false)
+                            }
+                        }, onError: { error in
+                            self?.coordinator?.finishWithSign(with: false)
+                        })
+                        .disposed(by: disposeBag)
                 }, onError: { [weak self] error in
                     self?.coordinator?
                         .finishWithSign(with: false)

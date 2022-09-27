@@ -65,7 +65,7 @@ extension AppStartViewController {
     
     func bindViewModel() {
         let trigger = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
-            .map { _ in }.asDriver(onErrorDriveWith: .empty())
+            .map { _ in }
         
         let input = AppStartViewModel.Input(trigger: trigger)
         

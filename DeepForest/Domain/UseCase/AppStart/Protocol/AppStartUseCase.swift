@@ -10,5 +10,6 @@ import RxSwift
 import RxCocoa
 
 protocol AppStartUseCase {
+    func fetchMyInfo() -> Observable<String?>
     func refreshToken() -> Observable<Bool>
 }

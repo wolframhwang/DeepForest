@@ -18,6 +18,9 @@
 		7B42B39228D8D38D00A0842D /* AppStartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42B39128D8D38D00A0842D /* AppStartCoordinator.swift */; };
 		7B42B39628D8D49A00A0842D /* AppStartUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42B39528D8D49A00A0842D /* AppStartUseCase.swift */; };
 		7B42B39828D8D4A300A0842D /* DefaultAppStartUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42B39728D8D4A300A0842D /* DefaultAppStartUseCase.swift */; };
+		7B42B39C28D9A26B00A0842D /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42B39B28D9A26B00A0842D /* HomeUseCase.swift */; };
+		7B42B39E28D9A27B00A0842D /* DefaultHomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42B39D28D9A27B00A0842D /* DefaultHomeUseCase.swift */; };
+		7B508B1228E32E28007D7FF5 /* MemberInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B508B1128E32E28007D7FF5 /* MemberInfo.swift */; };
 		7B68BC7C28B0F66C00D2C406 /* SignInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC7B28B0F66C00D2C406 /* SignInfoViewController.swift */; };
 		7B68BC7E28B0F67400D2C406 /* SignInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC7D28B0F67400D2C406 /* SignInfoViewModel.swift */; };
 		7B68BC8028B0F67F00D2C406 /* SignInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B68BC7F28B0F67F00D2C406 /* SignInfoCoordinator.swift */; };
@@ -80,6 +83,7 @@
 		7BAB689528D5C68D00B36ED5 /* BorderLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689428D5C68D00B36ED5 /* BorderLineView.swift */; };
 		7BAB689828D6BCA000B36ED5 /* CommentInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689728D6BCA000B36ED5 /* CommentInputTextView.swift */; };
 		7BAB689A28D6BE4600B36ED5 /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB689928D6BE4600B36ED5 /* CommentInputAccessoryView.swift */; };
+		7BABE9AA28E20ADE00ABA469 /* MembersResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BABE9A928E20ADE00ABA469 /* MembersResponseDTO.swift */; };
 		7BB1F95128D6FD5400AF409B /* CommentPostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1F95028D6FD5400AF409B /* CommentPostItem.swift */; };
 		7BD5BEC528A280AD00330F96 /* AccountForSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */; };
 		7BD5BECA28A2946A00330F96 /* DefaultUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5BEC928A2946A00330F96 /* DefaultUserRepository.swift */; };
@@ -182,6 +186,9 @@
 		7B42B39128D8D38D00A0842D /* AppStartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartCoordinator.swift; sourceTree = "<group>"; };
 		7B42B39528D8D49A00A0842D /* AppStartUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartUseCase.swift; sourceTree = "<group>"; };
 		7B42B39728D8D4A300A0842D /* DefaultAppStartUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppStartUseCase.swift; sourceTree = "<group>"; };
+		7B42B39B28D9A26B00A0842D /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
+		7B42B39D28D9A27B00A0842D /* DefaultHomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeUseCase.swift; sourceTree = "<group>"; };
+		7B508B1128E32E28007D7FF5 /* MemberInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfo.swift; sourceTree = "<group>"; };
 		7B68BC7B28B0F66C00D2C406 /* SignInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoViewController.swift; sourceTree = "<group>"; };
 		7B68BC7D28B0F67400D2C406 /* SignInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoViewModel.swift; sourceTree = "<group>"; };
 		7B68BC7F28B0F67F00D2C406 /* SignInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInfoCoordinator.swift; sourceTree = "<group>"; };
@@ -244,6 +251,7 @@
 		7BAB689428D5C68D00B36ED5 /* BorderLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderLineView.swift; sourceTree = "<group>"; };
 		7BAB689728D6BCA000B36ED5 /* CommentInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputTextView.swift; sourceTree = "<group>"; };
 		7BAB689928D6BE4600B36ED5 /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
+		7BABE9A928E20ADE00ABA469 /* MembersResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersResponseDTO.swift; sourceTree = "<group>"; };
 		7BB1F95028D6FD5400AF409B /* CommentPostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPostItem.swift; sourceTree = "<group>"; };
 		7BD5BEC428A280AD00330F96 /* AccountForSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountForSignIn.swift; sourceTree = "<group>"; };
 		7BD5BEC928A2946A00330F96 /* DefaultUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserRepository.swift; sourceTree = "<group>"; };
@@ -461,6 +469,23 @@
 			isa = PBXGroup;
 			children = (
 				7B42B39528D8D49A00A0842D /* AppStartUseCase.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7B42B39928D9A24F00A0842D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7B42B39A28D9A25E00A0842D /* Protocol */,
+				7B42B39D28D9A27B00A0842D /* DefaultHomeUseCase.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7B42B39A28D9A25E00A0842D /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7B42B39B28D9A26B00A0842D /* HomeUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -837,6 +862,8 @@
 				7B68BCE628C6384A00D2C406 /* ImageListResponseDTO.swift */,
 				7B68BCFB28C7876A00D2C406 /* SinglePostResponseDTO.swift */,
 				7BAB688C28D585C800B36ED5 /* CommentsResponseDTO.swift */,
+				7BABE9A928E20ADE00ABA469 /* MembersResponseDTO.swift */,
+				7B508B1128E32E28007D7FF5 /* MemberInfo.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -1312,6 +1339,7 @@
 		7BF3FA9328901CB30072218E /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				7B42B39928D9A24F00A0842D /* Home */,
 				7B42B39328D8D48C00A0842D /* AppStart */,
 				7B68BCEC28C7800B00D2C406 /* PostView */,
 				7B68BCC928BA72E200D2C406 /* WriePost */,
@@ -1648,7 +1676,9 @@
 				7B42B39628D8D49A00A0842D /* AppStartUseCase.swift in Sources */,
 				7BE63A9D28A792570068BD67 /* RESTError.swift in Sources */,
 				7BAB689828D6BCA000B36ED5 /* CommentInputTextView.swift in Sources */,
+				7B508B1228E32E28007D7FF5 /* MemberInfo.swift in Sources */,
 				7BE63A9228A74D120068BD67 /* DefaultNetworkRepository.swift in Sources */,
+				7B42B39E28D9A27B00A0842D /* DefaultHomeUseCase.swift in Sources */,
 				7BE63AE628A9FB260068BD67 /* RefreshTokenResponseDTO.swift in Sources */,
 				7BE63AF328AA049F0068BD67 /* DefaultGalleryListCoordinator.swift in Sources */,
 				7B68BC8628B108E500D2C406 /* DefaultSignInfoUseCase.swift in Sources */,
@@ -1683,6 +1713,7 @@
 				7BE63AB828A7FC190068BD67 /* SignUpResponseDTO.swift in Sources */,
 				7B92817928AFB0CD007A3004 /* SettingViewController.swift in Sources */,
 				7B68BCDF28C6053700D2C406 /* DefaultAlamofireImageUploadService.swift in Sources */,
+				7BABE9AA28E20ADE00ABA469 /* MembersResponseDTO.swift in Sources */,
 				7B68BC9C28B3B18C00D2C406 /* GalleryPostListTableViewCell.swift in Sources */,
 				7B1CCCE72892C3B4004389A8 /* SignInCoordinator.swift in Sources */,
 				7B68BC7E28B0F67400D2C406 /* SignInfoViewModel.swift in Sources */,
@@ -1720,6 +1751,7 @@
 				7BE63AB028A7CEB90068BD67 /* DefaultSignUpCoordinator.swift in Sources */,
 				7BE63AF728AA41280068BD67 /* GalleryListTableViewCell.swift in Sources */,
 				7B68BC9428B3ACCB00D2C406 /* GalleryPostListCoordinator.swift in Sources */,
+				7B42B39C28D9A26B00A0842D /* HomeUseCase.swift in Sources */,
 				7BF3FA80288EEDD30072218E /* AppCoordinator.swift in Sources */,
 				7B68BCC828BA723C00D2C406 /* DefaultWritePostSceneCoordinator.swift in Sources */,
 				7BAB689528D5C68D00B36ED5 /* BorderLineView.swift in Sources */,
