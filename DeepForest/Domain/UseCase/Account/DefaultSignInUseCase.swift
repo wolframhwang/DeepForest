@@ -40,6 +40,33 @@ final class DefaultSignInUseCase: SignInUseCase {
         self.networkRepository = networkRepository
     }
     
+    func fetchMyInfo() -> Observable<String?> {
+        guard let token = userRepository.fetchToken() else {
+            return Observable.error(AuthFail.noData)
+        }
+        userRepository.deleteMyInfo()
+        return networkRepository.fetch(urlSuffix: "/api/v1/members/me", queryItems: nil, token: token).map { [weak self] result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try JSONDecoder().decode(MembersResponseDTO.self, from: data)
+                    if response.success {
+                        guard let res = response.result else {
+                            return response.error?.message ?? ""
+                        }
+                        self?.userRepository.saveUserInfo(userInfo: res)
+                        return nil
+                    } else {
+                        return response.error?.message
+                    }
+                }
+            case .failure(let error):
+                return error.localizedDescription
+            }
+            
+        }
+    }
+    
     func signIn() -> Observable<String?> {
         guard let signIn = try? signInInfo.value() else {
             return Observable.error(AuthFail.noData)

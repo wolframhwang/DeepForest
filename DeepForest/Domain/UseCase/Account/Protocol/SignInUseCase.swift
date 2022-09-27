@@ -12,5 +12,6 @@ import RxSwift
 protocol SignInUseCase {
     var signInInfo: BehaviorSubject<AccountForSignIn> { get }
     
+    func fetchMyInfo() -> Observable<String?>
     func signIn() -> Observable<String?>
 }
