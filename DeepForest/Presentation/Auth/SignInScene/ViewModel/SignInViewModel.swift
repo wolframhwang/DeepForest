@@ -54,12 +54,12 @@ final class SignInViewModel: ViewModelType {
         input.buttonTapObservable
             .subscribe(onNext: { [weak self] in
                 self?.signInUseCase.signIn()
-                    //.observe(on: MainScheduler.instance)
+                    .observe(on: MainScheduler.instance)
                     .subscribe(onNext: { failMessage in
                         if let failMessage = failMessage {
                             self?.coordinator?.showAlert(failMessage)
                         } else {
-                            self?.signInUseCase.fetchMyInfo()
+                            self?.signInUseCase.fetchInfo()
                                 .observe(on: MainScheduler.asyncInstance)
                                 .subscribe(onNext: { result in
                                     if result == nil {
@@ -67,6 +67,8 @@ final class SignInViewModel: ViewModelType {
                                     } else {
                                         self?.coordinator?.showAlert(result ?? "")
                                     }
+                                }, onError: { error in
+                                    self?.coordinator?.showAlert(error.localizedDescription)
                                 })
                                 .disposed(by: disposeBag)
                         }

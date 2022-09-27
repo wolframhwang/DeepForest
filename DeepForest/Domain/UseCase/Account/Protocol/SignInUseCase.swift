@@ -13,5 +13,6 @@ protocol SignInUseCase {
     var signInInfo: BehaviorSubject<AccountForSignIn> { get }
     
     func fetchMyInfo() -> Observable<String?>
+    func fetchInfo() -> Observable<String?>
     func signIn() -> Observable<String?>
 }
