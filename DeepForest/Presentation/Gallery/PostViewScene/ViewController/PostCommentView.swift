@@ -18,7 +18,7 @@ class PostCommentView: UIView {
 
     let contentLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18)
+        label.font = .systemFont(ofSize: 15)
         label.textColor = .label
         
         return label
@@ -26,7 +26,7 @@ class PostCommentView: UIView {
     
     let writer: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 19, weight: .bold)
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .label
         
         return label
