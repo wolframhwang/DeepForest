@@ -102,19 +102,6 @@ final class WritePostSceneViewModel: NSObject, ViewModelType {
                         self?.coordinator?.showAlert(error)
                     })
                     .disposed(by: disposeBag)
-                    
-//                    Observable.combineLatest((self?.writePostSceneUseCase.postingMyContent())!, (self?.writePostSceneUseCase.postingMyContentWithImages())!).observe(on: MainScheduler.asyncInstance)
-//                        .subscribe(onNext: { s1, s2 in
-//                            if s2 != nil {
-//                                self?.coordinator?.dismissScene()
-//                            } else {
-//                                self?.coordinator?.showAlert(AlamofireImageUploadServiceError.unknownError)
-//                            }
-//                        }, onError: { error in
-//                            self?.coordinator?.showAlert(error)
-//                        })
-//                        .disposed(by: disposeBag)
-                        
                 }
             })
             .disposed(by: disposeBag)

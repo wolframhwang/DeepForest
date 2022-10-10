@@ -17,7 +17,7 @@ import Lottie
 class PostViewController: UIViewController {
     var disposeBag = DisposeBag()
     var viewModel: PostViewModel?
-    
+
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         
@@ -61,6 +61,10 @@ class PostViewController: UIViewController {
 }
 
 extension PostViewController {
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
     func configureSubviews() {
         self.view.addSubview(activityIndicator)
         
